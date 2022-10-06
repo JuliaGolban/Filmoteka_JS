@@ -1,0 +1,47 @@
+@mixin device ($type) {
+    $mobile: 320px;
+    $tablet: 768px;
+    $desctop: 1200px;
+
+    @if $type == "mobile-only" {
+        @media screen and (max-width: #{$tablet - 0.02}) {
+            @content;
+        }
+    }
+
+    @if $type == "mobile" {
+        @media screen and (min-width: $mobile) {
+            @content;
+        }
+    }
+
+    @if $type == "tablet-only" {
+        @media screen and (min-width: $tablet) and (max-width: #{$desctop - 0.02}) {
+            @content;
+        }
+    }
+
+    @if $type == "tablet" {
+         @media screen and (min-width: $tablet) {
+            @content;
+        }
+    }
+
+    @if $type == "not-desctop" {
+        @media screen and (max-width: #{desctop - 0.02}) {
+            @content;
+        }
+    }
+
+    @if $type == "desctop" {
+        @media screen and (min-width: $desctop) {
+            @content;
+        }
+    }
+
+    @if $type == "retina" {
+        @media (min-device-pixel-ratio:2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+            @content;
+        }
+    }
+}

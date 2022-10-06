@@ -1,0 +1,40 @@
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    outline: 1px solid green;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    @include device(mobile-only) {
+        width: calc(100% - 40px);
+    }
+
+    @include device(mobile) {
+        padding-left: 32px;
+        padding-right: 32px;
+        width: 480px;
+    }
+
+    @include device(tablet) {
+        width: 768px;
+    }
+
+    @include device(desctop) {
+        width: 1200px;
+    }
+}
+.list {
+    padding: 0;
+    margin: 0;
+    @include device(tablet) {
+        display: flex;
+        justify-content: space-between;  
+        flex-wrap: wrap;
+      }
+}
+.list__item {
+    display: block;
+    width: 240px;
+    outline: 1px solid red;
+    height: 320px;
+}

@@ -86,6 +86,4 @@ function pag(totalItems) {
         currentPage = eventData.page;
         getResponse(currentPage);
     });
-
-
 }

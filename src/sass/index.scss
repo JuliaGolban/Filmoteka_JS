@@ -1,9 +1,14 @@
 @import './base/common';
 @import './base/global';
+@import './base/reset';
+
 
 @import './utils/mixins';
 @import './utils/variables';
 @import './utils/placeholders';
+
+@import './base/container';
+
 @import './utils/pagination';
 
-@import './layouts/header'
+@import './layouts/header';

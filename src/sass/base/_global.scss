@@ -1,0 +1,14 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-main);
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+
+    color: var(--cl-txt-main);
+    background-color: var(--bgc-main);
+
+}

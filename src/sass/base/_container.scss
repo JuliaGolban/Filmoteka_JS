@@ -40,21 +40,30 @@
     flex-basis: calc((100% -  32px) / 2);
     margin-right: 16px;
     margin-bottom: 32px;
+
     &:nth-child(even) {
         margin-left: 16px;
         margin-right: 0;
    }
+   
+    &:nth-last-child(-n+2) {
+    margin-bottom: 0;
     }
+    }
+
     @include device(desctop) {
     min-height: 634px;
     flex-basis: calc((100% - 2 * 16px) / 3);
     margin-right: 0;
+
     &:nth-child(even) {
     margin-left: 0;
    }
+
     &:nth-child(3n+2) {
     margin-left: 16px;
     margin-right: 16px;
    }
+
     }
 }

@@ -5,36 +5,55 @@
 
     padding-left: 20px;
     padding-right: 20px;
-    @include device(mobile-only) {
-        width: calc(100% - 40px);
-    }
 
     @include device(mobile) {
-        padding-left: 32px;
-        padding-right: 32px;
-        width: 480px;
+    max-width: 480px;
     }
 
     @include device(tablet) {
-        width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+    max-width: 768px;
     }
 
     @include device(desctop) {
-        width: 1200px;
+    max-width: 1280px;
     }
 }
 .list {
     padding: 0;
     margin: 0;
     @include device(tablet) {
-        display: flex;
-        justify-content: space-between;  
-        flex-wrap: wrap;
-      }
+    display: flex;
+    justify-content: start;  
+    flex-wrap: wrap;
+    }
 }
 .list__item {
     display: block;
-    width: 240px;
     outline: 1px solid red;
-    height: 320px;
+    min-height: 440px;
+    margin-bottom: 20px;
+    width: 100%;
+    @include device(tablet) {
+    min-height: 495px;
+    flex-basis: calc((100% -  32px) / 2);
+    margin-right: 16px;
+    &:nth-child(even) {
+        margin-left: 16px;
+        margin-right: 0;
+   }
+    }
+    @include device(desctop) {
+    min-height: 634px;
+    flex-basis: calc((100% - 2 * 16px) / 3);
+    margin-right: 0;
+    &:nth-child(even) {
+    margin-left: 0;
+   }
+    &:nth-child(3n+2) {
+    margin-left: 16px;
+    margin-right: 16px;
+   }
+    }
 }

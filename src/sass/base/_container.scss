@@ -30,8 +30,10 @@
     }
 }
 .list__item {
-    display: block;
-    outline: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px 5px 0 0;
+    justify-content: space-between;
     min-height: 440px;
     margin-bottom: 20px;
     width: 100%;
@@ -57,4 +59,36 @@
     margin-right: 16px;
    }
     }
+}
+
+.list__item-image {
+    display: block;
+    background-color: darkgray;
+    border-radius: 5px;
+    height: 402px;
+
+    // @include mq(tablet) {
+    //     height: 455px;
+    // }
+
+    // @include mq(desktop) {
+    //     height: 574px;
+    // }
+
+}
+
+.list__item-description {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 10px;
+}
+.list__item-description-title {
+    color: var(--cl-txt-main);
+}
+.list__item-description-genres {
+    text-transform: capitalize;
+    color: var(--cl-txt-accent);
 }

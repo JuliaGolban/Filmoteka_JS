@@ -1,13 +1,30 @@
 import Pagination from 'tui-pagination';
 
+import { getResponse } from './api-common'
 
-const body = document.querySelector('body');
+function pag(totalItems, currentPage) {
 
-const paginationBlock = '<div id="tui-pagination-container" class="tui-pagination"></div>';
+    const body = document.querySelector('body');
 
-body.insertAdjacentHTML('beforeend', paginationBlock);
+    const paginationBlock = '<div id="tui-pagination-container" class="tui-pagination"></div>';
 
-const container = document.getElementById('tui-pagination-container');
-const instance = new Pagination(container, { ... });
+    body.insertAdjacentHTML('beforeend', paginationBlock);
 
-instance.getCurrentPage();
+    const container = document.getElementById('tui-pagination-container');
+    const options = { // below default value of options
+        totalItems: totalItems,
+        itemsPerPage: 20,
+        visiblePages: 5,
+        page: `${currentPage}`,
+        centerAlign: true,
+    }
+
+    const instance = new Pagination(container, options);
+    
+    instance.on('afterMove', function (eventData) {
+        currentPage = eventData.page;
+        getResponse(currentPage);
+    });
+}
+
+export { pag };

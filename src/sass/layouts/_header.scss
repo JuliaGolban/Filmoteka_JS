@@ -66,12 +66,13 @@
     margin-top: 40px;
 }
 
-.list {
-    display: flex;
-    list-style: none;
-}
+// .list {
+//     display: flex;
+//     list-style: none;
+// }
 
 .nav__list {
+    display: flex;
     margin-right: 32px;
 
     @include mq(mobile-only) {

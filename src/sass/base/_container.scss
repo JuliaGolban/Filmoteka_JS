@@ -23,10 +23,20 @@
 .list {
     padding: 0;
     margin: 0;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    grid-auto-rows: 440px;
+    grid-gap: 20px;
     @include mq(tablet) {
-    display: flex;
-    justify-content: start;  
-    flex-wrap: wrap;
+        grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+        grid-auto-rows: 495px;
+        grid-gap: 32px;
+    }
+    @include mq(desktop) {
+        grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+        grid-auto-rows: 634px;
+        grid-gap: 32px 16px;
     }
 }
 .list__item {
@@ -34,46 +44,22 @@
     flex-direction: column;
     border-radius: 5px 5px 0 0;
     justify-content: space-between;
-    min-height: 440px;
-    margin-bottom: 20px;
     width: 100%;
-    @include mq(tablet) {
-    min-height: 495px;
-    flex-basis: calc((100% -  32px) / 2);
-    margin-right: 16px;
-    margin-bottom: 32px;
-    &:nth-child(even) {
-        margin-left: 16px;
-        margin-right: 0;
-   }
-    }
-    @include mq(desktop) {
-    min-height: 634px;
-    flex-basis: calc((100% - 2 * 16px) / 3);
-    margin-right: 0;
-    &:nth-child(even) {
-    margin-left: 0;
-   }
-    &:nth-child(3n+2) {
-    margin-left: 16px;
-    margin-right: 16px;
-   }
-    }
 }
 
 .list__item-image {
     display: block;
     background-color: darkgray;
     border-radius: 5px;
-    height: 402px;
+    height: 400px;
 
-    // @include mq(tablet) {
-    //     height: 455px;
-    // }
+    @include mq(tablet) {
+        height: 455px;
+    }
 
-    // @include mq(desktop) {
-    //     height: 574px;
-    // }
+    @include mq(desktop) {
+        height: 574px;
+    }
 
 }
 
@@ -83,7 +69,10 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    margin-top: 10px;
+    @include mq(desktop) {
+        font-size: 20px;
+        line-height: 24px;
+    }
 }
 .list__item-description-title {
     color: var(--cl-txt-main);

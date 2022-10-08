@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import renderMarkupMovieCard from './movie-card';
 import { pag } from '../js/pagination'
 
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
@@ -37,7 +37,7 @@ async function getResponse(currentPage) {
     const { data } = await axiosInstance.get();
     
     totalItems = `${data.total_results}`;
-    
+
     pag(totalItems, currentPage);
 
         
@@ -45,7 +45,8 @@ async function getResponse(currentPage) {
         console.log('Search result not successful. Enter the correct movie name and repeat');
         //? Where to insert
     } else {
-        renderingImagesIn(data);
+        renderMarkupMovieCard(data);
+        // renderingImagesIn(data);
         //? Whom
     }
 };
@@ -53,7 +54,7 @@ async function getResponse(currentPage) {
 form.addEventListener('submit', onSubmitForm);
 
 function renderingImagesIn(data) {
-     console.log(data)
+    console.log(data)
 };
 
 export { getResponse };

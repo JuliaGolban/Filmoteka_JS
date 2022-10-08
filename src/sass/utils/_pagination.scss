@@ -9,3 +9,12 @@ height: 40px;
 margin: 10px auto;
 
 }
+
+.pagination__currentPage {
+    width: 40px;
+    width: 40px;
+    border-radius: 15px;
+
+    background-color: var(--bgc-accent);
+    color: var(--cl-txt-white);
+}

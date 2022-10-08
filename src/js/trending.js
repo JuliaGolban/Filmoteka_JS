@@ -13,4 +13,4 @@ async function trending() {
 
 function renderingImagesIn(data) {console.log(data)};
 
-trending();
+export { trending };

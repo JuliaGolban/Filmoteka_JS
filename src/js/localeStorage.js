@@ -45,6 +45,7 @@ function btnTextChange(currentFilmId) {
 }
 
 /// Функция для добавления в просмотренные фильмы localeStorage ///
+
 let watchedKey = [];
 let queueKey = [];
 

@@ -1,0 +1,155 @@
+.modal-team {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 15;
+    transform: translate(-50%, -50%) scale(1);
+
+    padding: 16px;
+
+    width: calc(100vw - 40px);
+    max-height: calc(100vh - 40px);
+
+    background: var(--bgc-second);
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+
+    overflow-y: auto;
+    opacity: 1;
+    transition: transform var(--anim), visibility var(--anim),
+        opacity var(--anim);
+
+    .backdrop.is-hidden>& {
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+
+    @include mq(mobile) {
+        max-width: 400px;
+        max-height: calc(100vh - 40px);
+    }
+
+    @include mq(tablet) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        max-width: 800px;
+        max-height: calc(100vh - 40px);
+
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &__title {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+
+        @include mq(tablet) {
+            gap: 32px;
+        }
+    }
+
+    &__item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+
+        max-width: 80px;
+
+        @include mq(desktop) {
+            max-width: 120px;
+        }
+    }
+
+    &__image {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 16px;
+
+        border-radius: 5px 5px 50px 5px;
+        box-shadow: 5px 5px 11px -2px #000;
+
+        @include mq(desktop) {
+            width: 120px;
+            height: 120px;
+
+            border-radius: 5px 5px 70px 5px;
+        }
+    }
+
+    &__wrap {
+        font-weight: 700;
+        line-height: 1.15;
+        text-align: center;
+    }
+
+    &__member {
+        margin-bottom: 4px;
+    }
+
+    &__description {
+        margin-bottom: 4px;
+        color: var(--cl-txt-accent);
+    }
+
+    &__link {
+        position: absolute;
+        top: 70px;
+        right: 0;
+
+        @include mq(desktop) {
+            top: 110px;
+        }
+
+        &:hover,
+        &:focus {
+            fill: var(--cl-txt-accent);
+        }
+    }
+
+    &__btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 30px;
+        height: 30px;
+
+        @include mq(tablet) {
+            width: 40px;
+            height: 40px;
+        }
+
+        color: var(--cl-txt-main);
+        background: var(--bgc-second);
+        border: none;
+
+        cursor: pointer;
+        transition: color var(--anim);
+
+        &:hover,
+        &:focus {
+            color: var(--cl-txt-accent);
+        }
+    }
+
+    &__icon-close {
+        fill: currentColor;
+        transition: color var(--anim);
+
+    }
+}

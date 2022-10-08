@@ -1,9 +1,20 @@
-@import './base/common';
-@import './base/global';
-
 @import './utils/mixins';
 @import './utils/variables';
 @import './utils/placeholders';
 @import './utils/pagination';
 
-@import './layouts/header'
+@import './base/common';
+@import './base/global';
+@import './base/reset';
+@import './base/animations';
+@import './base/container';
+
+@import './components/scroll-to-top';
+@import './components/visually-hidden';
+@import './components/backdrop';
+
+@import './layouts/header';
+@import './layouts/footer';
+@import './layouts/modal-team';
+@import './layouts/gallery';
+

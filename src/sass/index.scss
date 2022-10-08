@@ -7,6 +7,7 @@
 @import './base/global';
 @import './base/reset';
 @import './base/animations';
+@import './base/container';
 
 @import './components/scroll-to-top';
 @import './components/visually-hidden';
@@ -15,3 +16,5 @@
 @import './layouts/header';
 @import './layouts/footer';
 @import './layouts/modal-team';
+@import './layouts/gallery';
+

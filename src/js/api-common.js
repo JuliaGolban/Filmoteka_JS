@@ -4,7 +4,7 @@ import { pag } from '../js/pagination'
 
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 let currentPage = 0;
-let totalItems = 0;
+let totalPages = 0;
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('.search-form__input');
@@ -36,9 +36,9 @@ async function getResponse(currentPage) {
         
     const { data } = await axiosInstance.get();
     
-    totalItems = `${data.total_results}`;
+    totalPages = `${data.total_pages}`;
     
-    pag(totalItems, currentPage);
+    pag(totalPages, currentPage);
 
         
     if (data.total_results === 0) {

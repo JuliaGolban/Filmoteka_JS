@@ -9,5 +9,3 @@ function onOpenModalTeam() {
   document.body.classList.toggle('modal-team-is-open');
   refs.modalTeam.classList.toggle('is-hidden');
 }
-
-export { onOpenModalTeam };

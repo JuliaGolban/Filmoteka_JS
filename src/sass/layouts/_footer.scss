@@ -1,6 +1,6 @@
 .footer {
-    position: fixed;
-    bottom: 0;
+    // position: fixed;
+    // bottom: 0;
 
     &__container {
         width: 100vw;
@@ -25,9 +25,9 @@
         margin-bottom: 0;
     }
 
-    // @media screen and (min-width: 497px) {
-    //     margin-bottom: 0;
-    // }
+    @media screen and (min-width: 502px) {
+        margin-bottom: 0;
+    }
 }
 
 .developers {

@@ -5,7 +5,11 @@
         // justify-content: space-between;
         // flex-direction: column;
         height: 100%;
-        padding: 40px 60px;
+        padding: 40px 20px 62px 20px;
+
+        @include mq(tablet) {
+            padding: 40px 32px 60px 32px;
+        }
     }
 
     &__wrap {

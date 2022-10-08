@@ -66,26 +66,17 @@
     margin-top: 40px;
 }
 
-// .list {
-//     display: flex;
-//     list-style: none;
-// }
+.list {
+    display: flex;
+    list-style: none;
+}
 
 .nav__list {
-    display: flex;
     margin-right: 32px;
 
     @include mq(mobile-only) {
         margin-right: 20px;
     }
-}
-
-.nav__item:not(:last-child) {
-    margin-right: 40px;
-}
-
-.--active {
-    border-bottom: 2px solid var(--cl-txt-red);
 }
 
 .link {

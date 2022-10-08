@@ -1,8 +1,16 @@
-const apiKey = 'api_key=e32c2b640d0c14cb8349bc85f9ee8b0e'
-const trendingUrl = 'https://api.themoviedb.org/3/trending/movie/week?'
+import axios from 'axios';
+const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 
-async function trending() { 
-    return await fetch(`${trendingUrl}${apiKey}`).then(response => console.log(response.json()))
-}
+async function trending() {
+    const axiosInstance = axios.create({
+        baseURL: 'https://api.themoviedb.org/3/trending/movie/week?',
+        headers: { 'Content-Type': 'application/json' },
+        params: {api_key: API_KEY},
+    });
+    const { data } = await axiosInstance.get();
+    renderingImagesIn(data);
+};
 
-trending()
+function renderingImagesIn(data) {console.log(data)};
+
+trending();

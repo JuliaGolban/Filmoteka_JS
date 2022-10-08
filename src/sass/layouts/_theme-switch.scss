@@ -1,0 +1,70 @@
+.theme-switch {
+    position: absolute;
+    right: 4%;
+    top: 20%;
+    display: flex;
+    align-items: center;
+
+    &__icon {
+        color: #fff;
+        height: 20px;
+        width: 20px;
+        margin-right: 8px;
+        margin-left: 8px;
+    }
+
+    &__control {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 55px;
+        height: 25px;
+        border-radius: 50em;
+        padding: 3px 0;
+    }
+
+    &__toggle {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        height: 0;
+        width: 0;
+        pointer-events: none;
+    }
+
+    &__track {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        color: transparent;
+        background-color: #fff;
+        border-radius: inherit;
+        border: 1px solid #818181;
+        cursor: pointer;
+    }
+
+    &__marker {
+        position: relative;
+        background-color: rgb(205, 39, 39);
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        pointer-events: none;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+        transform: translateX(3px);
+        transition: transform 300ms ease-in-out;
+    }
+}
+
+.theme-switch__toggle:checked+.theme-switch__track {
+    background-color: #000;
+}
+
+.theme-switch__toggle:checked~.theme-switch__marker {
+    transform: translateX(35px);
+}

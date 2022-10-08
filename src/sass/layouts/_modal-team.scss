@@ -54,6 +54,10 @@
         @include mq(tablet) {
             gap: 32px;
         }
+
+        @include mq(desktop) {
+            gap: 50px;
+        }
     }
 
     &__item {

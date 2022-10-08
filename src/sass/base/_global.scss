@@ -12,3 +12,11 @@ body {
     background-color: var(--bgc-main);
 
 }
+
+main {
+    min-height: calc(100vh - 330px);
+
+    @include mq(tablet) {
+        min-height: calc(100vh - 294px);
+    }
+}

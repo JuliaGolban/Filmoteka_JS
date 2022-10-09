@@ -1,7 +1,8 @@
 import { getGenres } from './getGenres';
+import getRefs from './getRefs';
+const refs = getRefs();
 
-export default function renderMarkupMovieCard({ results }) {
-  const gallery = document.querySelector('.gallery__list');
+function renderMarkupMovieCard({ results }) {
   const markup = results
     .map(({ id, poster_path, genre_ids, title, release_date }) => {
       let name = getGenres(genre_ids);
@@ -26,5 +27,11 @@ export default function renderMarkupMovieCard({ results }) {
                 </li> `;
     })
     .join('');
-  gallery.insertAdjacentHTML('beforeend', markup);
+  refs.galleryList.insertAdjacentHTML('beforeend', markup);
 }
+
+function removeMarkupMovieCard() {
+  refs.gallery.innerHTML = '';
+}
+
+export { renderMarkupMovieCard, removeMarkupMovieCard };

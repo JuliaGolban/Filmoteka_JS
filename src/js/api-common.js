@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { pag } from '../js/pagination';
-import renderMarkupMovieCard from './movie-card';
+import { clearData, getFromStorage, saveToStorage } from './localeCommon';
+import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
 import getRefs from './getRefs';
 const refs = getRefs();
 
@@ -14,6 +15,7 @@ const notFound = document.querySelector('#p-not');
 
 function onSubmitForm(event) {
   event.preventDefault();
+  clearData();
 
   const searchInput = input.value;
   localStorage.setItem('searchInput', `${searchInput}`);
@@ -47,15 +49,14 @@ async function getResponse(currentPage) {
 
   if (data.total_results === 0) {
     //? Where to insert
-    return (
-      notFound.classList.remove('is-hidden'),
-      notFound.classList.add('not-found')
-    );
+    return notFound.classList.remove('is-hidden');
   }
   //? Whom
+  removeMarkupMovieCard();
+  saveToStorage(data);
+  getFromStorage();
   renderMarkupMovieCard(data);
   notFound.classList.add('is-hidden');
-  notFound.classList.remove('not-found');
 }
 
 form.addEventListener('submit', onSubmitForm);

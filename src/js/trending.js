@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { pag } from '../js/pagination';
-import renderMarkupMovieCard from './movie-card';
+import { clearData, getFromStorage, saveToStorage } from './localeCommon';
+import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
 import getRefs from './getRefs';
 const refs = getRefs();
 
@@ -21,10 +22,12 @@ async function trending(currentPage) {
   });
   const { data } = await axiosInstance.get();
 
-  totalPages = `${data.total_pages}`;
+  let totalPages = `${data.total_pages}`;
 
-  // pag(totalPages, currentPage);
+  pag(totalPages, currentPage);
 
+  saveToStorage(data);
+  getFromStorage();
   renderMarkupMovieCard(data);
 }
 

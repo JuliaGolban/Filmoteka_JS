@@ -1,6 +1,6 @@
 import axios from 'axios';
 import renderMarkupMovieCard from './movie-card';
-import { pag } from '../js/pagination'
+import { pag } from '../js/pagination';
 
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 let currentPage = 0;
@@ -8,54 +8,50 @@ let totalItems = 0;
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('.search-form__input');
+const notFound = document.querySelector('#p-not');
 
 function onSubmitForm(event) {
-    event.preventDefault();
-    
-    const searchInput = input.value;
-    localStorage.setItem("searchInput", `${searchInput}`);
+  event.preventDefault();
 
-    currentPage = 1;
-  
-    getResponse(currentPage);
-    form.reset();
-};
+  const searchInput = input.value;
+  localStorage.setItem('searchInput', `${searchInput}`);
+
+  currentPage = 1;
+
+  getResponse(currentPage);
+  form.reset();
+}
 
 async function getResponse(currentPage) {
-    
-    
-    const axiosInstance = axios.create({
-        baseURL: 'https://api.themoviedb.org/3/search/movie',
-        headers: { 'Content-Type': 'application/json' },
-        params: {
-            api_key: API_KEY,
-            query: localStorage.getItem("searchInput"),
-            page: `${currentPage}`,
-        },
-    });
-        
-    const { data } = await axiosInstance.get();
-    
-    totalItems = `${data.total_results}`;
+  const axiosInstance = axios.create({
+    baseURL: 'https://api.themoviedb.org/3/search/movie',
+    headers: { 'Content-Type': 'application/json' },
+    params: {
+      api_key: API_KEY,
+      query: localStorage.getItem('searchInput'),
+      page: `${currentPage}`,
+    },
+  });
 
-    pag(totalItems, currentPage);
+  const { data } = await axiosInstance.get();
 
-        
-    if (data.total_results === 0) {
-        console.log('Search result not successful. Enter the correct movie name and repeat');
-        //? Where to insert
-    } else {
-        renderMarkupMovieCard(data);
-        // renderingImagesIn(data);
-        //? Whom
-    }
-};
+  totalItems = `${data.total_results}`;
+
+  pag(totalItems, currentPage);
+
+  if (data.total_results === 0) {
+    //? Where to insert
+    return notFound.classList.remove('is-hidden');
+  }
+  //? Whom
+  notFound.classList.add('is-hidden');
+  renderMarkupMovieCard(data);
+}
 
 form.addEventListener('submit', onSubmitForm);
 
-function renderingImagesIn(data) {
-    console.log(data)
-};
+function renderMarkupMovieCard(data) {
+  console.log(data);
+}
 
 export { getResponse };
-

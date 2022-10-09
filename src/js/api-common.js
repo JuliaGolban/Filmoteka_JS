@@ -59,8 +59,8 @@ async function getResponse(currentPage) {
   saveToStorage(data);
   getFromStorage();
   renderMarkupMovieCard(data);
-  notFound.classList.add('is-hidden');
-  notFound.classList.remove('not-found');
+  return (notFound.classList.add('is-hidden'),notFound.classList.remove('not-found'));
+
 }
 
 form.addEventListener('submit', onSubmitForm);

@@ -22,14 +22,11 @@ function onSubmitForm(event) {
 
   currentPage = 1;
 
-  getResponse(currentPage);
+  search(currentPage, );
   form.reset();
 }
 
 async function getResponse(currentPage) {
-  if (input.focusVisible === true) {
-    console.log('1');
-  }
 
   const axiosInstance = axios.create({
     baseURL: 'https://api.themoviedb.org/3/search/movie',

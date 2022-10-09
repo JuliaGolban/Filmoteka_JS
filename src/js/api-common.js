@@ -45,15 +45,10 @@ async function getResponse(currentPage) {
 
   totalPages = `${data.total_pages}`;
 
-  
   if (data.total_results === 0) {
     //? Where to insert
-    return (
-      notFound.classList.remove('is-hidden'),
-      notFound.classList.add('not-found')
-    );
-  }
-  else {
+    return notFound.classList.remove('is-hidden');
+  } else {
     pag(totalPages, currentPage);
   }
   //? Whom

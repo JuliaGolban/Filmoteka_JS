@@ -1,5 +1,8 @@
 html {
     scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -7,6 +10,10 @@ body {
     font-weight: 400;
     font-size: 14px;
     letter-spacing: 0.04em;
+
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 
     color: var(--cl-txt-main);
     background-color: var(--bgc-main);
@@ -20,3 +27,4 @@ main {
         min-height: calc(100vh - 294px);
     }
 }
+

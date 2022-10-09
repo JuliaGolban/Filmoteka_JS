@@ -1,6 +1,11 @@
 .button-wrapper {
     display: flex;
     justify-content: center;
+    margin-top: 40px;
+
+    @include mq(mobile-only){
+        margin-top: 66px;
+    }
 
     & .btn {
         width: 152px;

@@ -5,6 +5,7 @@ export default function getRefs() {
     closeModalTeam: document.querySelector('[data-modal-team-close]'),
     modalTeam: document.querySelector('[data-modal-team]'),
     gallery: document.querySelector('div.gallery'),
+    galleryList: document.querySelector('.gallery__list'),
     scrollToTop: document.querySelector('.scroll-to-top'),
   };
 }

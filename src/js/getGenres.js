@@ -9,9 +9,9 @@ export const getGenres = function (genreIds) {
       }
     });
   }
-  const genreName = genresNames.slice(0, 2);
-  if (genresNames.length > 2) {
-    genreName.push('Others');
+  const genreName = genresNames.slice(0, 4);
+  if (genresNames.length > 4) {
+    genreName.push('etc.');
   }
   return genreName.join(', ');
 };

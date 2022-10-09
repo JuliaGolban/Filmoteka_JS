@@ -1,7 +1,5 @@
 import { getGenres } from './getGenres';
 
-// https://api.themoviedb.org/3/movie/550?api_key=3cfb780db79e54922c50ea8f26b92bbe
-
 export default function renderMarkupMovieCard({ results }) {
   const gallery = document.querySelector('.gallery__list');
   const markup = results

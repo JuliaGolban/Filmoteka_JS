@@ -1,8 +1,8 @@
 import { getResponse } from './api-common'
-import { trending } from './trending';
+
+let partUrl = localStorage.getItem('paramsPart');
 
 const form = document.querySelector('.search-form');
-
 
 function pag(totalPages, currentPage) {
 
@@ -218,58 +218,49 @@ function pag(totalPages, currentPage) {
     refs.dotsNext.addEventListener('click', () => {
         
         currentPage = currentPage + 5;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
 
     refs.next.addEventListener('click', () => {
         
         currentPage = currentPage + 1;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
     refs.nextPage.addEventListener('click', () => {
         
         currentPage = currentPage + 1;
-
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
     refs.next1Page.addEventListener('click', () => {
         
         currentPage = currentPage + 2;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
         
     refs.prevPage.addEventListener('click', () => {
         
         currentPage = currentPage - 1;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
     refs.prev1Page.addEventListener('click', () => {
         
         currentPage = currentPage - 2;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
     refs.lastPage.addEventListener('click', () => {
         
         currentPage = Number(totalPages);
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
     refs.firstPage.addEventListener('click', () => {
         
         currentPage = 1;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
 
 
@@ -277,15 +268,13 @@ function pag(totalPages, currentPage) {
     refs.prev.addEventListener('click', () => {
         
         currentPage = currentPage - 1;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
     refs.dotsPrev.addEventListener('click', () => {
         
         currentPage = currentPage - 5;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
 };

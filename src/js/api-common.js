@@ -45,11 +45,11 @@ async function getResponse(currentPage) {
 
   totalPages = `${data.total_pages}`;
 
-  pag(totalPages, currentPage);
-
   if (data.total_results === 0) {
     //? Where to insert
     return notFound.classList.remove('is-hidden');
+  } else {
+    pag(totalPages, currentPage);
   }
   //? Whom
   removeMarkupMovieCard();

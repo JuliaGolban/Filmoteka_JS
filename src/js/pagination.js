@@ -1,8 +1,13 @@
 import { getResponse } from './api-common'
+import { trending } from './trending';
+
+const form = document.querySelector('.search-form');
+
 
 function pag(totalPages, currentPage) {
 
     const main = document.querySelector('main');
+
     
     if (document.getElementById('pagination-container')) {
         document.getElementById('pagination-container').remove()
@@ -10,7 +15,7 @@ function pag(totalPages, currentPage) {
 
 
     const paginationBlock = `<div id="pagination-container" class="pagination">
-        <div class="pagination__elem pagination__prev id="prev"><a href="#" class="pagination__linkPrev link">left<svg class="pagination__icon"><use href="./image/sprite.svg#arrow-left"></use></svg></a></div>
+        <div class="pagination__elem pagination__prev id="prev"><a href="#" class="pagination__linkPrev link"><</a></div>
         <div class="pagination__elem pagination__firstPage id="firstPage"><a href="#" class="pagination__linkFirstPage link">1</a></div>
         <div class="pagination__elem pagination__dotsPrev id="dotsPrev"><a href="#" class="pagination__linkDotsPrev link">...</a></div>
         <div class="pagination__elem pagination__prev1Page id="prev1Page"><a href="#" class="pagination__linkPrev1Page link">${(currentPage - 2)}</a></div>
@@ -20,7 +25,7 @@ function pag(totalPages, currentPage) {
         <div class="pagination__elem pagination__next1Page id="next1Page"><a href="#" class="pagination__linkNext1Page link">${(currentPage + 2)}</a></div>
         <div class="pagination__elem pagination__dotsNext id="dotsNext"><a href="#" class="pagination__linkDotsNext link">...</a></div>
         <div class="pagination__elem pagination__lastPage id="lastPage"><a href="#" class="pagination__linkLastPage link">${totalPages}</a></div>
-        <div class="pagination__elem pagination__next id="next"><a href="#" class="pagination__linkNext link">right<svg class="pagination__icon"><use href="./image/sprite.svg#arrow-right"></use></svg></a></div>
+        <div class="pagination__elem pagination__next id="next"><a href="#" class="pagination__linkNext link">></a></div>
         </div >`;
     
 
@@ -214,48 +219,57 @@ function pag(totalPages, currentPage) {
         
         currentPage = currentPage + 5;
         getResponse(currentPage);
+        // trending(currentPage);
     });
 
     refs.next.addEventListener('click', () => {
         
         currentPage = currentPage + 1;
         getResponse(currentPage);
+        // trending(currentPage);
     });
     
     refs.nextPage.addEventListener('click', () => {
         
         currentPage = currentPage + 1;
+
         getResponse(currentPage);
+        // trending(currentPage);
     });
     
     refs.next1Page.addEventListener('click', () => {
         
         currentPage = currentPage + 2;
         getResponse(currentPage);
+        // trending(currentPage);
     });
         
     refs.prevPage.addEventListener('click', () => {
         
         currentPage = currentPage - 1;
         getResponse(currentPage);
+        // trending(currentPage);
     });
     
     refs.prev1Page.addEventListener('click', () => {
         
         currentPage = currentPage - 2;
         getResponse(currentPage);
+        // trending(currentPage);
     });
     
     refs.lastPage.addEventListener('click', () => {
         
         currentPage = Number(totalPages);
         getResponse(currentPage);
+        // trending(currentPage);
     });
     
     refs.firstPage.addEventListener('click', () => {
         
         currentPage = 1;
         getResponse(currentPage);
+        // trending(currentPage);
     });
 
 
@@ -264,12 +278,14 @@ function pag(totalPages, currentPage) {
         
         currentPage = currentPage - 1;
         getResponse(currentPage);
+        // trending(currentPage);
     });
     
     refs.dotsPrev.addEventListener('click', () => {
         
         currentPage = currentPage - 5;
         getResponse(currentPage);
+        // trending(currentPage);
     });
     
 };

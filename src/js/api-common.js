@@ -10,6 +10,7 @@ const form = document.querySelector('.search-form');
 const input = document.querySelector('.search-form__input');
 const notFound = document.querySelector('#p-not');
 
+
 function onSubmitForm(event) {
     event.preventDefault();
 
@@ -20,10 +21,14 @@ function onSubmitForm(event) {
 
     getResponse(currentPage);
     form.reset();
+    
 };
 
 async function getResponse(currentPage) {
 
+    if (input.focusVisible === true) {
+    console.log('1')
+    }
 
     const axiosInstance = axios.create({
         baseURL: 'https://api.themoviedb.org/3/search/movie',

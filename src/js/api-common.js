@@ -46,7 +46,7 @@ async function getResponse(currentPage) {
   totalPages = `${data.total_pages}`;
 
   pag(totalPages, currentPage);
-  debugger;
+
   if (data.total_results === 0) {
     //? Where to insert
     return (

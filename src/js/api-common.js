@@ -1,10 +1,12 @@
 import axios from 'axios';
-import renderMarkupMovieCard from './movie-card';
 import { pag } from '../js/pagination';
+import renderMarkupMovieCard from './movie-card';
+import getRefs from './getRefs';
+const refs = getRefs();
 
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 let currentPage = 0;
-let totalItems = 0;
+let totalPages = 0;
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('.search-form__input');
@@ -23,6 +25,10 @@ function onSubmitForm(event) {
 }
 
 async function getResponse(currentPage) {
+  if (input.focusVisible === true) {
+    console.log('1');
+  }
+
   const axiosInstance = axios.create({
     baseURL: 'https://api.themoviedb.org/3/search/movie',
     headers: { 'Content-Type': 'application/json' },
@@ -35,23 +41,23 @@ async function getResponse(currentPage) {
 
   const { data } = await axiosInstance.get();
 
-  totalItems = `${data.total_results}`;
+  totalPages = `${data.total_pages}`;
 
-  pag(totalItems, currentPage);
+  pag(totalPages, currentPage);
 
   if (data.total_results === 0) {
     //? Where to insert
-    return notFound.classList.remove('is-hidden');
+    return (
+      notFound.classList.remove('is-hidden'),
+      notFound.classList.add('not-found')
+    );
   }
   //? Whom
-  notFound.classList.add('is-hidden');
   renderMarkupMovieCard(data);
+  notFound.classList.add('is-hidden');
+  notFound.classList.remove('not-found');
 }
 
 form.addEventListener('submit', onSubmitForm);
-
-function renderMarkupMovieCard(data) {
-  console.log(data);
-}
 
 export { getResponse };

@@ -2,8 +2,10 @@
     <div class="home container">
         <div class="header__wrap">
             <div class="logo">
-                <img class="logo-img" src="./image/header/film.png" alt="">
-                <p class="logo-text">Filmoteka</p>
+                <a class="logo-img__link" href="./index.html">
+                    <img class="logo-img" src="./image/header/film.png" alt="">
+                    <p class="logo-text">Filmoteka</p>
+                </a>
             </div>
 
             <nav class="nav">
@@ -18,15 +20,21 @@
                 </ul>
             </nav>
         </div>
+
         <form class="search-form">
             <label class="search-form__box">
                 <input class="search-form__input" type="text" required name="search-form" id="search-form"
                     placeholder="Movie search">
+                <button class="search-btn" type="submit">
+                    <svg class="search-icon">
+                        <use href="/src/image/sprite.svg#search"></use>
+                    </svg> </button>
+
             </label>
         </form>
 
         <div class="not-found__box">
-            <p class="not-found is-hidden" id="p-not">Search result not successful. Enter the correct movie name and repeat.</p>
+            <p class="is-hidden" id="p-not">Search result not successful. Enter the correct movie name and repeat.</p>
         </div>
 
     </div>

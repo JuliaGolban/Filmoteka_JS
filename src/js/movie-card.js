@@ -31,7 +31,7 @@ function renderMarkupMovieCard({ results }) {
 }
 
 function removeMarkupMovieCard() {
-  refs.galleryList.innerHTML = '';
+  refs.gallery.innerHTML = '';
 }
 
 export { renderMarkupMovieCard, removeMarkupMovieCard };

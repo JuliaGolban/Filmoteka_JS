@@ -22,9 +22,9 @@ async function trending(currentPage) {
   });
   const { data } = await axiosInstance.get();
 
-  let totalPages = `${data.total_pages}`;
+//   totalPages = `${data.total_pages}`;
 
-  pag(totalPages, currentPage);
+//   pag(totalPages, currentPage);
 
   saveToStorage(data);
   getFromStorage();

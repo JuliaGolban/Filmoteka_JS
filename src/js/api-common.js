@@ -1,8 +1,8 @@
 import axios from 'axios';
+import { pag } from '../js/pagination';
+import renderMarkupMovieCard from './movie-card';
 import getRefs from './getRefs';
 const refs = getRefs();
-
-import { pag } from '../js/pagination';
 
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 let currentPage = 0;
@@ -46,43 +46,18 @@ async function getResponse(currentPage) {
   pag(totalPages, currentPage);
 
   if (data.total_results === 0) {
+    //? Where to insert
     return (
       notFound.classList.remove('is-hidden'),
       notFound.classList.add('not-found')
     );
-    //? Where to insert
   }
-  renderingImagesIn(data);
-  return (
-    notFound.classList.add('is-hidden'), notFound.classList.remove('not-found')
-  );
-
   //? Whom
+  renderMarkupMovieCard(data);
+  notFound.classList.add('is-hidden');
+  notFound.classList.remove('not-found');
 }
 
 form.addEventListener('submit', onSubmitForm);
-
-function renderingImagesIn(data) {
-  const res = data.results;
-  const markup = res
-    .map(({ title, poster_path, release_date, genre_ids }) => {
-      return `    
-            <li class="gallery__item">
-                <a href="#">
-                    <img class="gallery__item-image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="">
-                </a>
-                <div class="gallery__item-description">
-                    <p class="gallery__item-description-title">${title}</p>
-                    <p class="gallery__item-description-genres">${genre_ids} | ${release_date.slice(
-        0,
-        4
-      )}</p>
-                </div>
-            </li>
-            `;
-    })
-    .join('');
-  refs.galleryList.insertAdjacentHTML('beforeend', markup);
-}
 
 export { getResponse };

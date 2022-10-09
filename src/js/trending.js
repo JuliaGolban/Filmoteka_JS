@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { pag } from '../js/pagination';
+import renderMarkupMovieCard from './movie-card';
 import getRefs from './getRefs';
 const refs = getRefs();
 
@@ -24,32 +25,7 @@ async function trending(currentPage) {
 
   // pag(totalPages, currentPage);
 
-  renderingImagesIn(data);
-}
-
-function renderingImagesIn(data) {
-  const res = data.results;
-  console.log(res);
-  const markup = res
-    .map(({ title, poster_path, release_date, genre_ids }) => {
-      return `    
-            <li class="gallery__item">
-                <a href="#">
-                    <img class="gallery__item-image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="">
-                </a>
-                <div class="gallery__item-description">
-                    <p class="gallery__item-description-title">${title}</p>
-                    <p class="gallery__item-description-genres">${genre_ids} | ${release_date.slice(
-        0,
-        4
-      )}</p>
-                </div>
-            </li>
-            `;
-    })
-    .join('');
-  console.log(markup);
-  refs.galleryList.insertAdjacentHTML('beforeend', markup);
+  renderMarkupMovieCard(data);
 }
 
 export { trending };

@@ -53,6 +53,7 @@
             border-radius: 5px;
             height: 400px;
             width: 100%;
+
             @include mq(tablet) {
                 height: 455px;
             }
@@ -74,6 +75,7 @@
             }
 
             &-title {
+                text-transform: uppercase;
                 color: var(--cl-txt-main);
             }
 

@@ -21,7 +21,7 @@ async function trending(currentPage) {
     
     totalPages = `${data.total_pages}`;
     
-    // pag(totalPages, currentPage);
+    pag(totalPages, currentPage);
     
     renderingImagesIn(data);
 };

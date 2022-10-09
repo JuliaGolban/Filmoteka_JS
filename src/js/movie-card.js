@@ -1,29 +1,32 @@
-// import { getGenresName } from './getGenresName';
+import { getGenres } from './getGenres';
 
 // https://api.themoviedb.org/3/movie/550?api_key=3cfb780db79e54922c50ea8f26b92bbe
 
 export default function renderMarkupMovieCard({ results }) {
-    const gallery = document.querySelector('.gallery__list');
-    const markup = results
-        .map(({ id, poster_path, genre_ids, title, release_date }) => {
-            return `
-                <li class="movie-card__item" data-id="${id}">
-                    <div class="movie-card">
-                        ${poster_path
+  const gallery = document.querySelector('.gallery__list');
+  const markup = results
+    .map(({ id, poster_path, genre_ids, title, release_date }) => {
+      let name = getGenres(genre_ids);
+      return `
+                <li class="gallery__item" data-id="${id}">
+                        ${
+                          poster_path
                             ? `<img src="https://image.tmdb.org/t/p/w500${poster_path}"`
-                            : `<img src="https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj"`
+                            : `<img src="./image/defaulf-img.png"`
                         }
-                        class="movie-card__poster"
+                        class="gallery__item-image" 
                         alt="${title}"
                         loading="lazy"
                         />
-                    <h2 class="movie-card__title"> ${title}</h2>
-                    <div class="movie-card__info">
-                        <p class="movie-card__genre"> ${genre_ids}</p>
-                        <p class="movie-card__year">${release_date?.slice(0, 4)}</p>
+                        <div class="gallery__item-description">
+                        <p class="gallery__item-description-title"> ${title}</p>
+                        <p class="gallery__item-description-genres"> ${name} | ${release_date?.slice(
+        0,
+        4
+      )}</p>
                     </div>
                 </li> `;
     })
     .join('');
-    gallery.insertAdjacentHTML('beforeend', markup);
+  gallery.insertAdjacentHTML('beforeend', markup);
 }

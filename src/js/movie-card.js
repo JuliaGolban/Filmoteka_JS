@@ -10,7 +10,7 @@ export default function renderMarkupMovieCard({ results }) {
                         ${
                           poster_path
                             ? `<img src="https://image.tmdb.org/t/p/w500${poster_path}"`
-                            : `<img src="./image/defaulf-img.png"`
+                            : `<img src="./image/defaulf-img.jpg"`
                         }
                         class="gallery__item-image" 
                         alt="${title}"

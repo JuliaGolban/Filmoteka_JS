@@ -7,7 +7,7 @@
         padding-bottom: 20px;
 
         @include mq(mobile) {
-            max-width: 480px;
+            max-width: 320px;
         }
 
         @include mq(tablet) {
@@ -52,7 +52,7 @@
             background-color: darkgray;
             border-radius: 5px;
             height: 400px;
-
+            width: 100%;
             @include mq(tablet) {
                 height: 455px;
             }

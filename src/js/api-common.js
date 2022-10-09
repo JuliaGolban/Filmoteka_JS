@@ -1,4 +1,6 @@
 import axios from 'axios';
+import getRefs from './getRefs';
+const refs = getRefs();
 
 import { pag } from '../js/pagination'
 
@@ -53,7 +55,23 @@ async function getResponse(currentPage) {
 form.addEventListener('submit', onSubmitForm);
 
 function renderingImagesIn(data) {
-    console.log(data)
+    const res = data.results;
+    console.log(res)
+    const markup = res.map(({title, poster_path, release_date, genre_ids})=>{
+        return `    
+            <li class="gallery__item">
+                <a href="#">
+                    <img class="gallery__item-image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="">
+                </a>
+                <div class="gallery__item-description">
+                    <p class="gallery__item-description-title">${title}</p>
+                    <p class="gallery__item-description-genres">${genre_ids} | ${release_date.slice(0,4)}</p>
+                </div>
+            </li>
+            `
+    }).join('');
+    console.log(markup)
+    refs.galleryList.insertAdjacentHTML('beforeend', markup)
 };
 
 export { getResponse };

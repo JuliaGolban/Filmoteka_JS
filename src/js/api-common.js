@@ -42,11 +42,12 @@ async function getResponse(currentPage) {
     pag(totalItems, currentPage);
 
     if (data.total_results === 0) {
-        return notFound.classList.remove('is-hidden');
+        return (notFound.classList.remove('is-hidden'), notFound.classList.add('not-found'));
         //? Where to insert
-    }
-        notFound.classList.add('is-hidden');
+    }  
         renderingImagesIn(data);
+        return (notFound.classList.add('is-hidden'),notFound.classList.remove('not-found'));
+      
         //? Whom
 };
 

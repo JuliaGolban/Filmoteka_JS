@@ -1,10 +1,5 @@
 .header {
     &>.container {
-        // display: flex;
-        // align-items: center;
-        // justify-content: space-between;
-        // flex-direction: column;
-        height: 100%;
         padding: 40px 20px 62px 20px;
 
         @include mq(tablet) {
@@ -42,25 +37,53 @@
 }
 
 .library {
-    background-image: url(../image/header/header-pc.png);
+    // background-image: ;
+    background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+     url(../image/header-library/header-library-pc.png);
     background-size: cover;
     height: 216px;
 
     @include mq(tablet-only) {
         & {
-            background-image: url(../image/header/header-table.png);
+            background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(../image/header-library/header-library-tablet.png);
             background-size: cover;
-            height: 216px;
+            height: 219px;
         }
     }
 
     @include mq(mobile-only) {
         & {
-            background-image: url(../image/header/header-mob.png);
+            background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+             url(../image/header-library/header-library-mob.png);
             background-size: cover;
             height: 230px;
         }
     }
+}
+
+.not-found {
+    margin-top: 24px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #FF001B;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @include mq(mobile-only){
+        margin-top: 16px;
+    }
+}
+
+.logo-img__link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
 .logo {
@@ -73,6 +96,10 @@
         margin-top: 40px;
         margin-left: 20px;
     }
+}
+
+.logo-library{
+    margin-top: 0;
 }
 
 .logo-img {
@@ -107,6 +134,13 @@
     display: flex;
     align-items: center;
     margin-top: 0;
+
+    @include mq(mobile-only){
+        position: absolute;
+        right: 0;
+        margin-top: 44px;
+        margin-right: 20px;
+    }
 }
 
 .nav__list {
@@ -144,4 +178,12 @@
 .search-form {
     display: flex;
     justify-content: center;
+    margin-top: 40px;
+}
+
+.search-form__input{
+    @include mq(mobile-only){
+        
+    margin-top: 60px;
+    }
 }

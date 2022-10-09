@@ -2,15 +2,16 @@ import axios from 'axios';
 import LS from './localeStorage';
 
 const API_KEYS = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
+const BASE_URL = 'https://api.themoviedb.org/3/genre/movie/list'
 
 let arrayGenres = [];
 
 // Запит на сервер
 
-async function catchGenres() {
+async function getGenres() {
     
     try {
-      const response = await axios.get('https://api.themoviedb.org/3/genre/movie/list', {
+      const response = await axios.get(BASE_URL, {
         params: {
             api_key: API_KEYS,
         }
@@ -27,8 +28,8 @@ async function catchGenres() {
 //   Запис в LocalStorege масиву обєктів з жанрами.
 
 function saveGenresLocalStorege () {
-    catchGenres().then((response) => {
-        LS.save('genres', response)   
+    getGenres().then((response) => {
+        LS.save('genres', response) 
     })
 }
 
@@ -40,7 +41,6 @@ saveGenresLocalStorege ()
 
 function getGenresLocalStorege (array) {
   const parsedJsonGenres = LS.load('genres')
-  console.log(parsedJsonGenres);
 
   let nameGenres = [];
 

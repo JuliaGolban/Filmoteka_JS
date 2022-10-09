@@ -1,5 +1,5 @@
 .header {
-  & > .container {
+  &>.container {
     padding: 40px 20px 62px 20px;
 
     @include mq(tablet) {
@@ -12,6 +12,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 41px;
+
     @include mq(tablet-only) {
       margin-bottom: 40px;
     }
@@ -86,6 +87,10 @@
   @include mq(mobile-only) {
     margin-top: 16px;
   }
+}
+
+.not-found.is-hidden {
+  display: none;
 }
 
 .logo-img__link {

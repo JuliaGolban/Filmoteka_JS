@@ -49,10 +49,7 @@ async function getResponse(currentPage) {
 
   if (data.total_results === 0) {
     //? Where to insert
-    return (
-      notFound.classList.remove('is-hidden'),
-      notFound.classList.add('not-found')
-    );
+    return notFound.classList.remove('is-hidden');
   }
   //? Whom
   removeMarkupMovieCard();
@@ -60,7 +57,6 @@ async function getResponse(currentPage) {
   getFromStorage();
   renderMarkupMovieCard(data);
   notFound.classList.add('is-hidden');
-  notFound.classList.remove('not-found');
 }
 
 form.addEventListener('submit', onSubmitForm);

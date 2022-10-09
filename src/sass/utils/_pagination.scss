@@ -1,11 +1,60 @@
-.tui-pagination {
-display: flex;
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  max-width: 374px;
+  height: 40px;
+  margin: 10px auto;
+}
+
+.pagination__currentPage {
+  min-width: 40px;
+  height: 40px;
+  border-radius: 5px;
+
+  background-color: var(--bgc-accent);
+  color: var(--cl-txt-white);
+}
+
+.pagination__elem {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+}
+}
+
+.pagination__linkPrev.link, .pagination__linkNext.link {
+display: flexbox;
+    text-align: center;
+
+margin-left: auto;
+    margin-right: auto;
+
+    border-radius: 5px;
+    
+    background-color: var(--bgc-second);
+
+}
+
+.pagination__icon {
+    fill: var(--cl-txt-main);
+}
+
+.pagination__linkPrev>span {
+display: block;
 text-align: center;
-justify-content: center;
-gap: 16px;
-
-width: 374px;
-height: 40px;
-margin: 10px auto;
-
+margin-left: auto;
+    margin-right: auto;
 }

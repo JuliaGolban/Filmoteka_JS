@@ -6,11 +6,12 @@ import { pag } from '../js/pagination'
 
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 let currentPage = 0;
-let totalItems = 0;
+let totalPages = 0;
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('.search-form__input');
 const notFound = document.querySelector('#p-not');
+
 
 function onSubmitForm(event) {
     event.preventDefault();
@@ -22,10 +23,14 @@ function onSubmitForm(event) {
 
     getResponse(currentPage);
     form.reset();
+    
 };
 
 async function getResponse(currentPage) {
 
+    if (input.focusVisible === true) {
+    console.log('1')
+    }
 
     const axiosInstance = axios.create({
         baseURL: 'https://api.themoviedb.org/3/search/movie',
@@ -38,17 +43,18 @@ async function getResponse(currentPage) {
     });
 
     const { data } = await axiosInstance.get();
-
-    totalItems = `${data.total_results}`;
-
-    pag(totalItems, currentPage);
+    
+    totalPages = `${data.total_pages}`;
+    
+    pag(totalPages, currentPage);
 
     if (data.total_results === 0) {
-        return notFound.classList.remove('is-hidden');
+        return (notFound.classList.remove('is-hidden'), notFound.classList.add('not-found'));
         //? Where to insert
-    }
-        notFound.classList.add('is-hidden');
+    }  
         renderingImagesIn(data);
+        return (notFound.classList.add('is-hidden'),notFound.classList.remove('not-found'));
+      
         //? Whom
 };
 

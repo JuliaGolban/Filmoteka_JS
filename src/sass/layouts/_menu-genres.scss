@@ -1,19 +1,17 @@
 
-
-// FLASHY SLIPPY NAV STYLES
-.mobile-nav-button {
-    width:35px;
+.genres-nav-button {
+    width:30px;
+    height: auto;
     position:absolute;
     margin:1rem;
     right:0;
     top:0;
     z-index:9999;
     cursor:pointer;
-    height:30px;
-    &:hover .mobile-nav-button__line {
+    &:hover .genres-nav-button__line {
       background-color: var(--bgc-accent);
     }
-    .mobile-nav-button__line {
+    .genres-nav-button__line {
         width:100%;
         height:4px;
         background: var(--cl-txt-main);
@@ -24,15 +22,15 @@
         }
 
     }
-    .mobile-nav-button__line--1 {
+    .genres-nav-button__line--1 {
         transform: rotate(45deg);
         top: 13px;
         position: absolute;
     }
-    .mobile-nav-button__line--2 {
+    .genres-nav-button__line--2 {
         display: none;
     }
-    .mobile-nav-button__line--3 {
+    .genres-nav-button__line--3 {
         transform: rotate(135deg);
         top: 13px;
         position: absolute;        
@@ -43,7 +41,7 @@
 
 .mobile-menu {
     display:block;
-    max-width:400px;
+    max-width:300px;
     width:100%;
     right:-100%;
     height: 100vh;
@@ -53,6 +51,8 @@
     transition: var(--slow-anim);
     top:0;
     opacity:0;
+    overflow-y: scroll;
+    overflow-x: hidden;
     ul {
         position: relative;
         padding:60px 0;
@@ -64,7 +64,8 @@
                 max-width:500px;
                 margin:0 auto;
                 display: block;
-                text-align: center;
+                text-align: start;
+                margin-left: 10px;
                 text-decoration:none;
                 color: var(--cl-txt-main);
                 font-size: 2rem;

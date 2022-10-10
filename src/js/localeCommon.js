@@ -9,7 +9,7 @@ function saveToStorage(dataToSave) {
   localStorage.setItem(storageKey, JSON.stringify(dataToSave));
 }
 
-function getFromStorage() {
+function getFromStorage(storageKey) {
   try {
     const data = JSON.parse(localStorage.getItem(storageKey));
     return data;

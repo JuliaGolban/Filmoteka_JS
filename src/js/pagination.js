@@ -1,7 +1,5 @@
 import { getResponse } from './api-common'
 
-let partUrl = localStorage.getItem('paramsPart');
-
 const form = document.querySelector('.search-form');
 
 function pag(totalPages, currentPage) {
@@ -90,6 +88,8 @@ function pag(totalPages, currentPage) {
                 refs.prev.style.opacity = "1";
                 refs.prevPage.style.visibility = "visible";
                 refs.nextPage.style.visibility = "hidden";
+                refs.next.style.pointerEvents = "none";
+                refs.next.style.opacity = "0.5";
             }
         }
             //doggy
@@ -111,6 +111,8 @@ function pag(totalPages, currentPage) {
                 refs.prev1Page.style.visibility = "visible";
                 refs.nextPage.style.visibility = "hidden";
                 refs.next1Page.style.visibility = "hidden";
+                refs.next.style.pointerEvents = "none";
+                refs.next.style.opacity = "0.5";
             }
         }
             //bordo

@@ -21,7 +21,7 @@ import LS from './localeStorage';
   function renderGenres(results) {
     menuList.innerHTML = ''
     const markup = results.map(({name}) =>{
-            return `<li class="mobile-menu-item"><a>${name}</a></li>`
+            return `<li class="mobile-menu-item"><a data-action="${name.toLowerCase()}">${name}</a></li>`
     }).join('');
 
     menuList.insertAdjacentHTML('beforeend', markup)
@@ -36,4 +36,19 @@ import LS from './localeStorage';
       console.warn('Cannot parse JSON from localStorage');
       return null;
     }
+  }
+
+
+
+
+menuList.addEventListener('click', sortByGenre)
+
+function sortByGenre(event) {
+    if (event.target.nodeName !== "A") {
+      return;
+    }
+    
+    const value = event.target.dataset.action;
+    
+    console.log(event.target.dataset.action)
   }

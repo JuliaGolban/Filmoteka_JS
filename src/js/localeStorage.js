@@ -22,7 +22,7 @@ const remove = key => {
 // Функция для проверки фильма в очереди или в просмотреных когда модалка открыта и изменения текста кнопок localeStorage
 function btnTextChange(currentFilmId) {
     const watchedBtn = document.querySelector('.movie-modal__button-orange');
-    const queueBtn = document.querySelector('movie-modal__button');
+    const queueBtn = document.querySelector('.movie-modal__button');
 
     if (!load('watchedKey')) {
         return;

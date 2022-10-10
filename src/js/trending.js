@@ -1,34 +1,44 @@
-import axios from 'axios';
-import { pag } from '../js/pagination';
-import { clearData, getFromStorage, saveToStorage } from './localeCommon';
-import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
-import getRefs from './getRefs';
-const refs = getRefs();
+import { getResponse } from './api-common'
+import { clearData } from './localeCommon';
 
-const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
+let partUrl = '';
+
+clearData();
 
 trending();
 
-async function trending(currentPage) {
-  currentPage = 1;
+function trending() {
+  
+    let currentPage = 1;
+    
+    localStorage.setItem('paramsPart', 'trending/movie/week');
 
-  const axiosInstance = axios.create({
-    baseURL: 'https://api.themoviedb.org/3/trending/movie/week?',
-    headers: { 'Content-Type': 'application/json' },
-    params: {
-      api_key: API_KEY,
-      page: `${currentPage}`,
-    },
-  });
-  const { data } = await axiosInstance.get();
-
-//   totalPages = `${data.total_pages}`;
-
-//   pag(totalPages, currentPage);
-
-  saveToStorage(data);
-  getFromStorage();
-  renderMarkupMovieCard(data);
+    partUrl = localStorage.getItem('paramsPart');
+  
+    getResponse(currentPage, partUrl);
 }
 
-export { trending };
+
+// async function trending(currentPage) {
+//   currentPage = 1;
+
+//   const axiosInstance = axios.create({
+//     baseURL: 'https://api.themoviedb.org/3/trending/movie/week?',
+//     headers: { 'Content-Type': 'application/json' },
+//     params: {
+//       api_key: API_KEY,
+//       page: `${currentPage}`,
+//     },
+//   });
+//   const { data } = await axiosInstance.get();
+
+// //   totalPages = `${data.total_pages}`;
+
+// //   pag(totalPages, currentPage);
+
+//   saveToStorage(data);
+//   getFromStorage();
+//   renderMarkupMovieCard(data);
+// }
+
+// export { trending };

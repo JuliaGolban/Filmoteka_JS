@@ -35,12 +35,11 @@ class Scroll {
   }
 }
 
-export function onscroll() {
-  const scroll = new Scroll();
-  refs.scrollToTop.addEventListener('click', () => {
-    scroll.scrollToTop();
-  });
-  document.addEventListener('scroll', () => {
-    scroll.handleScrollToTop();
-  });
-}
+const scroll = new Scroll();
+
+refs.scrollToTop.addEventListener('click', () => {
+  scroll.scrollToTop();
+});
+document.addEventListener('scroll', () => {
+  scroll.handleScrollToTop();
+});

@@ -1,5 +1,9 @@
-import * as apiCommon from './js/api-common.js';
 import './js/trending';
-import onOpenModalTeam from './js/modalTeamForm';
-import onscroll from './js/scrollTo';
+import * as apiGenres from './js/api-genres.js';
+import './js/headerSearch';
+import './js/api-common';
+import * as localeCommon from './js/localeCommon';
 import * as localeStorage from './js/localeStorage';
+import './js/modalTeamForm';
+import './js/scrollTo';
+import * as modal from './js/modal';

@@ -9,7 +9,7 @@ function onSubmitForm(event) {
   clearData();
 
   const searchInput = input.value;
-  localStorage.setItem('paramsPart', `search/movie?query=${searchInput}&`);
+  localStorage.setItem('paramsPart', `search/movie?query=${searchInput}`);
 
 
   search();

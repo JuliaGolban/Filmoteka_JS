@@ -39,6 +39,9 @@ saveGenresLocalStorege ()
 
 export function getGenresLocalStorege (genreIds) {
   const parsedJsonGenres = LS.load('genres')
+  if(parsedJsonGenres === undefined) {
+    return 'Not-found'
+  }
 
   let nameGenres = [];
 

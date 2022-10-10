@@ -2,9 +2,7 @@ import axios from 'axios';
 import LS from './localeStorage';
 
 const API_KEYS = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
-const BASE_URL = 'https://api.themoviedb.org/3/genre/movie/list'
-
-let arrayGenres = [];
+const BASE_URL = 'https://api.themoviedb.org/3/genre/movie/list';
 
 // Запит на сервер
 
@@ -17,7 +15,7 @@ async function getGenres() {
         }
       })
       const dataGenres = response.data.genres;
-      arrayGenres = dataGenres
+     
        return dataGenres;
 
     } catch (error) {
@@ -36,28 +34,25 @@ function saveGenresLocalStorege () {
 saveGenresLocalStorege ()
 
 // Отримати жанри з LocalStorege.
-// Аргументом в функцію getGenresLocalStorege(array) треба передати масив з id номерами.
+// Аргументом в функцію getGenresLocalStorege(genreIds) треба передати масив з id номерами.
 // Функція повертає рядок з назвами жанрів (приклад - 'Action, Western, Comedy') з лімітом по довжині 4 жанри.
 
-function getGenresLocalStorege (array) {
+export function getGenresLocalStorege (genreIds) {
   const parsedJsonGenres = LS.load('genres')
 
   let nameGenres = [];
 
-  array.map((number) => {
-
-    parsedJsonGenres.map((object) => {
-          if (object.id === number) {
-              nameGenres.push(object.name);
-          }
-              })
-  })
+  for (let id of  genreIds) {
+    parsedJsonGenres.forEach(genre => {
+        if(id === genre.id) {
+            nameGenres.push(genre.name)
+        }
+    })
+  }
 
   return nameGenres.slice(0, 4).join(', ');
-
 }
 
-export default {getGenresLocalStorege}
 
 
 

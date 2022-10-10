@@ -32,7 +32,7 @@ async function getResponse(currentPage, partUrl) {
     return notFound.classList.remove('is-hidden');
   } else {
     pag(totalPages, currentPage);
-    pagRight(totalPages, currentPage);
+    // pagRight(totalPages, currentPage);
   }
   
   removeMarkupMovieCard();

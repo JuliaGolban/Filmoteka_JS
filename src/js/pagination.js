@@ -279,87 +279,87 @@ function pag(totalPages, currentPage) {
     
 };
 
-export { pag, pagRight };
+export { pag };
 
-function pagRight(totalPages, currentPage) {
+// function pagRight(totalPages, currentPage) {
     
-    const main = document.querySelector('main');
+//     const main = document.querySelector('main');
     
-    if (document.getElementById('pag-container')) {
-        document.getElementById('pag-container').remove()
-    };
+//     if (document.getElementById('pag-container')) {
+//         document.getElementById('pag-container').remove()
+//     };
 
 
-    const pagBlock = '<div id="pag-container" class="pag"></div>';
-    main.insertAdjacentHTML('beforeend', pagBlock);
+//     const pagBlock = '<div id="pag-container" class="pag"></div>';
+//     main.insertAdjacentHTML('beforeend', pagBlock);
 
-    const pagObject = {
-        btnPrev: '<button class="pagination__btn btn__prev" id="prev" type="button"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.667 8H3.333M8 12.667 3.333 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
-        btnFirstPage: '<button class="pagination__btn btn__firstPage" id="btn__firstPage">1</button>',
-        btnDotsPrev: '<button class="pagination__btn btn__dotsPrev" id="btn__dotsPrev">...</button>',
-        btnPrev1Page: `<button class="pagination__btn btn__prev1Page" id="btn__prev1Page">${(currentPage - 2)}</button>`,
-        btnPrevPage: `<button class="pagination__btn btn__prevPage" id="btn__prevPage">${(currentPage - 1)}</button>`,
-        btnCurrentPage: `<button class="pagination__btn btn__currentPage" id="btn__currentPage">${currentPage}</button>`,
-        btnNextPage: `<button class="pagination__btn btn__nextPage" id="btn__nextPage">${(currentPage + 1)}</button>`,
-        btnNext1Page: `<button class="pagination__btn btn__next1Page" id="btn__next1Page">${(currentPage + 2)}</button>`,
-        btnDotsNext: '<button class="pagination__btn btn__dotsNext" id="btn__dotsNext">...</button>',
-        btnLastPage: `<button class="pagination__btn btn__lastPage" id="btn__lastPage">${totalPages}</button>`,
-        btnNext: '<button class="pagination__btn btn__next" id="btn__next"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667 12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
-    }
-    const pagObject2 = [
-        '<button class="pagination__btn btn__prev" id="prev" type="button"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.667 8H3.333M8 12.667 3.333 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
-        '<button class="pagination__btn btn__firstPage" id="btn__firstPage">1</button>',
-        '<button class="pagination__btn btn__dotsPrev" id="btn__dotsPrev">...</button>',
-        `<button class="pagination__btn btn__prev1Page" id="btn__prev1Page">${(currentPage - 2)}</button>`,
-        `<button class="pagination__btn btn__prevPage" id="btn__prevPage">${(currentPage - 1)}</button>`,
-        `<button class="pagination__btn btn__currentPage" id="btn__currentPage">${currentPage}</button>`,
-        `<button class="pagination__btn btn__nextPage" id="btn__nextPage">${(currentPage + 1)}</button>`,
-        `<button class="pagination__btn btn__next1Page" id="btn__next1Page">${(currentPage + 2)}</button>`,
-        '<button class="pagination__btn btn__dotsNext" id="btn__dotsNext">...</button>',
-        `<button class="pagination__btn btn__lastPage" id="btn__lastPage">${totalPages}</button>`,
-        '<button class="pagination__btn btn__next" id="btn__next"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667 12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
-    ];
+//     const pagObject = {
+//         btnPrev: '<button class="pagination__btn btn__prev" id="prev" type="button"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.667 8H3.333M8 12.667 3.333 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
+//         btnFirstPage: '<button class="pagination__btn btn__firstPage" id="btn__firstPage">1</button>',
+//         btnDotsPrev: '<button class="pagination__btn btn__dotsPrev" id="btn__dotsPrev">...</button>',
+//         btnPrev1Page: `<button class="pagination__btn btn__prev1Page" id="btn__prev1Page">${(currentPage - 2)}</button>`,
+//         btnPrevPage: `<button class="pagination__btn btn__prevPage" id="btn__prevPage">${(currentPage - 1)}</button>`,
+//         btnCurrentPage: `<button class="pagination__btn btn__currentPage" id="btn__currentPage">${currentPage}</button>`,
+//         btnNextPage: `<button class="pagination__btn btn__nextPage" id="btn__nextPage">${(currentPage + 1)}</button>`,
+//         btnNext1Page: `<button class="pagination__btn btn__next1Page" id="btn__next1Page">${(currentPage + 2)}</button>`,
+//         btnDotsNext: '<button class="pagination__btn btn__dotsNext" id="btn__dotsNext">...</button>',
+//         btnLastPage: `<button class="pagination__btn btn__lastPage" id="btn__lastPage">${totalPages}</button>`,
+//         btnNext: '<button class="pagination__btn btn__next" id="btn__next"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667 12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
+//     }
+//     const pagObject2 = [
+//         '<button class="pagination__btn btn__prev" id="prev" type="button"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.667 8H3.333M8 12.667 3.333 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
+//         '<button class="pagination__btn btn__firstPage" id="btn__firstPage">1</button>',
+//         '<button class="pagination__btn btn__dotsPrev" id="btn__dotsPrev">...</button>',
+//         `<button class="pagination__btn btn__prev1Page" id="btn__prev1Page">${(currentPage - 2)}</button>`,
+//         `<button class="pagination__btn btn__prevPage" id="btn__prevPage">${(currentPage - 1)}</button>`,
+//         `<button class="pagination__btn btn__currentPage" id="btn__currentPage">${currentPage}</button>`,
+//         `<button class="pagination__btn btn__nextPage" id="btn__nextPage">${(currentPage + 1)}</button>`,
+//         `<button class="pagination__btn btn__next1Page" id="btn__next1Page">${(currentPage + 2)}</button>`,
+//         '<button class="pagination__btn btn__dotsNext" id="btn__dotsNext">...</button>',
+//         `<button class="pagination__btn btn__lastPage" id="btn__lastPage">${totalPages}</button>`,
+//         '<button class="pagination__btn btn__next" id="btn__next"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667 12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
+//     ];
 
     
     
-    const pagString = [];
-    let insert = '';
+//     const pagString = [];
+//     let insert = '';
     
     
-    function removeBtn(item1, item2, item3, item4) {
+//     function removeBtn(item1, item2, item3, item4) {
         
-        for (let i = 0; i < pagObject2.length; i++) {
-            if (!(i === Number(item1) | i === Number(item2) | i === Number(item3) | i === Number(item4))) {
-                pagString.push(pagObject2[i]);
-            }
-        }
+//         for (let i = 0; i < pagObject2.length; i++) {
+//             if (!(i === Number(item1) | i === Number(item2) | i === Number(item3) | i === Number(item4))) {
+//                 pagString.push(pagObject2[i]);
+//             }
+//         }
         
     
-        console.log(pagString)
-    }
+//         console.log(pagString)
+//     }
     
-    const pagContainer = document.getElementById('pag-container');
+//     const pagContainer = document.getElementById('pag-container');
     
     
-    if (Number(totalPages) === 1) {
-        removeBtn(3, 4, 6, 7);
-    } else if (Number(totalPages) === 2) {
-        if (Number(currentPage) === 2) { removeBtn(4, 5, 7); }
-        else { removeBtn(3, 4, 7); }
-    }
+//     if (Number(totalPages) === 1) {
+//         removeBtn(3, 4, 6, 7);
+//     } else if (Number(totalPages) === 2) {
+//         if (Number(currentPage) === 2) { removeBtn(4, 5, 7); }
+//         else { removeBtn(3, 4, 7); }
+//     }
 
-    else if (Number(totalPages) === 3) {
-        removeBtn(3, 4);
-    }
+//     else if (Number(totalPages) === 3) {
+//         removeBtn(3, 4);
+//     }
 
-    else if (Number(totalPages) === 4) {
-        removeBtn(3, 4);
-    }
+//     else if (Number(totalPages) === 4) {
+//         removeBtn(3, 4);
+//     }
 
-    else if (Number(totalPages) >= 5) {
-        removeBtn(3, 4);
-    }
+//     else if (Number(totalPages) >= 5) {
+//         removeBtn(3, 4);
+//     }
             
-    pagContainer.insertAdjacentHTML('beforeend', pagString.join(''))
+//     pagContainer.insertAdjacentHTML('beforeend', pagString.join(''))
 
-}
+// }

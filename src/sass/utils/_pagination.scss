@@ -58,3 +58,35 @@ text-align: center;
 margin-left: auto;
     margin-right: auto;
 }
+
+//----------------------
+
+.pag {
+    display: flex;
+    align-items: center;
+    justify-content: center;}
+
+.pagination__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--bgc-main);
+
+    border: none;
+    border-radius: 5px;
+
+    width: 40px;
+    height: 40px;
+
+    &.btn__currentPage {
+        background-color: var(--bgc-accent);
+        color: var(--cl-txt-white);
+    }
+
+    &.btn__next, &.btn__prev {
+        background-color: var(--bgc-second);
+    }
+
+
+}

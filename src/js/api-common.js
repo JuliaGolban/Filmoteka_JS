@@ -1,11 +1,13 @@
 import axios from 'axios';
-import { pag } from '../js/pagination';
+import { pag, pagRight } from '../js/pagination';
 import { getFromStorage, saveToStorage } from './localeCommon';
 import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
 
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 let currentPage = 1;
 let totalPages = 0;
+let partUrl = '';
+
 
 
 
@@ -26,10 +28,11 @@ async function getResponse(currentPage, partUrl) {
 
   totalPages = `${data.total_pages}`;
 
-  if (data.total_results === 0) {
+  if (!data.total_results) {
     return notFound.classList.remove('is-hidden');
   } else {
     pag(totalPages, currentPage);
+    pagRight(totalPages, currentPage);
   }
   
   removeMarkupMovieCard();

@@ -1,7 +1,16 @@
 import { getGenres } from './getGenres';
 import getRefs from './getRefs';
+import { clearData, getFromStorage, saveToStorage } from './localeCommon';
+
+// console.log(getFromStorage());
 
 const refs = getRefs();
+
+function findCurrentFilm(currentId) {
+    let filmSet = getFromStorage();
+    // return  filmSet.find(obj => obj.id === currentId);
+    console.log(filmSet);
+   }
 
 refs.filmListEl.addEventListener('click', (e) => {
     e.preventDefault();
@@ -12,8 +21,12 @@ refs.filmListEl.addEventListener('click', (e) => {
       ) {
         return;
       }
-refs.modalEl.classList.remove('is-hidden');
-// const movieId = e.target.dataset.id;
+     
+      const movieId = e.target.closest('.gallery__item').dataset.id;
+      //   console.log(movieId);
+      findCurrentFilm();
+    
+     refs.modalEl.classList.remove('is-hidden');
 
   });
 
@@ -28,9 +41,9 @@ document.addEventListener('keydown', function(e){
     }});
 
 
+
 // Разметка модалка
- function renderMarkupMovieModal({ results }) {
-    const markup = results.map(({
+ function renderMarkupMovieModal({
   id,
   release_date,
   poster_path,
@@ -41,8 +54,9 @@ document.addEventListener('keydown', function(e){
   original_title,
   genre,
   overview,
-}) =>   {let name = getGenres(genre);
-            return  `<div movie-modal__image-container data-year="${release_date}" data-action="${id}>
+}){ refs.modalContainer.innerHTML = ''
+    
+   return  ( refs.modalContainer.innerHTML =`<div movie-modal__image-container data-year="${release_date}" data-action="${id}>
             <img class="movie-modal__image"
             src="${poster_path}"
             alt="${title}"
@@ -75,9 +89,9 @@ document.addEventListener('keydown', function(e){
                 </tbody>
               </table>
               <p class="movie-modal__about">About</p>
-              <p class="movie-modal__overview">"${overview}"</p>`;
-                               })
-                  .join('');
-                refs.modalContainer.insertAdjacentHTML('beforeend', markup);
+              <p class="movie-modal__overview">"${overview}"</p>`);
+                               
+                  
+                
                }
 

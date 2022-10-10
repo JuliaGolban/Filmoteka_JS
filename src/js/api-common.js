@@ -26,7 +26,7 @@ async function getResponse(currentPage, partUrl) {
 
   totalPages = `${data.total_pages}`;
 
-  if (data.total_results === 0) {
+  if (!data.total_results) {
     return notFound.classList.remove('is-hidden');
   } else {
     pag(totalPages, currentPage);

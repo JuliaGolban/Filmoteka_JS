@@ -23,4 +23,8 @@ function clearData() {
   localStorage.clear();
 }
 
-export { clearData, getFromStorage, saveToStorage };
+function removeItem(key) {
+  localStorage.removeItem(key);
+}
+
+export { clearData, getFromStorage, saveToStorage, removeItem };

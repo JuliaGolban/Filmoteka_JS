@@ -1,0 +1,99 @@
+
+.genres-nav-button {
+    width:30px;
+    height: auto;
+    position:absolute;
+    margin:1rem;
+    right:0;
+    top:0;
+    z-index:9999;
+    cursor:pointer;
+    &:hover .genres-nav-button__line {
+      background-color: var(--bgc-accent);
+    }
+    .genres-nav-button__line {
+        width:100%;
+        height:4px;
+        background: var(--cl-txt-main);
+        position:relative;
+        transition: var(--slow-anim);
+        &:nth-of-type(2) {
+            margin:0.5rem 0;
+        }
+
+    }
+    .genres-nav-button__line--1 {
+        transform: rotate(45deg);
+        top: 13px;
+        position: absolute;
+    }
+    .genres-nav-button__line--2 {
+        display: none;
+    }
+    .genres-nav-button__line--3 {
+        transform: rotate(135deg);
+        top: 13px;
+        position: absolute;        
+    }
+}
+
+//Mobile Menu
+
+.mobile-menu {
+    display:block;
+    max-width:300px;
+    width:100%;
+    right:-100%;
+    height: 100vh;
+    background: var(--cl-txt-second);
+    position:absolute;
+    z-index:9998;
+    transition: var(--slow-anim);
+    top:0;
+    opacity:0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    ul {
+        position: relative;
+        padding:60px 0;
+        li {
+            list-style: none;
+            a {
+                cursor: pointer;
+                width:100%;
+                max-width:500px;
+                margin:0 auto;
+                display: block;
+                text-align: start;
+                margin-left: 10px;
+                text-decoration:none;
+                color: var(--cl-txt-main);
+                font-size: 2rem;
+                font-weight: bold;
+                overflow:hidden;
+                position:relative;
+                &:after {
+                    content:'';
+                    background: var(--bgc-accent);
+                    width:100%;
+                    height:100%;
+                    position:absolute;
+                    right:-100%;
+                    top:0;
+                    z-index:-1;
+                    transition: var(--slow-anim);
+                }
+                &:hover {
+                   &:after {
+                    right:0;
+                   }
+                   color:var(--bgc-main);
+                }
+            }
+        }
+    }
+}
+.mobile-menu--open {
+    right:0;
+    opacity:1;
+}

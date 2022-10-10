@@ -9,7 +9,7 @@ function saveToStorage(dataToSave) {
   localStorage.setItem(storageKey, JSON.stringify(dataToSave));
 }
 
-function getFromStorage() {
+function getFromStorage(storageKey) {
   try {
     const data = JSON.parse(localStorage.getItem(storageKey));
     return data;
@@ -23,4 +23,8 @@ function clearData() {
   localStorage.clear();
 }
 
-export { clearData, getFromStorage, saveToStorage };
+function removeItem(key) {
+  localStorage.removeItem(key);
+}
+
+export { clearData, getFromStorage, saveToStorage, removeItem };

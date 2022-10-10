@@ -51,8 +51,9 @@
 
     @include mq(desktop) {
         & {
-            min-width: 806px;
+            width: 806px;
             padding: 40px 12px 40px 12px;
+
         }
     }
 }
@@ -89,8 +90,9 @@
 
     @include mq(desktop) {
         & {
-            margin-right: 16px;
-            width: 375px;
+
+        margin-right: 16px;
+        max-width: 375px;
         }
     }
 }

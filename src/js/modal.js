@@ -6,44 +6,49 @@ import { clearData, getFromStorage, saveToStorage } from './localeCommon';
 
 const refs = getRefs();
 
-function findCurrentFilm(currentId) {
-    let filmSet = getFromStorage();
-    // return  filmSet.find(obj => obj.id === currentId);
-    console.log(filmSet);
-   }
+// function findCurrentFilm(currentId) {
+//   let filmSet = getFromStorage();
+//   return filmSet.find(obj => obj.id === currentId);
+//   console.log(filmSet);
+// }
 
-refs.filmListEl.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (
-        e.target.nodeName !== 'IMG' &&
-        e.target.nodeName !== 'P' &&
-        e.target.nodeName !== 'A'
-      ) {
-        return;
-      }
-     
-      const movieId = e.target.closest('.gallery__item').dataset.id;
-      //   console.log(movieId);
-      findCurrentFilm();
-    
-     refs.modalEl.classList.remove('is-hidden');
+function getMovieById(id) {
+  return (movies = [getFromStorage('movies')].filter(
+    movies => movies.id === id
+  ));
+}
 
-  });
+refs.filmListEl.addEventListener('click', e => {
+  e.preventDefault();
+  if (
+    e.target.nodeName !== 'IMG' &&
+    e.target.nodeName !== 'P' &&
+    e.target.nodeName !== 'A'
+  ) {
+    return;
+  }
+
+  const movieId = e.target.closest('.gallery__item').dataset.id;
+  console.log(movieId);
+  debugger;
+  // findCurrentFilm();
+  getMovieById(movieId);
+  renderMarkupMovieModal();
+  refs.modalEl.classList.remove('is-hidden');
+});
 
 refs.closeBtn.addEventListener('click', () => {
+  refs.modalEl.classList.add('is-hidden');
+});
 
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
     refs.modalEl.classList.add('is-hidden');
-}); 
-
-document.addEventListener('keydown', function(e){
-	if(e.key === "Escape"){
-        refs.modalEl.classList.add('is-hidden');
-    }});
-
-
+  }
+});
 
 // Разметка модалка
- function renderMarkupMovieModal({
+function renderMarkupMovieModal({
   id,
   release_date,
   poster_path,
@@ -54,13 +59,18 @@ document.addEventListener('keydown', function(e){
   original_title,
   genre,
   overview,
-}){ refs.modalContainer.innerHTML = ''
-    
-   return  ( refs.modalContainer.innerHTML =`<div movie-modal__image-container data-year="${release_date}" data-action="${id}>
+}) {
+  refs.modalContainer.innerHTML = '';
+
+  return (refs.modalContainer.innerHTML = `<div movie-modal__image-container data-year="${release_date}" data-action="${id}>
             <img class="movie-modal__image"
-            src="${poster_path}"
+             ${
+               poster_path
+                 ? `<img src="https://image.tmdb.org/t/p/w500${poster_path}"`
+                 : `<img src="https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj"`
+             }
             alt="${title}"
-            width="250"
+            width="250" loading="lazy"
           />
         </div>
         <div class="info">
@@ -90,8 +100,4 @@ document.addEventListener('keydown', function(e){
               </table>
               <p class="movie-modal__about">About</p>
               <p class="movie-modal__overview">"${overview}"</p>`);
-                               
-                  
-                
-               }
-
+}

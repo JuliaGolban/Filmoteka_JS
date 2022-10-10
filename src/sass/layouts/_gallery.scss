@@ -51,14 +51,16 @@
         &-image {
             background-color: darkgray;
             border-radius: 5px;
-            height: 400px;
-            width: 100%;
+            width: 280px;
+            height: 398px;
 
             @include mq(tablet) {
+                width: 336px;
                 height: 455px;
             }
 
             @include mq(desktop) {
+                width: 395px;
                 height: 574px;
             }
 
@@ -68,10 +70,16 @@
             font-weight: 500;
             font-size: 12px;
             line-height: 1.33;
+            width: 280px;
+
+            @include mq(tablet) {
+                width: 336px;
+            }
 
             @include mq(desktop) {
                 font-size: 20px;
                 line-height: 1.2;
+                width: 395px;
             }
 
             &-title {

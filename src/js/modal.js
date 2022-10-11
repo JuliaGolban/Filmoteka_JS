@@ -32,10 +32,10 @@ refs.closeBtn.addEventListener('click', closeModal);
 refs.modalEl.addEventListener('click', onBackdropClick);
 document.addEventListener('keydown', onEscPress);
 
-    function closeModal () {
-    // document.removeEventListener('keydown', onEscPress);
-    refs.modalEl.classList.add('is-hidden');
-    }; 
+function closeModal() {
+  // document.removeEventListener('keydown', onEscPress);
+  refs.modalEl.classList.add('is-hidden');
+}
 
 function onEscPress(e) {
   if (e.code === 'Escape') {

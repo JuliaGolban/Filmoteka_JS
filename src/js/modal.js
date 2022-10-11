@@ -1,36 +1,54 @@
 import { getGenres } from './getGenres';
 import getRefs from './getRefs';
+import { clearData, getFromStorage, saveToStorage } from './localeCommon';
+
+// console.log(getFromStorage());
 
 const refs = getRefs();
 
-refs.filmListEl.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (
-        e.target.nodeName !== 'IMG' &&
-        e.target.nodeName !== 'P' &&
-        e.target.nodeName !== 'A'
-      ) {
-        return;
-      }
-refs.modalEl.classList.remove('is-hidden');
-// const movieId = e.target.dataset.id;
+// function findCurrentFilm(currentId) {
+//   let filmSet = getFromStorage();
+//   return filmSet.find(obj => obj.id === currentId);
+//   console.log(filmSet);
+// }
 
-  });
+function getMovieById(id) {
+  return (movies = [getFromStorage('movies')].filter(
+    movies => movies.id === id
+  ));
+}
+
+refs.filmListEl.addEventListener('click', e => {
+  e.preventDefault();
+  if (
+    e.target.nodeName !== 'IMG' &&
+    e.target.nodeName !== 'P' &&
+    e.target.nodeName !== 'A'
+  ) {
+    return;
+  }
+
+  const movieId = e.target.closest('.gallery__item').dataset.id;
+  console.log(movieId);
+  debugger;
+  // findCurrentFilm();
+  getMovieById(movieId);
+  renderMarkupMovieModal();
+  refs.modalEl.classList.remove('is-hidden');
+});
 
 refs.closeBtn.addEventListener('click', () => {
+  refs.modalEl.classList.add('is-hidden');
+});
 
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
     refs.modalEl.classList.add('is-hidden');
-}); 
-
-document.addEventListener('keydown', function(e){
-	if(e.key === "Escape"){
-        refs.modalEl.classList.add('is-hidden');
-    }});
-
+  }
+});
 
 // Разметка модалка
- function renderMarkupMovieModal({ results }) {
-    const markup = results.map(({
+function renderMarkupMovieModal({
   id,
   release_date,
   poster_path,
@@ -41,12 +59,18 @@ document.addEventListener('keydown', function(e){
   original_title,
   genre,
   overview,
-}) =>   {let name = getGenres(genre);
-            return  `<div movie-modal__image-container data-year="${release_date}" data-action="${id}>
+}) {
+  refs.modalContainer.innerHTML = '';
+
+  return (refs.modalContainer.innerHTML = `<div movie-modal__image-container data-year="${release_date}" data-action="${id}>
             <img class="movie-modal__image"
-            src="${poster_path}"
+             ${
+               poster_path
+                 ? `<img src="https://image.tmdb.org/t/p/w500${poster_path}"`
+                 : `<img src="https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj"`
+             }
             alt="${title}"
-            width="250"
+            width="250" loading="lazy"
           />
         </div>
         <div class="info">
@@ -75,9 +99,5 @@ document.addEventListener('keydown', function(e){
                 </tbody>
               </table>
               <p class="movie-modal__about">About</p>
-              <p class="movie-modal__overview">"${overview}"</p>`;
-                               })
-                  .join('');
-                refs.modalContainer.insertAdjacentHTML('beforeend', markup);
-               }
-
+              <p class="movie-modal__overview">"${overview}"</p>`);
+}

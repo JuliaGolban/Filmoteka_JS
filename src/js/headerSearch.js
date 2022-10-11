@@ -1,6 +1,12 @@
 import { getResponse } from './api-common';
 import { removeItem } from './localeCommon';
 
+/**
+ * Create pagination
+ * @param {Number} currentPage - current page for search
+ * @param {Number} totalPages  - all pages for search
+ */
+
 const form = document.querySelector('.search-form');
 const input = document.querySelector('.search-form__input');
 

@@ -4,11 +4,16 @@ import { getFromStorage, saveToStorage } from './localeCommon';
 import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
 import { Pagination } from 'tui-pagination';
 
-const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
-let currentPage = 1;
-let totalPages = 0;
+/**
+ * Create pagination
+ * @param {Number} currentPage - current page for search
+ * @param {Number} totalPages  - all pages for search
+ */
 
-// ?why img not found src=
+
+const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
+let totalPages = 0;
+let partUrl = localStorage.getItem('paramsPart');
 
 // document.querySelector('body').insertAdjacentHTML('afterbegin', '<img src="./image/cinemaCamera.gif" alt="Spinner" width="50" class="spinner is-hidden" />');
 const spinner = document.querySelector('.spinner');
@@ -33,14 +38,10 @@ async function getResponse(currentPage, partUrl) {
   totalPages = `${data.total_pages}`;
 
   if (!data.total_results) {
+    spinner.classList.add('is-hidden');
     return notFound.classList.remove('is-hidden');
   } else {
-<<<<<<< Updated upstream
-    pag(totalPages, currentPage);
-    // pagRight(totalPages, currentPage);
-=======
     pagination(totalPages, currentPage);
->>>>>>> Stashed changes
   }
   
   removeMarkupMovieCard();

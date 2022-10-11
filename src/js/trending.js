@@ -1,5 +1,6 @@
 import { getResponse } from './api-common';
 import { clearData } from './localeCommon';
+let partUrl = '';
 
 /**
  * Create pagination
@@ -16,7 +17,7 @@ function trending() {
 
   localStorage.setItem('paramsPart', 'trending/movie/week');
 
-  let partUrl = localStorage.getItem('paramsPart');
+  partUrl = localStorage.getItem('paramsPart');
 
   getResponse(currentPage, partUrl);
 }

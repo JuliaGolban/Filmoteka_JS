@@ -16,7 +16,7 @@ function trending() {
 
   localStorage.setItem('paramsPart', 'trending/movie/week');
 
-  partUrl = localStorage.getItem('paramsPart');
+  let partUrl = localStorage.getItem('paramsPart');
 
   getResponse(currentPage, partUrl);
 }

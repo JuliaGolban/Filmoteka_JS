@@ -5,6 +5,10 @@ export default function getRefs() {
     gallery: document.querySelector('div.gallery'),
     galleryList: document.querySelector('.gallery__list'),
 
+    openModalUserBtn: document.querySelector('[data-modal-user-open]'),
+    closeModalUserBtn: document.querySelector('[data-modal-user-close]'),
+    modalUser: document.querySelector('[data-modal-user]'),
+
     modalEl: document.querySelector('.backdrop'),
     modalContainer: document.querySelector('.movie-modal__image-container'),
     closeBtn: document.querySelector('.movie-modal__close-button'),

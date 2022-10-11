@@ -5,3 +5,4 @@ import './js/burger-menu';
 import './js/modal';
 import './js/modalTeamForm';
 import './js/scrollTo';
+import './js/popup';

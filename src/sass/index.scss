@@ -2,6 +2,7 @@
 @import './utils/variables';
 @import './utils/placeholders';
 @import './utils/pagination';
+@import './utils/spinner';
 
 @import './base/common';
 @import './base/global';
@@ -22,3 +23,4 @@
 @import './layouts/gallery';
 @import './layouts/modal';
 @import './layouts/menu-genres';
+@import './layouts/popup';

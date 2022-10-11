@@ -1,0 +1,238 @@
+.popup-button {
+  margin-top: 5px;
+  padding: 5px 15px;
+  display: inline-block;
+  border: none;
+  border-radius: 50px;
+
+  font-size: 16px;
+  line-height: 1.88;
+
+  letter-spacing: 0.06em;
+
+  color: var(--cl-txt-white);
+  background-color: var(--bgc-accent);
+
+  transition: background-color var(--anim);
+  cursor: pointer;
+
+  box-shadow: 0 2px 8px #0000000d;
+
+  gap: 10px;
+
+  &:hover,
+  &:focus {
+    background-color: var(--cl-txt-red);
+  }
+}
+
+.modal {
+  max-width: 400px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+
+  background-color: var(--bgc-second);
+  padding: 40px;
+
+  border-radius: 4px;
+
+  transition: transform var(--anim);
+
+  &-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+
+    border-radius: 50%;
+    background-color: #fff;
+
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    transition: border var(--anim), fill var(--anim);
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      fill: var(--accent-color);
+    }
+  }
+
+  &-title {
+    display: flex;
+    font-weight: 700;
+
+    text-align: center;
+    letter-spacing: 0.03em;
+    justify-content: center;
+    margin-bottom: 12px;
+
+    color: var(--primary-text-color);
+  }
+}
+
+.close-icon {
+  display: flex;
+  align-items: center;
+}
+
+.form-user {
+  text-align: center;
+}
+
+.form-group {
+  display: block;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-label {
+  margin-bottom: 4px;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.01em;
+  color: var(--secondary-color);
+}
+
+.input-container {
+  position: relative;
+  display: block;
+}
+
+.input-form {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  padding: 5px 5px;
+
+  color: var(--primary-text-color);
+  border: 1px solid #21212133;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.input-form-icon {
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  transform: translateY(-50%);
+  color: var(--primary-text-color);
+  fill: currentColor;
+  transition: color var(--anim);
+}
+
+.form-group:focus-within .input-form,
+.form-group:focus-within .form-comments {
+  outline: 0;
+  border-color: var(--bgc-accent);
+}
+
+.form-group:focus-within .input-form-icon {
+  color: var(--accent-color);
+}
+
+.input-form .form-label {
+  display: inline-block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+  color: var(--secondary-color);
+}
+
+.form-group.comments {
+  margin-bottom: 20px;
+}
+
+.form-comments {
+  display: flex;
+  width: 100%;
+  height: 120px;
+  padding: 12px 16px;
+  color: var(--primary-text-color);
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  transition: border var(--anim);
+  cursor: pointer;
+}
+
+.form-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+
+  &-label {
+    letter-spacing: 0.03em;
+    color: var(--secondary-color);
+
+    &-link {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+  }
+
+  &-agreement {
+    content: ' ';
+    display: flex;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    margin-right: 7px;
+    border: 2px solid #212121;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border var(--anim);
+  }
+}
+
+.checkbox:focus ~ .checkbox-agreement,
+.checkbox:hover ~ .checkbox-agreement {
+  border-color: var(--accent-color);
+}
+
+.checkbox:checked + .checkbox-agreement {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  background-origin: border-box;
+  background-size: contain;
+}
+
+.agremment-icon {
+  text-align: center;
+}
+
+.btn-submit {
+  width: 200px;
+  padding: 10px 55px;
+  font-size: 16px;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+  border: none;
+  color: var(--fon-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  background-color: rgba(228, 121, 13, 0.1);
+  border-radius: 4px;
+  transition: background-color var(--anim), box-shadow var(--anim);
+
+  &:hover,
+  &:focus {
+    background-color: var(--bgc-accent);
+  }
+}

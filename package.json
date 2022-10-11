@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "axios": "^1.1.0",
+    "firebase": "^9.11.0",
     "modern-normalize": "^1.1.0",
     "spin.js": "^4.1.1",
     "tui-pagination": "^3.4.1"
@@ -29,7 +30,10 @@
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }

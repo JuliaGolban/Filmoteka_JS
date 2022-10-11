@@ -21,5 +21,21 @@ export default function getRefs() {
     openModalUserBtn: document.querySelector('[data-modal-user-open]'),
     closeModalUserBtn: document.querySelector('[data-modal-user-close]'),
     modalUser: document.querySelector('[data-modal-user]'),
+
+    // Firebase
+    txtEmail: document.querySelector('#txtEmail'),
+    txtPassword: document.querySelector('#txtPassword'),
+
+    // btnLogin: document.querySelector('#btnLogin')
+    btnSignup: document.querySelector('#btnSignup'),
+
+    btnLogout: document.querySelector('#btnLogout'),
+
+    // divAuthState: document.querySelector('#divAuthState')
+    lblAuthState: document.querySelector('#lblAuthState'),
+
+    divLoginError: document.querySelector('#divLoginError'),
+    lblLoginErrorMessage: document.querySelector('#lblLoginErrorMessage'),
+
   };
 }

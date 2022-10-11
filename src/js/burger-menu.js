@@ -61,9 +61,10 @@ function sortByGenre(event) {
     const arr = bool.map((obj)=>obj.genre_ids);
     console.log(arr)
     for(let i = 0; i<arr.length; i+=1) {
-      if(arr[i].includes(Number(value))) {
-        console.log('OK!')
+      if(!arr[i].includes(Number(value))) {
+        continue;
       }
+      console.log(arr[i])
     }
     
     console.log(Number(value))

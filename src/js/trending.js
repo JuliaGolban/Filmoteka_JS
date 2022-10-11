@@ -1,22 +1,19 @@
-import { getResponse } from './api-common'
+import { getResponse } from './api-common';
 import { clearData } from './localeCommon';
-
 
 clearData();
 
 trending();
 
 function trending() {
-  
-    let currentPage = 1;
-    
-    localStorage.setItem('paramsPart', 'trending/movie/week');
+  let currentPage = 1;
 
-    partUrl = localStorage.getItem('paramsPart');
-  
-    getResponse(currentPage, partUrl);
+  localStorage.setItem('paramsPart', 'trending/movie/week');
+
+  let partUrl = localStorage.getItem('paramsPart');
+
+  getResponse(currentPage, partUrl);
 }
-
 
 // async function trending(currentPage) {
 //   currentPage = 1;

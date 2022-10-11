@@ -18,7 +18,7 @@ function onSubmitForm(event) {
 function search() {
   let currentPage = 1;
 
-  partUrl = localStorage.getItem('paramsPart');
+  let partUrl = localStorage.getItem('paramsPart');
 
   getResponse(currentPage, partUrl);
 }

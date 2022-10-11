@@ -1,24 +1,16 @@
-import { getGenres } from './getGenres';
 import getRefs from './getRefs';
-import { clearData, getFromStorage, saveToStorage } from './localeCommon';
-
-// console.log(getFromStorage());
+import { getFromStorage, saveToStorage } from './localeCommon';
+import { getGenresLocalStorege } from './api-genres';
 
 const refs = getRefs();
 
-// function findCurrentFilm(currentId) {
-//   let filmSet = getFromStorage();
-//   return filmSet.find(obj => obj.id === currentId);
-//   console.log(filmSet);
-// }
-
 function getMovieById(id) {
-  return (movies = [getFromStorage('movies')].filter(
-    movies => movies.id === id
-  ));
+  const movies = getFromStorage('movies');
+  const result = movies.results.find(movie => movie.id === Number(id));
+  return result;
 }
 
-refs.filmListEl.addEventListener('click', e => {
+refs.gallery.addEventListener('click', e => {
   e.preventDefault();
   if (
     e.target.nodeName !== 'IMG' &&
@@ -29,11 +21,9 @@ refs.filmListEl.addEventListener('click', e => {
   }
 
   const movieId = e.target.closest('.gallery__item').dataset.id;
-  console.log(movieId);
-  debugger;
-  // findCurrentFilm();
-  getMovieById(movieId);
-  renderMarkupMovieModal();
+  const movie = getMovieById(movieId);
+  renderMarkupMovieModal(movie);
+
   refs.modalEl.classList.remove('is-hidden');
 });
 
@@ -57,18 +47,24 @@ function renderMarkupMovieModal({
   vote_count,
   popularity,
   original_title,
-  genre,
+  genre_ids,
   overview,
 }) {
   refs.modalContainer.innerHTML = '';
+  let name = getGenresLocalStorege(genre_ids);
 
-  return (refs.modalContainer.innerHTML = `<div movie-modal__image-container data-year="${release_date}" data-action="${id}>
-            <img class="movie-modal__image"
+  return (refs.modalContainer.innerHTML = `<button class="movie-modal__close-button" data-modal_close="">
+            <svg class="movie-modal__close-icon" width="40" height="40">
+              <use href="./image/sprite.svg#close"></use>
+          </svg>
+             </button>
+          <div movie-modal__image-container data-year="${release_date}" data-action="${id}">
              ${
                poster_path
                  ? `<img src="https://image.tmdb.org/t/p/w500${poster_path}"`
                  : `<img src="https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj"`
              }
+             class="movie-modal__image"
             alt="${title}"
             width="250" loading="lazy"
           />
@@ -94,10 +90,18 @@ function renderMarkupMovieModal({
                   </tr>
                   <tr class="description__line">
                     <th class="description__head">Genre</th>
-                    <td class="description__data">"${genre}"</td>
+                    <td class="description__data">"${name}"</td>
                   </tr>
                 </tbody>
               </table>
               <p class="movie-modal__about">About</p>
-              <p class="movie-modal__overview">"${overview}"</p>`);
+              <p class="movie-modal__overview">"${overview}"</p>
+            <div class="movie-modal__button-container">
+                <button class="movie-modal__button-orange" type="button" data-movie="597922" data-click="watched">
+                        <span class="movie-modal__button-text-orange">Add to watched</span>
+                      </button>
+                <button class="movie-modal__button" type="button" data-movie="597922" data-click="queue">
+                        <span class="movie-modal__button-text">Add to queue</span>
+                      </button>
+              </div>`);
 }

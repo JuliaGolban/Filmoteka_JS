@@ -29,14 +29,14 @@
     }
 
     @include mq(tablet) {
-        position: absolute;
-        top: 50%;
-        left: 50%;
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
 
         max-width: 800px;
         max-height: calc(100vh - 40px);
 
-        transform: translate(-50%, -50%) scale(1);
+        // transform: translate(-50%, -50%) scale(1);
     }
 
     &__title {
@@ -130,13 +130,8 @@
         justify-content: center;
         align-items: center;
 
-        width: 30px;
-        height: 30px;
-
-        @include mq(tablet) {
-            width: 40px;
-            height: 40px;
-        }
+        width: 40px;
+        height: 40px;
 
         color: var(--cl-txt-main);
         background: var(--bgc-second);

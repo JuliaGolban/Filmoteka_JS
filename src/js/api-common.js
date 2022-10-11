@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { pag, pagRight } from '../js/pagination';
+import { default as pagination } from '../js/pagination';
 import { getFromStorage, saveToStorage } from './localeCommon';
 import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
+import { Pagination } from 'tui-pagination';
 
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 let currentPage = 1;
@@ -31,8 +32,12 @@ async function getResponse(currentPage, partUrl) {
   if (!data.total_results) {
     return notFound.classList.remove('is-hidden');
   } else {
+<<<<<<< Updated upstream
     pag(totalPages, currentPage);
     // pagRight(totalPages, currentPage);
+=======
+    pagination(totalPages, currentPage);
+>>>>>>> Stashed changes
   }
   
   removeMarkupMovieCard();

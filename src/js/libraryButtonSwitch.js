@@ -1,3 +1,5 @@
+import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
+
 const btnWatched = document.querySelector('.watched');
 const btnQueue = document.querySelector('.queue');
 

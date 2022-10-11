@@ -10,3 +10,4 @@ import * as burger from './js/burger-menu';
 import './js/switcher';
 import './js/firebase';
 // import * as modal from './js/modal';
+import './js/popup';

@@ -20,8 +20,9 @@ import LS from './localeStorage';
 
   function renderGenres(results) {
     menuList.innerHTML = ''
-    const markup = results.map(({name}) =>{
-            return `<li class="mobile-menu-item"><a data-action="${name.toLowerCase()}">${name}</a></li>`
+    const markup = results.map(({name,id}) =>{
+            // return `<li class="mobile-menu-item"><a data-action="${name.toLowerCase()}">${name}</a></li>`
+            return `<li class="mobile-menu-item"><a data-action="${id}">${name}</a></li>`
     }).join('');
 
     menuList.insertAdjacentHTML('beforeend', markup)
@@ -38,17 +39,32 @@ import LS from './localeStorage';
     }
   }
 
-
-
-
 menuList.addEventListener('click', sortByGenre)
 
 function sortByGenre(event) {
     if (event.target.nodeName !== "A") {
       return;
     }
-    
+    let storageKey = 'movies';
+      function getFromStorageMovies() {
+    try {
+      const data = JSON.parse(localStorage.getItem(storageKey));
+      return data;
+    } catch (err) {
+      console.warn('Cannot parse JSON from localStorage');
+      return null;
+    }
+  }
+  const movies = getFromStorageMovies();
     const value = event.target.dataset.action;
+    const bool = movies.results;
+    const arr = bool.map((obj)=>obj.genre_ids);
+    console.log(arr)
+    for(let i = 0; i<arr.length; i+=1) {
+      if(arr[i].includes(Number(value))) {
+        console.log('OK!')
+      }
+    }
     
-    console.log(event.target.dataset.action)
+    console.log(Number(value))
   }

@@ -12,7 +12,7 @@ export default function getRefs() {
 
     filmListEl: document.querySelector('.gallery'),
 
-    modalEl: document.querySelector('.backdrop'),
+    modalEl: document.querySelector('.backdrop-movie'),
     closeBtn: document.querySelector('.movie-modal__close-button'),
     addToWatchedBtn: document.querySelector('[data-click="watched"]'),
     addToQueueBtn: document.querySelector('[data-click="queue"]'),

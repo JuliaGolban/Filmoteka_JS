@@ -35,7 +35,7 @@ refs.filmListEl.addEventListener('click', (e) => {
     document.addEventListener('keydown', onEscPress);
 
     function closeModal () {
-    document.removeEventListener('keydown', onEscPress);
+    // document.removeEventListener('keydown', onEscPress);
     refs.modalEl.classList.add('is-hidden');
     }; 
 

@@ -1,13 +1,10 @@
 import './js/trending';
-import * as apiGenres from './js/api-genres.js';
 import './js/headerSearch';
 import './js/api-common';
-import * as localeCommon from './js/localeCommon';
-import * as localeStorage from './js/localeStorage';
+import './js/modal';
 import './js/modalTeamForm';
 import './js/scrollTo';
-import * as burger from './js/burger-menu';
-// import './js/switcher';
-import './js/firebase';
-// import * as modal from './js/modal';
+import './js/burger-menu';
 import './js/popup';
+import './js/firebase';
+// import './js/switcher';

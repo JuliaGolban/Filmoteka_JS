@@ -1,23 +1,13 @@
 export default function getRefs() {
   return {
+    // Search form
     searchForm: document.querySelector('#search-form'),
-    openModalTeam: document.querySelector('[data-modal-team-open]'),
-    closeModalTeam: document.querySelector('[data-modal-team-close]'),
-    modalTeam: document.querySelector('[data-modal-team]'),
 
+    // Gallery with movies
     gallery: document.querySelector('div.gallery'),
     galleryList: document.querySelector('.gallery__list'),
 
-    scrollToTop: document.querySelector('.scroll-to-top'),
-
-    filmListEl: document.querySelector('.gallery'),
-
-    modalEl: document.querySelector('.backdrop'),
-    closeBtn: document.querySelector('.movie-modal__close-button'),
-    addToWatchedBtn: document.querySelector('[data-click="watched"]'),
-    addToQueueBtn: document.querySelector('[data-click="queue"]'),
-    modalContainer: document.querySelector('.movie-modal__container'),
-
+    // Registration modal window
     openModalUserBtn: document.querySelector('[data-modal-user-open]'),
     closeModalUserBtn: document.querySelector('[data-modal-user-close]'),
     modalUser: document.querySelector('[data-modal-user]'),
@@ -37,5 +27,19 @@ export default function getRefs() {
     divLoginError: document.querySelector('#divLoginError'),
     lblLoginErrorMessage: document.querySelector('#lblLoginErrorMessage'),
 
+    // Modal window with movie
+    modalEl: document.querySelector('.backdrop-movie'),
+    closeBtn: document.querySelector('.movie-modal__close-button'),
+    addToWatchedBtn: document.querySelector('[data-click="watched"]'),
+    addToQueueBtn: document.querySelector('[data-click="queue"]'),
+    modalContainer: document.querySelector('.movie-modal__render'),
+
+    // Modal window with developers
+    openModalTeam: document.querySelector('[data-modal-team-open]'),
+    closeModalTeam: document.querySelector('[data-modal-team-close]'),
+    modalTeam: document.querySelector('[data-modal-team]'),
+
+    // Scroll the page
+    scrollToTop: document.querySelector('.scroll-to-top'),
   };
 }

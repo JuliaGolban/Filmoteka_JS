@@ -1,34 +1,31 @@
 import LS from './localeStorage';
+import genre from './genre';
+import getRefs from './getRefs';
+import { renderMarkupMovieCard } from './movie-card';
+//import { getFromStorage } from './localeCommon';
+const refs = getRefs();
+const getSt = getFromStorage;
 
-  
-  const btn = document.querySelector('.genres-nav-button');
-  const menu = document.querySelector('.mobile-menu');
-  const menuList = document.querySelector('.mobile-menu-list')
-  const firstLine = document.querySelector('.genres-nav-button .genres-nav-button__line:nth-of-type(1)');
-  const secondLine = document.querySelector('.genres-nav-button .genres-nav-button__line:nth-of-type(2)');
-  const thirdLine = document.querySelector('.genres-nav-button .genres-nav-button__line:nth-of-type(3)');
-  let storageKey = 'genres';
-  btn.addEventListener('click', onClickMenu)
-
+  refs.btn.addEventListener('click', onClickMenu)
   function onClickMenu() {
-    firstLine.classList.toggle('genres-nav-button__line--1');
-    secondLine.classList.toggle('genres-nav-button__line--2');
-    thirdLine.classList.toggle('genres-nav-button__line--3');
-    menu.classList.toggle('mobile-menu--open');
-    renderGenres(getFromStorage())
+    refs.firstLine.classList.toggle('genres-nav-button__line--1');
+    refs.secondLine.classList.toggle('genres-nav-button__line--2');
+    refs.thirdLine.classList.toggle('genres-nav-button__line--3');
+    refs.menu.classList.toggle('mobile-menu--open');
+    renderGenres(getSt())
   }
 
   function renderGenres(results) {
-    menuList.innerHTML = ''
+    refs.menuList.innerHTML = '';
     const markup = results.map(({name,id}) =>{
             // return `<li class="mobile-menu-item"><a data-action="${name.toLowerCase()}">${name}</a></li>`
             return `<li class="mobile-menu-item"><a data-action="${id}">${name}</a></li>`
     }).join('');
 
-    menuList.insertAdjacentHTML('beforeend', markup)
+    refs.menuList.insertAdjacentHTML('beforeend', markup)
 
   }
-
+  let storageKey = 'genres';
   function getFromStorage() {
     try {
       const data = JSON.parse(localStorage.getItem(storageKey));
@@ -39,7 +36,7 @@ import LS from './localeStorage';
     }
   }
 
-menuList.addEventListener('click', sortByGenre)
+refs.menuList.addEventListener('click', sortByGenre)
 
 function sortByGenre(event) {
     if (event.target.nodeName !== "A") {
@@ -55,16 +52,16 @@ function sortByGenre(event) {
       return null;
     }
   }
-  const movies = getFromStorageMovies();
+    const movies = getFromStorageMovies();
+    console.log(movies)
     const value = event.target.dataset.action;
     const bool = movies.results;
     const arr = bool.map((obj)=>obj.genre_ids);
-    console.log(arr)
     for(let i = 0; i<arr.length; i+=1) {
       if(!arr[i].includes(Number(value))) {
         continue;
       }
-      console.log(arr[i])
+      renderMarkupMovieCard(movies.arr)
     }
     
     console.log(Number(value))

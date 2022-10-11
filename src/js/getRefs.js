@@ -13,5 +13,11 @@ export default function getRefs() {
     addToWatchedBtn: document.querySelector('[data-click="watched"]'),
     addToQueueBtn: document.querySelector('[data-click="queue"]'),
     modalContainer: document.querySelector ('.movie-modal__container'),
+    btn: document.querySelector('.genres-nav-button'),
+    menuList: document.querySelector('.mobile-menu-list'),
+    firstLine: document.querySelector('.genres-nav-button .genres-nav-button__line:nth-of-type(1)'),
+    secondLine: document.querySelector('.genres-nav-button .genres-nav-button__line:nth-of-type(2)'),
+    thirdLine: document.querySelector('.genres-nav-button .genres-nav-button__line:nth-of-type(3)'),
+    menu: document.querySelector('.mobile-menu'),
   };
 }

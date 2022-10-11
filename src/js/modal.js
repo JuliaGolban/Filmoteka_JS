@@ -52,13 +52,10 @@ function renderMarkupMovieModal({
 }) {
   refs.modalContainer.innerHTML = '';
   let name = getGenresLocalStorege(genre_ids);
+  refs.modalContainer.dataset.year = release_date;
+  refs.modalContainer.dataset.action = id;
 
-  return (refs.modalContainer.innerHTML = `<button class="movie-modal__close-button" data-modal_close="">
-            <svg class="movie-modal__close-icon" width="40" height="40">
-              <use href="./image/sprite.svg#close"></use>
-          </svg>
-             </button>
-          <div movie-modal__image-container data-year="${release_date}" data-action="${id}">
+  return (refs.modalContainer.innerHTML = `
              ${
                poster_path
                  ? `<img src="https://image.tmdb.org/t/p/w500${poster_path}"`
@@ -96,12 +93,12 @@ function renderMarkupMovieModal({
               </table>
               <p class="movie-modal__about">About</p>
               <p class="movie-modal__overview">"${overview}"</p>
-            <div class="movie-modal__button-container">
-                <button class="movie-modal__button-orange" type="button" data-movie="597922" data-click="watched">
-                        <span class="movie-modal__button-text-orange">Add to watched</span>
-                      </button>
-                <button class="movie-modal__button" type="button" data-movie="597922" data-click="queue">
-                        <span class="movie-modal__button-text">Add to queue</span>
-                      </button>
+              <div class="movie-modal__button-container">
+                <button class="movie-modal__button-orange" type="button" data-click="watched">
+                  <span class="movie-modal__button-text-orange">Add to watched</span>
+                </button>
+                <button class="movie-modal__button" type="button" data-click="queue">
+                  <span class="movie-modal__button-text">Add to queue</span>
+                </button>
               </div>`);
 }

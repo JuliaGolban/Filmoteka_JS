@@ -75,6 +75,15 @@
 
 }
 
+.movie-modal__image-container {
+    display: flex;
+    flex-direction: column;
+
+    @include mq(tablet) {
+        flex-direction: row;
+    }
+}
+
 .movie-modal__image {
     border-radius: 5px;
     width: 100%;
@@ -91,8 +100,8 @@
     @include mq(desktop) {
         & {
 
-        margin-right: 16px;
-        max-width: 375px;
+            margin-right: 16px;
+            max-width: 375px;
         }
     }
 }

@@ -1,13 +1,19 @@
 import axios from 'axios';
-import { pag, pagRight } from '../js/pagination';
+import { default as pagination } from '../js/pagination';
 import { getFromStorage, saveToStorage } from './localeCommon';
 import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
+import { Pagination } from 'tui-pagination';
+
+/**
+ * Create pagination
+ * @param {Number} currentPage - current page for search
+ * @param {Number} totalPages  - all pages for search
+ */
+
 
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
-let currentPage = 1;
 let totalPages = 0;
-
-// ?why img not found src=
+let partUrl = localStorage.getItem('paramsPart');
 
 // document.querySelector('body').insertAdjacentHTML('afterbegin', '<img src="./image/cinemaCamera.gif" alt="Spinner" width="50" class="spinner is-hidden" />');
 const spinner = document.querySelector('.spinner');
@@ -32,9 +38,10 @@ async function getResponse(currentPage, partUrl) {
   totalPages = `${data.total_pages}`;
 
   if (!data.total_results) {
+    spinner.classList.add('is-hidden');
     return notFound.classList.remove('is-hidden');
   } else {
-    pag(totalPages, currentPage);
+    pagination(totalPages, currentPage);
   }
   
   removeMarkupMovieCard();

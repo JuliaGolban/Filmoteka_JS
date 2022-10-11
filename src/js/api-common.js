@@ -6,14 +6,17 @@ import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 let currentPage = 1;
 let totalPages = 0;
-let partUrl = '';
 
+// ?why img not found src=
 
+// document.querySelector('body').insertAdjacentHTML('afterbegin', '<img src="./image/cinemaCamera.gif" alt="Spinner" width="50" class="spinner is-hidden" />');
+const spinner = document.querySelector('.spinner');
 
 
 const notFound = document.querySelector('#p-not');
 
 async function getResponse(currentPage, partUrl) {
+  spinner.classList.remove('is-hidden');
 
   const axiosInstance = axios.create({
     baseURL: `https://api.themoviedb.org/3/${partUrl}`,
@@ -32,7 +35,6 @@ async function getResponse(currentPage, partUrl) {
     return notFound.classList.remove('is-hidden');
   } else {
     pag(totalPages, currentPage);
-    // pagRight(totalPages, currentPage);
   }
   
   removeMarkupMovieCard();
@@ -40,6 +42,8 @@ async function getResponse(currentPage, partUrl) {
   getFromStorage();
   renderMarkupMovieCard(data);
   notFound.classList.add('is-hidden');
+  
+  spinner.classList.add('is-hidden');
 }
 
 export { getResponse };

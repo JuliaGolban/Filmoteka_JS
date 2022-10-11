@@ -3,6 +3,7 @@
             <use href="./image/sprite.svg#lock-close"></use>
         </svg>LOGIN / SIGN UP</span>
 </button>
+
 <div class="backdrop is-hidden" data-modal-user>
     <div class="modal">
         <button class="modal-close" data-modal-user-close>
@@ -16,18 +17,33 @@
             <label class="form-group" for="mail">
                 <span class="form-label">Mail</span>
                 <span class="input-container">
-                    <input class="input-form" type="email" name="mail" id="mail">
+                    <input class="input-form" type="email" name="mail" id="txtEmail">
                 </span>
             </label>
             <label class="form-group" for="password">
                 <span class="form-label">
                     <span class="form-label">Password</span>
                     <span class="input-container">
-                        <input class="input-form" type="password" name="password" id="password" minlength="5"
+                        <input class="input-form" type="password" name="password" id="txtPassword" minlength="5"
                             maxlength="12" />
                     </span>
             </label>
-            <button class="btn-submit" type="submit">Sign up</button>
+            <button class="btn-submit" type="submit" id="btnSignup">Sign up</button>
+
+            <div id="divLoginError" class="group">
+                <div id="lblLoginErrorMessage" class="errorlabel">Error message</div>
+            </div>
+        </form>
+    </div>
+    <div id="app">
+        <div class="header">
+            <h1>Welcome to Your acount</h1>
+        </div>
+        <form>
+            <div class="group">
+                <div id="lblAuthState" class="authlabel"></div>
+            </div>
+            <button id="btnLogout" type="button" class="button buttonBlue">Log out</button>
         </form>
     </div>
 </div>

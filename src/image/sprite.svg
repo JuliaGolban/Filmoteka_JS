@@ -42,5 +42,11 @@
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M6.667 16h18.667"></path>
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M16 25.334l9.333-9.333-9.333-9.333"></path>
 </symbol>
+<symbol id="icon-close" viewBox="0 0 32 32">
+<path d="M15 4.108 13.892 3 9.5 7.392 5.108 3 4 4.108 8.392 8.5 4 12.892 5.108 14 9.5 9.608 13.892 14 15 12.892 10.608 8.5 15 4.108Z"></path>
+</symbol>
+<symbol id="lock-close" viewBox="0 0 18 18">
+<path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2.009-.005L9 14.73zM7 6v2h6V6a3 3 0 1 0-6 0z"></path>
+</symbol>
 </defs>
 </svg>

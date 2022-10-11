@@ -52,7 +52,7 @@ refs.filmListEl.addEventListener('click', (e) => {
 
 
 // Разметка модалка
- function renderMarkupMovieModal({
+function renderMarkupMovieModal({
   id,
   release_date,
   poster_path,
@@ -118,4 +118,3 @@ let name = getGenresLocalStorege(genre_ids);
                   
                 
                }
-

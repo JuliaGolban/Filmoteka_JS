@@ -1,8 +1,6 @@
 import { getResponse } from './api-common'
-import { trending } from './trending';
 
 const form = document.querySelector('.search-form');
-
 
 function pag(totalPages, currentPage) {
 
@@ -90,6 +88,8 @@ function pag(totalPages, currentPage) {
                 refs.prev.style.opacity = "1";
                 refs.prevPage.style.visibility = "visible";
                 refs.nextPage.style.visibility = "hidden";
+                refs.next.style.pointerEvents = "none";
+                refs.next.style.opacity = "0.5";
             }
         }
             //doggy
@@ -111,6 +111,8 @@ function pag(totalPages, currentPage) {
                 refs.prev1Page.style.visibility = "visible";
                 refs.nextPage.style.visibility = "hidden";
                 refs.next1Page.style.visibility = "hidden";
+                refs.next.style.pointerEvents = "none";
+                refs.next.style.opacity = "0.5";
             }
         }
             //bordo
@@ -218,58 +220,49 @@ function pag(totalPages, currentPage) {
     refs.dotsNext.addEventListener('click', () => {
         
         currentPage = currentPage + 5;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
 
     refs.next.addEventListener('click', () => {
         
         currentPage = currentPage + 1;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
     refs.nextPage.addEventListener('click', () => {
         
         currentPage = currentPage + 1;
-
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
     refs.next1Page.addEventListener('click', () => {
         
         currentPage = currentPage + 2;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
         
     refs.prevPage.addEventListener('click', () => {
         
         currentPage = currentPage - 1;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
     refs.prev1Page.addEventListener('click', () => {
         
         currentPage = currentPage - 2;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
     refs.lastPage.addEventListener('click', () => {
         
         currentPage = Number(totalPages);
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
     refs.firstPage.addEventListener('click', () => {
         
         currentPage = 1;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
 
 
@@ -277,15 +270,13 @@ function pag(totalPages, currentPage) {
     refs.prev.addEventListener('click', () => {
         
         currentPage = currentPage - 1;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
     refs.dotsPrev.addEventListener('click', () => {
         
         currentPage = currentPage - 5;
-        getResponse(currentPage);
-        // trending(currentPage);
+        getResponse(currentPage, partUrl);
     });
     
 };

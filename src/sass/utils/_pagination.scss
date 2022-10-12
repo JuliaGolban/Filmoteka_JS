@@ -1,10 +1,10 @@
-  @include mq(mobile-only) {
+//   @include mq(mobile-only) {
 
-      .pagination__elem--dots,
-      .pagination__elem--cutPage {
-          display: none;
-      }
-  }
+//       .pagination__elem--dots,
+//       .pagination__elem--cutPage {
+//           display: none;
+//       }
+//   }
 
 .pagination.list {
     display: flex;
@@ -43,16 +43,26 @@
         color: var(--cl-txt-white);
     }
 
-    &.pagination__arrow {
+    &.pagination__left {
         min-width: 40px;
         border-radius: 5px;
     
         background-color: var(--bgc-second);
         &:hover {
             transform: scale(1.2);
-
         }
     }
+    &.pagination__right {
+        min-width: 40px;
+        border-radius: 5px;
+    
+        background-color: var(--bgc-second);
+    
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+    
     &.pagination__elem--page:hover {
         transform: scale(1.1);
         font-weight: bold;

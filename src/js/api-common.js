@@ -21,6 +21,7 @@ const spinner = document.querySelector('.spinner');
 const notFound = document.querySelector('#p-not');
 
 async function getResponse(currentPage, partUrl) {
+
   spinner.classList.remove('is-hidden');
 
   const axiosInstance = axios.create({

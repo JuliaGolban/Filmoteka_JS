@@ -10,14 +10,12 @@ import { Pagination } from 'tui-pagination';
  * @param {Number} totalPages  - all pages for search
  */
 
-
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 let totalPages = 0;
 let partUrl = localStorage.getItem('paramsPart');
 
 // document.querySelector('body').insertAdjacentHTML('afterbegin', '<img src="./image/cinemaCamera.gif" alt="Spinner" width="50" class="spinner is-hidden" />');
 const spinner = document.querySelector('.spinner');
-
 
 const notFound = document.querySelector('#p-not');
 
@@ -43,13 +41,13 @@ async function getResponse(currentPage, partUrl) {
   } else {
     pagination(totalPages, currentPage);
   }
-  
+
   removeMarkupMovieCard();
-  saveToStorage(data);
+  saveToStorage('movies', data);
   getFromStorage();
   renderMarkupMovieCard(data);
   notFound.classList.add('is-hidden');
-  
+
   spinner.classList.add('is-hidden');
 }
 

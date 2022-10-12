@@ -1,11 +1,4 @@
-import { getResponse } from './api-common';
-import getRefs from './getRefs';
-import ls from './localeStorage';
-const refs = getRefs();
-
-const storageKey = 'movies';
-
-function saveToStorage(dataToSave) {
+function saveToStorage(storageKey, dataToSave) {
   localStorage.setItem(storageKey, JSON.stringify(dataToSave));
 }
 
@@ -19,12 +12,12 @@ function getFromStorage(storageKey) {
   }
 }
 
-function clearData() {
-  localStorage.clear();
+function removeItem(storageKey) {
+  localStorage.removeItem(storageKey);
 }
 
-function removeItem(key) {
-  localStorage.removeItem(key);
+function clearData() {
+  localStorage.clear();
 }
 
 export { clearData, getFromStorage, saveToStorage, removeItem };

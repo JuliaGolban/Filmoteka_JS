@@ -5,7 +5,7 @@ import './js/headerSearch';
 import './js/modal';
 import './js/modalTeamForm';
 import './js/scrollTo';
-import './js/burger-menu';
+import './js/sort-main';
 import './js/popup';
 import './js/firebase';
 // import './js/switcher';

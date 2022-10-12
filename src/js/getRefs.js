@@ -15,17 +15,16 @@ export default function getRefs() {
     // Firebase
     txtEmail: document.querySelector('#txtEmail'),
     txtPassword: document.querySelector('#txtPassword'),
-
     // btnLogin: document.querySelector('#btnLogin')
     btnSignup: document.querySelector('#btnSignup'),
-
     btnLogout: document.querySelector('#btnLogout'),
-
     // divAuthState: document.querySelector('#divAuthState')
     lblAuthState: document.querySelector('#lblAuthState'),
-
     divLoginError: document.querySelector('#divLoginError'),
     lblLoginErrorMessage: document.querySelector('#lblLoginErrorMessage'),
+    successEnter: document.querySelector('#success-enter'),
+    formSuccessMsg: document.querySelector('.form-js'),
+    formTitle: document.querySelector('.modal-title-js'),
 
     // Modal window with movie
     modalEl: document.querySelector('.backdrop-movie'),

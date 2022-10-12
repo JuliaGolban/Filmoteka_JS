@@ -4,7 +4,7 @@ import {
     hideLoginError,
     showLoginState,
     // showLoginForm,
-    showApp,
+    // showApp,
     showLoginError,
     // btnLogin,
     // btnSignup,
@@ -21,6 +21,8 @@ import {
 } from 'firebase/auth';
 
 import getRefs from './getRefs';
+const refs = getRefs();
+
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyBVMv6pSZ2U-cejy2sHQZK-lu1fM1skatI",
     authDomain: "auth-form-c032e.firebaseapp.com",
@@ -30,7 +32,6 @@ const firebaseApp = initializeApp({
     appId: "1:631345881209:web:0b819b68909f7ff5c634a8",
     measurementId: "G-J0W5VCW7RT"
 });
-const refs = getRefs();
 
 const auth = getAuth(firebaseApp);
 
@@ -48,12 +49,15 @@ const auth = getAuth(firebaseApp);
 //     }
 // }
 
-const successEnter = document.querySelector('#success-enter');
 const createAccout = async (e) => {
     e.preventDefault();
     const email = txtEmail.value;
     const password = txtPassword.value;
-        successEnter.classList.remove('is-hidden');
+    refs.successEnter.classList.remove('is-hidden');
+    refs.formSuccessMsg.classList.add('is-hidden');
+    refs.formTitle.classList.remove('modal-title');
+    refs.formTitle.classList.add('is-hidden');
+    refs.btnLogout.classList.remove('is-hidden');
 
     try {
         const userData = await createUserWithEmailAndPassword(auth, email, password);
@@ -64,16 +68,16 @@ const createAccout = async (e) => {
     }
 }
 
-const monitorAuthState = async () =>{
+const monitorAuthState = async () => {
     onAuthStateChanged(auth, user => {
-        if(user){
+        if (user) {
             console.log(user);
             // showApp();
             showLoginState(user);
             hideLoginError();
         }
 
-        else{
+        else {
             showLoginError();
             refs.lblAuthState.innerHTML = `You're not logged in.`;
         }
@@ -85,7 +89,7 @@ refs.btnSignup.addEventListener("click", createAccout);
 
 monitorAuthState();
 
-const logout = async  () =>{
+const logout = async () => {
     await signOut(auth);
 }
 

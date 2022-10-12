@@ -1,104 +1,61 @@
-// Запись в localeStorage
-const save = (key, value) => {
-    const data = JSON.stringify(value);
-    localStorage.setItem(key, data);
-};
-
-// Загрузка в localeStorage
-const load = key => {
-    try {
-        const data = localStorage.getItem(key);
-        return data === null ? undefined : JSON.parse(data);
-    } catch (error) {
-        console.error('Get state error:', error.message);
+function onBtnWatchedClick(e) {
+  if (!e.target.classList.contains('watched')) {
+    if (JSON.parse(localStorage.getItem('watchedCard'))) {
+      watchedMovie = JSON.parse(localStorage.getItem('watchedCard'));
     }
-};
-
-// Удаление из localeStorage
-const remove = key => {
-    return localStorage.removeItem(key);
-};
-
-// Функция для проверки фильма в очереди или в просмотреных когда модалка открыта и изменения текста кнопок localeStorage
-function btnTextChange(currentFilmId) {
-    const watchedBtn = document.querySelector('.movie-modal__button-orange');
-    const queueBtn = document.querySelector('.movie-modal__button');
-
-    if (!load('watchedKey')) {
-        return;
-    } else {
-        load('watchedKey').forEach(element => {
-            if (element.id === currentFilmId) {
-                watchedBtn.textContent = 'Remove from watched';
-           } 
-        });
+    watchedMovie.push(movie);
+    localStorage.setItem('watchedCard', JSON.stringify(watchedMovie));
+    if (isWatchedOpen) {
+      renderMovieCards(watchedMovie);
     }
-    if (!load('queueKey')) {
-        return;
-    } else {
-        load('queueKey').forEach(element => {
-            if (element.id === currentFilmId) {
-                queueBtn.textContent = 'Remove from queue';
-            }
-        });
-    }
-}
 
-/// Функция для добавления в просмотренные фильмы localeStorage ///
-
-let watchedKey = [];
-let queueKey = [];
-
-function addToWatched(e) {
-    if (localStorage.getItem('watchedKey') !== null) {
-        watchedKey = load('watchedKey');
-    }
-    const clickedFilm = load('DetailsFilmsCurrentPage').find(
-        film => film.id === Number(e.target.dataset.id),
+    e.target.classList.add('watched');
+    e.target.textContent = 'REMOVE FROM WATCHED';
+    return;
+  } else {
+    /* (e.target.classList.contains('watched')) */
+    watchedMovie = JSON.parse(localStorage.getItem('watchedCard'));
+    const filterWatchedMovie = watchedMovie.filter(
+      item => Number(item.id) !== Number(movie.id)
     );
-    if (watchedKey.find(film => film.id === clickedFilm.id)) {
-        watchedKey = watchedKey.filter(film => film.id !== clickedFilm.id);
-        save('watchedKey', watchedKey);
-        const btnWatch = e.target;
-        // console.log(watchedKey);
-        btnWatch.textContent = 'Add to watched';
-    } else {
-        watchedKey.push(clickedFilm);
-        save('watchedKey', watchedKey);
-        const btnWatch = e.target;
-        btnWatch.textContent = 'Remove from watched';
+    watchedMovie = [...filterWatchedMovie];
+    localStorage.setItem('watchedCard', JSON.stringify(watchedMovie));
+    if (isWatchedOpen) {
+      renderMovieCards(watchedMovie);
     }
+    e.target.classList.remove('watched');
+    e.target.textContent = 'ADD TO WATCHED';
+  }
 }
 
-// Функция для добавления в очередь
-function addToQueue(e) {
-    if (localStorage.getItem('queueKey') !== null) {
-        queueKey = load('queueKey');
+function onQueueBtnClick(e) {
+  if (!e.target.classList.contains('queued')) {
+    if (JSON.parse(localStorage.getItem('queuedCard'))) {
+      queuedMovie = JSON.parse(localStorage.getItem('queuedCard'));
     }
-    const clickedFilm = load('DetailsFilmsCurrentPage').find(
-        film => film.id === Number(e.target.dataset.id),
+    queuedMovie.push(movie);
+    localStorage.setItem('queuedCard', JSON.stringify(queuedMovie));
+    if (isQueueOpen) {
+      renderMovieCards(queuedMovie);
+    }
+    e.target.classList.add('queued');
+    e.target.textContent = 'REMOVE FROM QUEUED';
+    return;
+  } else {
+    /* (e.target.classList.contains('watched')) */
+    queuedMovie = JSON.parse(localStorage.getItem('queuedCard'));
+    const filterQueuedMovie = queuedMovie.filter(
+      item => Number(item.id) !== Number(movie.id)
     );
-    if (queueKey.find(film => film.id === clickedFilm.id)) {
-        queueKey = queueKey.filter(film => film.id !== clickedFilm.id);
-        save('queueKey', queueKey);
-        const btnWatch = e.target;
-        btnWatch.textContent = 'Add to queue';
-    } else {
-        queueKey.push(clickedFilm);
-        save('queueKey', queueKey);
-        const btnWatch = e.target;
-        btnWatch.textContent = 'Remove from queue';
+    queuedMovie = [...filterQueuedMovie];
+    localStorage.setItem('queuedCard', JSON.stringify(queuedMovie));
+    if (isQueueOpen) {
+      renderMovieCards(queuedMovie);
     }
+    e.target.classList.remove('queued');
+    e.target.textContent = 'ADD TO QUEUED';
+  }
 }
-
-export default {
-    save,
-    load,
-    remove,
-    addToQueue,
-    addToWatched,
-    btnTextChange,
-};
 
 
 

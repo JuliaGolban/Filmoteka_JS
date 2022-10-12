@@ -1,6 +1,7 @@
 import { getResponse } from './api-common';
 import { removeItem } from './localeCommon';
 
+
 /**
  * Create pagination
  * @param {Number} currentPage - current page for search

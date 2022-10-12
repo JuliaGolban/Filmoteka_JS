@@ -10,20 +10,20 @@ Developer** (IT school **GoIT**).
 - [Julia Golban](https://github.com/JuliaGolban)
 - [Iryna Kholodenko](https://github.com/IrynaKholod)
 - [Rudenko Serhii](https://github.com/rudenkoserhii)
-- [Semen Slipchenko](https://github.com/SemSlipchenko)
-- [Oleksandr Nehoda](https://github.com/Oleksandr-Nehoda)
 - [Heorgii Rushchak](https://github.com/Heorgii)
-- [Roman Vikulov](https://github.com/RomanVikulov)
 - [Dima Levchenko](https://github.com/Dima1409)
-- [Oleh Hritsenko](https://github.com/OlehHritsenko)
+- [Semen Slipchenko](https://github.com/SemSlipchenko)
 - [Roman Kashirin](https://github.com/Royale16)
+- [Oleksandr Nehoda](https://github.com/Oleksandr-Nehoda)
+- [Roman Vikulov](https://github.com/RomanVikulov)
+- [Oleh Hritsenko](https://github.com/OlehHritsenko)
 
 ## Підготовка проекта
 
 - Проект зібраний за допомогою `parcel-project-template`.
 - Для HTTP-запитів використана бібліотека [axios](https://axios-http.com/).
 - Для бекенду використовуй публічний API сервісу
-  [THe Movie Database API](https://api.themoviedb.org/3). Отримано свій
+  [The Movie Database API](https://api.themoviedb.org/3). Отримано свій
   унікальний ключ доступу і ознайомилися з документацією.
 - Використовується синтаксис `async/await`.
 - Всі паршали файлів js знаходяться в папці `src/js` та імпортуються в
@@ -38,13 +38,7 @@ Developer** (IT school **GoIT**).
 
 [Макет](<https://www.figma.com/file/IOrJziFAjQD8Xb5V1fx0ib/Filmoteka-(Copy)-(Copy)?node-id=0%3A1>)
 
-[API з фільмів (потрібно зареєструватися щоб отримати api_key)](https://www.themoviedb.org/)
-
-[Посилання на документацію для запиту на список найпопулярніших фільмів на сьогодні для створення колекції на головній сторінці](https://developers.themoviedb.org/3/trending/get-trending)
-
-[Посилання на документацію для запиту фільму за ключовим словом на головній сторінці](https://developers.themoviedb.org/3/search/search-movies)
-
-[Посилання на документацію для запиту повної інформації про кінофільм для сторінки кінофільму](https://developers.themoviedb.org/3/movies/get-movie-details)
+[API з фільмів](https://www.themoviedb.org/)
 
 ## Технічне завдання
 

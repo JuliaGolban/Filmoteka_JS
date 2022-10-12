@@ -1,22 +1,15 @@
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
+.pagination.list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
 
-  max-width: 374px;
-  height: 40px;
-  margin: 10px auto;
+    max-width: 374px;
+    height: 40px;
+    margin: 10px auto;
 }
 
-.pagination__currentPage {
-  min-width: 40px;
-  height: 40px;
-  border-radius: 5px;
 
-  background-color: var(--bgc-accent);
-  color: var(--cl-txt-white);
-}
 
 .pagination__elem {
 
@@ -24,69 +17,22 @@
     align-items: center;
     justify-content: center;
 
-.link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    min-width: 40px;
-    max-width: 40px;
+    width: 20px;
     height: 40px;
-}
-}
 
-.pagination__linkPrev.link, .pagination__linkNext.link {
-display: flexbox;
-    text-align: center;
-
-margin-left: auto;
-    margin-right: auto;
-
-    border-radius: 5px;
+    &.pagination__currentPage {
+            min-width: 40px;
+            border-radius: 5px;
     
-    background-color: var(--bgc-second);
+            background-color: var(--bgc-accent);
+            color: var(--cl-txt-white);
+        }
 
-}
-
-.pagination__icon {
-    fill: var(--cl-txt-main);
-}
-
-.pagination__linkPrev>span {
-display: block;
-text-align: center;
-margin-left: auto;
-    margin-right: auto;
-}
-
-//----------------------
-
-.pag {
-    display: flex;
-    align-items: center;
-    justify-content: center;}
-
-.pagination__btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-color: var(--bgc-main);
-
-    border: none;
-    border-radius: 5px;
-
-    width: 40px;
-    height: 40px;
-
-    &.btn__currentPage {
-        background-color: var(--bgc-accent);
-        color: var(--cl-txt-white);
-    }
-
-    &.btn__next, &.btn__prev {
+    &.pagination__arrow {
+        min-width: 40px;
+        border-radius: 5px;
+    
         background-color: var(--bgc-second);
     }
-
-
 }
+

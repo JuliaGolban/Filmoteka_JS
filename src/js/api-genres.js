@@ -52,8 +52,12 @@ export function getGenresLocalStorege (genreIds) {
         }
     })
   }
+  const nameGenresSlice = nameGenres.slice(0, 4);
+  if(nameGenres.length > 4){
+    nameGenresSlice.push('etc.');
+  }
 
-  return nameGenres.slice(0, 4).join(', ');
+  return nameGenresSlice.join(', ');
 }
 
 

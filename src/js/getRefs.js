@@ -19,5 +19,6 @@ export default function getRefs() {
     secondLine: document.querySelector('.genres-nav-button .genres-nav-button__line:nth-of-type(2)'),
     thirdLine: document.querySelector('.genres-nav-button .genres-nav-button__line:nth-of-type(3)'),
     menu: document.querySelector('.mobile-menu'),
+    genresLink: document.querySelector('.mobile-menu-link')
   };
 }

@@ -7,10 +7,10 @@ export const showLoginForm = () => {
   app.style.display = 'none'  
 }
 
-export const showApp = () => {
-  login.style.display = 'none'
-  app.style.display = 'block'
-}
+// export const showApp = () => {
+//   login.style.display = 'none'
+//   app.style.display = 'block'
+// }
 
 export const hideLoginError = () => {
   refs.divLoginError.style.display = 'none'

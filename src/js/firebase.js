@@ -48,14 +48,15 @@ const auth = getAuth(firebaseApp);
 //     }
 // }
 
-
-const createAccout = async () => {
+const successEnter = document.querySelector('#success-enter');
+const createAccout = async (e) => {
+    e.preventDefault();
     const email = txtEmail.value;
     const password = txtPassword.value;
+        successEnter.classList.remove('is-hidden');
 
     try {
         const userData = await createUserWithEmailAndPassword(auth, email, password);
-
     }
     catch (err) {
         console.log(err);
@@ -67,7 +68,7 @@ const monitorAuthState = async () =>{
     onAuthStateChanged(auth, user => {
         if(user){
             console.log(user);
-            showApp();
+            // showApp();
             showLoginState(user);
             hideLoginError();
         }

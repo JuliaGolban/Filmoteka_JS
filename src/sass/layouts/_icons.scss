@@ -1,0 +1,14 @@
+.menu__buttom{
+    display:flex;
+    justify-content: flex-end;
+   
+}
+
+.menuBtn{
+    background-color: transparent;
+    border: none; outline: none;
+}
+
+.menu__buttom-icon{
+    fill: var(--bgc-black);
+}

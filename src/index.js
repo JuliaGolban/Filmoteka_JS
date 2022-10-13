@@ -6,7 +6,7 @@ import './js/modal';
 import './js/localeStorage';
 import './js/modalTeamForm';
 import './js/scrollTo';
-import './js/burger-menu';
+import './js/sortGenres';
 import './js/popup';
 import './js/firebase';
 // import './js/switcher';

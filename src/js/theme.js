@@ -1,6 +1,9 @@
 function theme(){
     const toggleTheme = document.querySelector('#toggle-theme-btn');
-
+    // const sun = document.querySelector()
+    if(localStorage.getItem('theme') !== null){
+        document.documentElement.setAttribute('data-theme', 'dark')
+    }
     toggleTheme.addEventListener('click', () => {
 
         if(document.documentElement.hasAttribute('data-theme')){
@@ -13,9 +16,7 @@ function theme(){
         }
  
     })
-    if(localStorage.getItem('theme') !== null){
-        document.documentElement.setAttribute('data-theme', 'dark')
-    }
+ 
 
 }
 

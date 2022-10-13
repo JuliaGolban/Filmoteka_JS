@@ -30,13 +30,12 @@
 
         @include mq(tablet) {
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            grid-auto-rows: 495px;
+            grid-auto-rows: auto;
             grid-gap: 32px;
         }
 
         @include mq(desktop) {
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            grid-auto-rows: 634px;
             grid-gap: 32px 16px;
         }
     }
@@ -80,12 +79,17 @@
 
             @include mq(tablet) {
                 width: 336px;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                margin-top: 8px;
             }
 
             @include mq(desktop) {
                 font-size: 20px;
                 line-height: 1.2;
                 width: 395px;
+                margin-top: 12px;
             }
 
             &-title {

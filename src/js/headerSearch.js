@@ -1,7 +1,6 @@
 import { getResponse } from './api-common';
 import { removeItem } from './localeCommon';
 
-
 /**
  * Create pagination
  * @param {Number} currentPage - current page for search
@@ -25,7 +24,7 @@ function onSubmitForm(event) {
 function search() {
   let currentPage = 1;
 
-  partUrl = localStorage.getItem('paramsPart');
+  let partUrl = localStorage.getItem('paramsPart');
 
   getResponse(currentPage, partUrl);
 }

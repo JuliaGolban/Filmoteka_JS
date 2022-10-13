@@ -64,9 +64,9 @@ function renderMarkupMovieModal({
 }) {
   refs.modalContainer.innerHTML = '';
   let name = getGenresLocalStorege(genre_ids);
-
+  refs.modal.dataset.action = id;
   return (refs.modalContainer.innerHTML = `
-    <div movie-modal__image-container data-year=${release_date} data-action=${id}>
+    <div class="movie-modal__image-container" data-year=${release_date} data-action=${id}>
     ${
       poster_path
         ? `<img src= "https://image.tmdb.org/t/p/w500${poster_path}"`
@@ -106,13 +106,5 @@ function renderMarkupMovieModal({
               </table>
               <p class="movie-modal__about">About</p>
               <p class="movie-modal__overview">${overview}</p>
-              <div class="movie-modal__button-container">
-    
-              <button class="movie-modal__button-orange" type="button" data-movie="597922" data-click="watched">
-                      <span class="movie-modal__button-text-orange">Add to watched</span>
-                    </button>
-              <button class="movie-modal__button" type="button" data-movie="597922" data-click="queue">
-                      <span class="movie-modal__button-text">Add to queue</span>
-                    </button>
-            </div>`);
+              `);
 }

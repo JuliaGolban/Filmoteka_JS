@@ -1,4 +1,4 @@
-import './js/localeStorage';
+// import './js/localeStorage';
 import './js/libraryButtonSwitch';
 import './js/modal';
 import './js/modalTeamForm';

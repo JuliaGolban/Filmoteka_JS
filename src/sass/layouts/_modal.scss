@@ -74,7 +74,7 @@
 
     height: 30px;
     width: 30px;
-    background-color: white;
+    background-color:transparent;
     border: none;
     justify-content: center;
     align-items: center;
@@ -84,7 +84,7 @@
 }
 
 .modal__icon-close {
-    fill: currentColor;
+    fill: var(--bgc-black);
 }
 
 .movie-modal__image {
@@ -195,7 +195,7 @@
     font-size: 12px;
     line-height: 1.3;
 
-    color: var(--cl-txt-main);
+    color: #000000;
     text-align: center;
 
 
@@ -275,9 +275,9 @@
     left: 40px;
     top: 876px;
 
-    background: var(--cl-txt-white);
+    background: transparent;
     border-radius: 5px;
-
+    border-color: var(--bgc-black);
     border-radius: 5px;
 
     @include mq(tablet) {
@@ -316,5 +316,5 @@
     text-align: center;
     text-transform: uppercase;
 
-    color: var(--cl-txt-white);
+    color: #ffffff;
 }

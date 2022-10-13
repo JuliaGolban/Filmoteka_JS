@@ -9,3 +9,4 @@ import './js/burger-menu';
 import './js/popup';
 import './js/firebase';
 // import './js/switcher';
+import './js/theme';

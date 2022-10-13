@@ -128,7 +128,8 @@
   align-items: center;
   text-align: center;
 
-  color: var(--cl-txt-white);
+  color: #FFFFFF
+  ;
 
   @include mq(mobile-only) {
     display: none;
@@ -175,7 +176,7 @@
   text-align: center;
   text-transform: uppercase;
 
-  color: var(--cl-txt-white);
+  color: #FFFFFF;
 }
 
 .search-form {
@@ -211,8 +212,8 @@
   padding-bottom: 4px;
   padding-left: 4px;
   padding-right: 20px;
-  color: var(--cl-txt-white);
-  border-bottom: 0.5px solid var(--cl-txt-white);
+  color: #FFFFFF;
+  border-bottom: 0.5px solid #FFFFFF;
 
   @include mq(tablet-only) {
     width: 336px;
@@ -224,7 +225,7 @@
 }
 
 .search-form__input::placeholder {
-  color: var(--cl-txt-white);
+  color: #FFFFFF;
 }
 
 .search-btn {

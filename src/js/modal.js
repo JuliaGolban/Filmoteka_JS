@@ -64,9 +64,9 @@ function renderMarkupMovieModal({
 }) {
   refs.modalContainer.innerHTML = '';
   let name = getGenresLocalStorege(genre_ids);
-
+  refs.modal.dataset.action = id;
   return (refs.modalContainer.innerHTML = `
-    <div movie-modal__image-container data-year=${release_date} data-action=${id}>
+    <div class="movie-modal__image-container" data-year=${release_date} data-action=${id}>
     ${
       poster_path
         ? `<img src= "https://image.tmdb.org/t/p/w500${poster_path}"`

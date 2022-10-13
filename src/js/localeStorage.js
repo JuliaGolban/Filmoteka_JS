@@ -3,8 +3,37 @@ import { clearData, getFromStorage, saveToStorage } from './localeCommon';
 import getRefs from './getRefs';
 const refs = getRefs();
 
+refs.addToWatchedBtn.addEventListener('click', onBtnClick);
+refs.addToQueueBtn.addEventListener('click', onBtnClick);
+
+function onBtnClick(e) {
+  e.preventDefault();
+
+  let movieId = Number(refs.modal.dataset.action);
+  let movie = getMovieById(movieId);
+  let click = String(e.currentTarget.dataset.click);
+
+  // debugger;
+  //ADD TO WATCHED
+  if (click === 'watched') {
+    addToStorage(movie, 'watched');
+    checkMovieInStack(movieId);
+  }
+  //ADD TO QUEUE
+  if (click === 'queue') {
+    checkMovieInStack(movieId);
+    addToStorage(movie, 'queue');
+  }
+}
+
+function getMovieById(id) {
+  const movies = getFromStorage('movies');
+  const result = movies.results.find(movie => movie.id === Number(id));
+  return result;
+}
+
 /*
-  получаем текущее хранилище.
+  отримуємо поточні дані зі сховища, якщо немає - записуємо пустий масив
 */
 function getCurrentStorage() {
   let watched = localStorage.getItem('watched');
@@ -23,143 +52,80 @@ function getCurrentStorage() {
 }
 
 /**
-   Функция принимает только 2 параметра filmObj - объект со свойствами фильма
-  и filmType - тип фильма (только 2 варианта: 'watched' или 'queue').
+   Функция принимает только 2 параметра movieObj - объект со свойствами фильма
+  и movieType - тип фильма (только 2 варианта: 'watched' или 'queue').
   
-  // @param {objects} filmObj;
-  // @param {string} filmType;
+  // @param {objects} movieObj;
+  // @param {string} movieType;
  */
-function addToStorage(filmObj, filmType) {
+
+/*
+  записуємо та зберігаємо дані фільму у сховище
+*/
+function addToStorage(movieObj, movieType) {
   const [watched, queue] = getCurrentStorage();
-  const watchedId = watched.map(film => film.id);
-  const queueId = queue.map(film => film.id);
+  const watchedId = watched.map(movie => movie.id);
+  const queueId = queue.map(movie => movie.id);
 
-  switch (filmType) {
+  switch (movieType) {
     case 'watched':
-      if (!watchedId.includes(filmObj.id)) {
-        watched.push(filmObj);
-        const filtrededQueue = queue.filter(film => {
-          return film.id !== filmObj.id;
+      if (!watchedId.includes(movieObj.id)) {
+        watched.push(movieObj);
+        const filtrededQueue = queue.filter(movie => {
+          return movie.id !== movieObj.id;
         });
-
-        localStorage.setItem('watched', JSON.stringify(watched));
-        localStorage.setItem('queue', JSON.stringify(filtrededQueue));
+        saveToStorage('watched', watched);
+        saveToStorage('queue', filtrededQueue);
       } else {
-        const filtrededWatched = watched.filter(film => {
-          return film.id !== filmObj.id;
+        const filtrededWatched = watched.filter(movie => {
+          return movie.id !== movieObj.id;
         });
-        localStorage.setItem('watched', JSON.stringify(filtrededWatched));
+        saveToStorage('watched', filtrededWatched);
       }
       break;
     case 'queue':
-      if (!queueId.includes(filmObj.id)) {
-        queue.push(filmObj);
-        const filtrededWatched = watched.filter(film => {
-          return film.id !== filmObj.id;
+      if (!queueId.includes(movieObj.id)) {
+        queue.push(movieObj);
+        const filtrededWatched = watched.filter(movie => {
+          return movie.id !== movieObj.id;
         });
-
-        localStorage.setItem('watched', JSON.stringify(filtrededWatched));
-        localStorage.setItem('queue', JSON.stringify(queue));
+        saveToStorage('watched', filtrededWatched);
+        saveToStorage('queue', queue);
       } else {
-        const filtrededQueue = queue.filter(film => {
-          return film.id !== filmObj.id;
+        const filtrededQueue = queue.filter(movie => {
+          return movie.id !== movieObj.id;
         });
-        localStorage.setItem('queue', JSON.stringify(filtrededQueue));
+        saveToStorage('queue', filtrededQueue);
       }
       break;
     default:
-      // console.log('Не коректно вказаний data-type');
+      console.log('Error from add to storage by movie type');
   }
 }
 
-/**
-  Функция принимает значение 
-  @param {boolean} value;
+/*
+перевірка наявності фільму в сховищі за ключем
  */
-function saveAuthStateOnStorage(value) {
-  localStorage.setItem('authState', value);
-}
 
-
-
-const resetStorage = function () {
-  localStorage.removeItem('watched');
-  localStorage.removeItem('queue');
-};
-
-const addToStorageFromBase = function (data) {
-  if (data) {
-    if (data.watched !== undefined) {
-      localStorage.setItem('watched', JSON.stringify(data.watched));
+function checkMovieInStack(id) {
+  const check = function (storagekey) {
+    let stack = getFromStorage(storagekey);
+    const stackId = stack.map(movie => movie.id);
+    if (stackId.includes(id)) {
+      return true;
+    } else {
+      return false;
     }
-    if (data.queue !== undefined) {
-      localStorage.setItem('queue', JSON.stringify(data.queue));
-    }
+  };
+
+  if (check('watched')) {
+    refs.addToWatchedBtn.textContent = 'REMOVE';
+  } else if (!check('watched')) {
+    refs.addToWatchedBtn.textContent = 'ADD TO WATCHED';
   }
-};
-
-// export {
-//   addToStorage,
-//   saveAuthStateOnStorage,
-//   resetStorage,
-//   addToStorageFromBase,
-// };
-
-// function onBtnWatchedClick(e) {
-//   if (!e.target.classList.contains('watched')) {
-//     if (JSON.parse(localStorage.getItem('watchedCard'))) {
-//       watchedMovie = JSON.parse(localStorage.getItem('watchedCard'));
-//     }
-//     watchedMovie.push(movie);
-//     localStorage.setItem('watchedCard', JSON.stringify(watchedMovie));
-//     if (isWatchedOpen) {
-//       renderMovieCards(watchedMovie);
-//     }
-
-//     e.target.classList.add('watched');
-//     e.target.textContent = 'REMOVE FROM WATCHED';
-//     return;
-//   } else {
-//     /* (e.target.classList.contains('watched')) */
-//     watchedMovie = JSON.parse(localStorage.getItem('watchedCard'));
-//     const filterWatchedMovie = watchedMovie.filter(
-//       item => Number(item.id) !== Number(movie.id)
-//     );
-//     watchedMovie = [...filterWatchedMovie];
-//     localStorage.setItem('watchedCard', JSON.stringify(watchedMovie));
-//     if (isWatchedOpen) {
-//       renderMovieCards(watchedMovie);
-//     }
-//     e.target.classList.remove('watched');
-//     e.target.textContent = 'ADD TO WATCHED';
-//   }
-// }
-
-// function onQueueBtnClick(e) {
-//   if (!e.target.classList.contains('queued')) {
-//     if (JSON.parse(localStorage.getItem('queuedCard'))) {
-//       queuedMovie = JSON.parse(localStorage.getItem('queuedCard'));
-//     }
-//     queuedMovie.push(movie);
-//     localStorage.setItem('queuedCard', JSON.stringify(queuedMovie));
-//     if (isQueueOpen) {
-//       renderMovieCards(queuedMovie);
-//     }
-//     e.target.classList.add('queued');
-//     e.target.textContent = 'REMOVE FROM QUEUED';
-//     return;
-//   } else {
-//     /* (e.target.classList.contains('watched')) */
-//     queuedMovie = JSON.parse(localStorage.getItem('queuedCard'));
-//     const filterQueuedMovie = queuedMovie.filter(
-//       item => Number(item.id) !== Number(movie.id)
-//     );
-//     queuedMovie = [...filterQueuedMovie];
-//     localStorage.setItem('queuedCard', JSON.stringify(queuedMovie));
-//     if (isQueueOpen) {
-//       renderMovieCards(queuedMovie);
-//     }
-//     e.target.classList.remove('queued');
-//     e.target.textContent = 'ADD TO QUEUED';
-//   }
-// }
+  if (check('queue')) {
+    refs.addToQueueBtn.textContent = 'REMOVE';
+  } else if (!check('queue')) {
+    refs.addToQueueBtn.textContent = `ADD TO QUEUE`;
+  }
+}

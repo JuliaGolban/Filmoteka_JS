@@ -3,6 +3,7 @@ import './js/trending';
 import './js/api-genres.js';
 import './js/headerSearch';
 import './js/modal';
+import './js/localeStorage';
 import './js/modalTeamForm';
 import './js/scrollTo';
 import './js/burger-menu';

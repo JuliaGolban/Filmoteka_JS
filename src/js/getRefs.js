@@ -33,6 +33,7 @@ export default function getRefs() {
     addToWatchedBtn: document.querySelector('[data-click="watched"]'),
     addToQueueBtn: document.querySelector('[data-click="queue"]'),
     modalContainer: document.querySelector('.movie-modal__render'),
+    modal: document.querySelector('.movie-modal__container'),
 
     // Modal window with developers
     openModalTeam: document.querySelector('[data-modal-team-open]'),

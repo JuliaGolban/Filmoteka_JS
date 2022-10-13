@@ -7,7 +7,7 @@ import { getGenresLocalStorege } from './api-genres';
 //import {clearData, getFromStorage, saveToStorage, removeItem} from './localeCommon';
 
 const refs = getRefs();
-//! малюємо список жанрів /////////////////////////////////////////
+
 refs.btn.addEventListener('click', onClickMenu)
 function onClickMenu() {
   refs.firstLine.classList.toggle('genres-nav-button__line--1');
@@ -35,8 +35,6 @@ function getFromStorageGenre() {
     return null;
 }
 }
-
-//! //////////////////////////////////////////////////////////////
 
 refs.menuList.addEventListener('click', sortByGenre)
 

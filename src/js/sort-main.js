@@ -1,9 +1,9 @@
 import { getResponse } from './api-common';
 import getRefs from './getRefs';
-import {clearData, getFromStorage, saveToStorage, removeItem} from './localeCommon';
+import {removeItem} from './localeCommon';
 
 const refs = getRefs();
-//! малюємо список жанрів /////////////////////////////////////////
+
 refs.btn.addEventListener('click', onClickMenu)
 function onClickMenu() {
   refs.firstLine.classList.toggle('genres-nav-button__line--1');
@@ -32,16 +32,27 @@ function getFromStorageGenre() {
 }
 }
 
-//! //////////////////////////////////////////////////////////////
 
 refs.menuList.addEventListener('click', sortByGenre)
+
+
 
 function sortByGenre(event) {
     if (event.target.nodeName !== "A") {
       return;
     }
   removeItem('movies');
+  const link = document.querySelectorAll('.mobile-menu-link');
   const value = event.target.dataset.action;
+  for(let i =0; i<link.length; i+=1) {
+    if(value===link[i].dataset.action) {
+      link[i].classList.add('active')
+    }
+    else{
+      link[i].classList.remove('active')
+    }
+  }
+  
   localStorage.setItem('paramsPart', `discover/movie?sort_by=popularity.desc&with_genres=${value}`)
   sort();
 }

@@ -1,12 +1,12 @@
 
 .genres-nav-button {
-    width:30px;
-    height: 30px;
+    width:20px;
+    height: 20px;
     position:absolute;
-    margin:1rem;
+    margin: 14px;
     right:0;
     top:0;
-    z-index:9999;
+    z-index:16;
     cursor:pointer;
     &:hover .genres-nav-button__line {
       background-color: var(--bgc-accent);
@@ -18,13 +18,13 @@
         position:relative;
         transition: var(--slow-anim);
         &:nth-of-type(2) {
-            margin:0.5rem 0;
+            margin:0.2rem 0;
         }
 
     }
     .genres-nav-button__line--1 {
         transform: rotate(45deg);
-        top: 13px;
+        top: 8px;
         position: absolute;
     }
     .genres-nav-button__line--2 {
@@ -32,46 +32,56 @@
     }
     .genres-nav-button__line--3 {
         transform: rotate(135deg);
-        top: 13px;
+        top: 8px;
         position: absolute;        
     }
 }
 
-//Mobile Menu
-
 .mobile-menu {
     display:block;
-    max-width:300px;
     width:100%;
     right:-100%;
     height: 100vh;
-    background: var(--cl-txt-second);
+    background: var(--bgc-main);
     position:absolute;
-    z-index:9998;
+    z-index:15;
     transition: var(--slow-anim);
     top:0;
     opacity:0;
     overflow-y: scroll;
     overflow-x: hidden;
+    @include mq(tablet) {
+    width: 50%;
+    }
+    @include mq(desktop) {
+        width: 35%;
+        }
     ul {
         position: relative;
-        padding:60px 0;
+        padding:30px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
         li {
             list-style: none;
+            margin: 2px 32px;
+            @include mq(tablet) {
+                margin: 2px 40px;
+                }
             a {
                 cursor: pointer;
                 width:100%;
-                max-width:500px;
                 margin:0 auto;
+                padding: 2px 6px;
                 display: block;
-                text-align: start;
-                margin-left: 10px;
+                text-align: end;
                 text-decoration:none;
                 color: var(--cl-txt-main);
-                font-size: 2rem;
-                font-weight: bold;
+                font-size: 32px;
+                font-weight: 500;
                 overflow:hidden;
                 position:relative;
+                border-radius: 6px;
                 &:after {
                     content:'';
                     background: var(--bgc-accent);
@@ -82,8 +92,10 @@
                     top:0;
                     z-index:-1;
                     transition: var(--slow-anim);
+                    border-radius: 6px;
                 }
-                &:hover {
+                &:hover,
+                &:focus {
                    &:after {
                     right:0;
                    }
@@ -93,6 +105,12 @@
         }
     }
 }
+.mobile-menu-link.active{
+        &:after{
+            right:0;
+        }
+    }
+
 .mobile-menu--open {
     right:0;
     opacity:1;

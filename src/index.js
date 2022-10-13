@@ -10,3 +10,4 @@ import './js/sortGenres';
 import './js/popup';
 import './js/firebase';
 // import './js/switcher';
+import './js/theme';

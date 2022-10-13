@@ -42,7 +42,7 @@ export default function getRefs() {
 
     // Scroll the page
     scrollToTop: document.querySelector('.scroll-to-top'),
-
+    
     // sortGenre
     btn: document.querySelector('.genres-nav-button'),
     menu: document.querySelector('.mobile-menu'),
@@ -56,6 +56,10 @@ export default function getRefs() {
     thirdLine: document.querySelector(
     '.genres-nav-button .genres-nav-button__line:nth-of-type(3)'
     ),
-};
+
+    //library page buttons
+    btnWatched: document.querySelector('.watched'),
+    btnQueue: document.querySelector('.queue'),
+  };
 }
 

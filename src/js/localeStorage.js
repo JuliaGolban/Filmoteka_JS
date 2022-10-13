@@ -129,3 +129,5 @@ function checkMovieInStack(id) {
     refs.addToQueueBtn.textContent = `ADD TO QUEUE`;
   }
 }
+
+export { checkMovieInStack, getCurrentStorage };

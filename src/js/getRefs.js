@@ -44,3 +44,4 @@ export default function getRefs() {
     scrollToTop: document.querySelector('.scroll-to-top'),
   };
 }
+

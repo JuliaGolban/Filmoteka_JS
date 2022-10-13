@@ -1,10 +1,5 @@
 import axios from 'axios';
-import {
-  clearData,
-  getFromStorage,
-  saveToStorage,
-  removeItem,
-} from './localeCommon';
+import { getFromStorage, saveToStorage } from './localeCommon';
 
 const API_KEYS = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 const BASE_URL = 'https://api.themoviedb.org/3/genre/movie/list';
@@ -55,6 +50,10 @@ export function getGenresLocalStorege(genreIds) {
       }
     });
   }
+  const nameGenresSlice = nameGenres.slice(0, 4);
+  if (nameGenres.length > 4) {
+    nameGenresSlice.push('etc.');
+  }
 
-  return nameGenres.slice(0, 4).join(', ');
+  return nameGenresSlice.join(', ');
 }

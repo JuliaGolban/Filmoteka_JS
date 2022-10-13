@@ -36,13 +36,14 @@ const loginEmailPassword = async (e) => {
     e.preventDefault();
     const email = txtEmail.value;
     const password = txtPassword.value;
-    if (email.value === true&& password.value === true) {
-        refs.successEnter.classList.remove('is-hidden');
-        refs.formSuccessMsg.classList.add('is-hidden');
-        refs.formTitle.classList.remove('modal-title');
-        refs.formTitle.classList.add('is-hidden');
-        refs.btnLogout.classList.remove('is-hidden');
+    if (!email && !password) {
+        return showLoginError();
     }
+    refs.successEnter.classList.remove('is-hidden');
+    refs.formSuccessMsg.classList.add('is-hidden');
+    refs.formTitle.classList.remove('modal-title');
+    refs.formTitle.classList.add('is-hidden');
+    refs.btnLogout.classList.remove('is-hidden');
 
 
     try {
@@ -59,12 +60,16 @@ const createAccout = async (e) => {
     e.preventDefault();
     const email = txtEmail.value;
     const password = txtPassword.value;
+    console.log(email, password);
+    // debugger;
+    if (!email && !password) {
+        return showLoginError();
+    }
     refs.successEnter.classList.remove('is-hidden');
     refs.formSuccessMsg.classList.add('is-hidden');
     refs.formTitle.classList.remove('modal-title');
     refs.formTitle.classList.add('is-hidden');
     refs.btnLogout.classList.remove('is-hidden');
-
     try {
         await createUserWithEmailAndPassword(auth, email, password);
     }

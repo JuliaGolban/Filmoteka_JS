@@ -10,7 +10,7 @@
     width: calc(100vw - 40px);
     max-height: calc(100vh - 40px);
 
-    background: var(--bgc-second);
+    background: var(--bgc-main);
     border-radius: 5px;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
 
@@ -134,7 +134,7 @@
         height: 40px;
 
         color: var(--cl-txt-main);
-        background: var(--bgc-second);
+        background: transparent;
         border: none;
 
         cursor: pointer;
@@ -150,5 +150,8 @@
         fill: currentColor;
         transition: color var(--anim);
 
+    }
+    &__icon{
+        fill: var(--bgc-black);
     }
 }

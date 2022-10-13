@@ -8,7 +8,7 @@ let partUrl = '';
  * @param {Number} totalPages  - all pages for search
  */
 
-clearData();
+// clearData();
 
 trending();
 

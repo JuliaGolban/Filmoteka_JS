@@ -42,6 +42,10 @@ export default function getRefs() {
 
     // Scroll the page
     scrollToTop: document.querySelector('.scroll-to-top'),
+
+    //library page buttons
+    btnWatched: document.querySelector('.watched'),
+    btnQueue: document.querySelector('.queue'),
   };
 }
 

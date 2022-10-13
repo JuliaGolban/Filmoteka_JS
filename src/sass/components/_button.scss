@@ -15,6 +15,7 @@
         color: var(--cl-txt-white);
         text-transform: uppercase;
         border: 1px solid var(--cl-txt-white);
+        cursor: pointer;
 
         &:not(:last-child) {
             margin-right: 16px;

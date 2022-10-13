@@ -21,8 +21,8 @@ function onBtnClick(e) {
   }
   //ADD TO QUEUE
   if (click === 'queue') {
-    checkMovieInStack(movieId);
     addToStorage(movie, 'queue');
+    checkMovieInStack(movieId);
   }
 }
 

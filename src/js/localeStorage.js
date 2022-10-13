@@ -1,104 +1,131 @@
-// Запись в localeStorage
-const save = (key, value) => {
-    const data = JSON.stringify(value);
-    localStorage.setItem(key, data);
-};
+import axios from 'axios';
+import { clearData, getFromStorage, saveToStorage } from './localeCommon';
+import getRefs from './getRefs';
+const refs = getRefs();
 
-// Загрузка в localeStorage
-const load = key => {
-    try {
-        const data = localStorage.getItem(key);
-        return data === null ? undefined : JSON.parse(data);
-    } catch (error) {
-        console.error('Get state error:', error.message);
-    }
-};
+refs.addToWatchedBtn.addEventListener('click', onBtnClick);
+refs.addToQueueBtn.addEventListener('click', onBtnClick);
 
-// Удаление из localeStorage
-const remove = key => {
-    return localStorage.removeItem(key);
-};
+function onBtnClick(e) {
+  e.preventDefault();
 
-// Функция для проверки фильма в очереди или в просмотреных когда модалка открыта и изменения текста кнопок localeStorage
-function btnTextChange(currentFilmId) {
-    const watchedBtn = document.querySelector('.movie-modal__button-orange');
-    const queueBtn = document.querySelector('.movie-modal__button');
+  let movieId = Number(refs.modal.dataset.action);
+  let movie = getMovieById(movieId);
+  let click = String(e.currentTarget.dataset.click);
 
-    if (!load('watchedKey')) {
-        return;
-    } else {
-        load('watchedKey').forEach(element => {
-            if (element.id === currentFilmId) {
-                watchedBtn.textContent = 'Remove from watched';
-           } 
+  // debugger;
+  //ADD TO WATCHED
+  if (click === 'watched') {
+    addToStorage(movie, 'watched');
+    checkMovieInStack(movieId);
+  }
+  //ADD TO QUEUE
+  if (click === 'queue') {
+    addToStorage(movie, 'queue');
+    checkMovieInStack(movieId);
+  }
+}
+
+function getMovieById(id) {
+  const movies = getFromStorage('movies');
+  const result = movies.results.find(movie => movie.id === Number(id));
+  return result;
+}
+
+/*
+  отримуємо поточні дані зі сховища, якщо немає - записуємо пустий масив
+*/
+function getCurrentStorage() {
+  let watched = localStorage.getItem('watched');
+  let queue = localStorage.getItem('queue');
+  if (watched === null) {
+    watched = [];
+  } else {
+    watched = JSON.parse(watched);
+  }
+  if (queue === null) {
+    queue = [];
+  } else {
+    queue = JSON.parse(queue);
+  }
+  return [watched, queue];
+}
+
+/**
+   Функция принимает только 2 параметра movieObj - объект со свойствами фильма
+  и movieType - тип фильма (только 2 варианта: 'watched' или 'queue').
+  
+  // @param {objects} movieObj;
+  // @param {string} movieType;
+ */
+
+/*
+  записуємо та зберігаємо дані фільму у сховище
+*/
+function addToStorage(movieObj, movieType) {
+  const [watched, queue] = getCurrentStorage();
+  const watchedId = watched.map(movie => movie.id);
+  const queueId = queue.map(movie => movie.id);
+
+  switch (movieType) {
+    case 'watched':
+      if (!watchedId.includes(movieObj.id)) {
+        watched.push(movieObj);
+        const filtrededQueue = queue.filter(movie => {
+          return movie.id !== movieObj.id;
         });
-    }
-    if (!load('queueKey')) {
-        return;
-    } else {
-        load('queueKey').forEach(element => {
-            if (element.id === currentFilmId) {
-                queueBtn.textContent = 'Remove from queue';
-            }
+        saveToStorage('watched', watched);
+        saveToStorage('queue', filtrededQueue);
+      } else {
+        const filtrededWatched = watched.filter(movie => {
+          return movie.id !== movieObj.id;
         });
-    }
+        saveToStorage('watched', filtrededWatched);
+      }
+      break;
+    case 'queue':
+      if (!queueId.includes(movieObj.id)) {
+        queue.push(movieObj);
+        const filtrededWatched = watched.filter(movie => {
+          return movie.id !== movieObj.id;
+        });
+        saveToStorage('watched', filtrededWatched);
+        saveToStorage('queue', queue);
+      } else {
+        const filtrededQueue = queue.filter(movie => {
+          return movie.id !== movieObj.id;
+        });
+        saveToStorage('queue', filtrededQueue);
+      }
+      break;
+    default:
+      console.log('Error from add to storage by movie type');
+  }
 }
 
-/// Функция для добавления в просмотренные фильмы localeStorage ///
+/*
+перевірка наявності фільму в сховищі за ключем
+ */
 
-let watchedKey = [];
-let queueKey = [];
-
-function addToWatched(e) {
-    if (localStorage.getItem('watchedKey') !== null) {
-        watchedKey = load('watchedKey');
-    }
-    const clickedFilm = load('DetailsFilmsCurrentPage').find(
-        film => film.id === Number(e.target.dataset.id),
-    );
-    if (watchedKey.find(film => film.id === clickedFilm.id)) {
-        watchedKey = watchedKey.filter(film => film.id !== clickedFilm.id);
-        save('watchedKey', watchedKey);
-        const btnWatch = e.target;
-        // console.log(watchedKey);
-        btnWatch.textContent = 'Add to watched';
+function checkMovieInStack(id) {
+  const check = function (storagekey) {
+    let stack = getFromStorage(storagekey);
+    const stackId = stack.map(movie => movie.id);
+    if (stackId.includes(id)) {
+      return true;
     } else {
-        watchedKey.push(clickedFilm);
-        save('watchedKey', watchedKey);
-        const btnWatch = e.target;
-        btnWatch.textContent = 'Remove from watched';
+      return false;
     }
+  };
+
+  if (check('watched')) {
+    refs.addToWatchedBtn.textContent = 'REMOVE';
+  } else if (!check('watched')) {
+    refs.addToWatchedBtn.textContent = 'ADD TO WATCHED';
+  }
+  if (check('queue')) {
+    refs.addToQueueBtn.textContent = 'REMOVE';
+  } else if (!check('queue')) {
+    refs.addToQueueBtn.textContent = `ADD TO QUEUE`;
+  }
 }
-
-// Функция для добавления в очередь
-function addToQueue(e) {
-    if (localStorage.getItem('queueKey') !== null) {
-        queueKey = load('queueKey');
-    }
-    const clickedFilm = load('DetailsFilmsCurrentPage').find(
-        film => film.id === Number(e.target.dataset.id),
-    );
-    if (queueKey.find(film => film.id === clickedFilm.id)) {
-        queueKey = queueKey.filter(film => film.id !== clickedFilm.id);
-        save('queueKey', queueKey);
-        const btnWatch = e.target;
-        btnWatch.textContent = 'Add to queue';
-    } else {
-        queueKey.push(clickedFilm);
-        save('queueKey', queueKey);
-        const btnWatch = e.target;
-        btnWatch.textContent = 'Remove from queue';
-    }
-}
-
-export default {
-    save,
-    load,
-    remove,
-    addToQueue,
-    addToWatched,
-    btnTextChange,
-};
-
-
-

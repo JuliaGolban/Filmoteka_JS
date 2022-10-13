@@ -44,6 +44,8 @@
     @include mq(tablet) {
         & {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             min-width: 704px;
             padding: 40px 72px 40px 36px;
         }

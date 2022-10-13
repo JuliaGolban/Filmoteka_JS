@@ -6,9 +6,6 @@ import {
     // showLoginForm,
     // showApp,
     showLoginError,
-    // btnLogin,
-    // btnSignup,
-    // btnLogout
 } from './ui';
 
 import {
@@ -16,7 +13,7 @@ import {
     onAuthStateChanged,
     signOut,
     createUserWithEmailAndPassword,
-    // signInWithEmailAndPassword,
+    signInWithEmailAndPassword,
     // connectAuthEmulator
 } from 'firebase/auth';
 
@@ -35,19 +32,28 @@ const firebaseApp = initializeApp({
 
 const auth = getAuth(firebaseApp);
 
-// const loginEmailPassword = async () => {
-//     const email = txtEmail.value;
-//     const password = txtPassword.value;
+const loginEmailPassword = async (e) => {
+    e.preventDefault();
+    const email = txtEmail.value;
+    const password = txtPassword.value;
+    if (email.value === true&& password.value === true) {
+        refs.successEnter.classList.remove('is-hidden');
+        refs.formSuccessMsg.classList.add('is-hidden');
+        refs.formTitle.classList.remove('modal-title');
+        refs.formTitle.classList.add('is-hidden');
+        refs.btnLogout.classList.remove('is-hidden');
+    }
 
-//     try {
-//         const userData = await signInWithEmailAndPassword(auth, email, password);
 
-//     }
-//     catch (err) {
-//         console.log(err);
-//         showLoginError(err);
-//     }
-// }
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+
+    }
+    catch (error) {
+        console.log(`There was an error: ${error}`);
+        showLoginError(error);
+    }
+}
 
 const createAccout = async (e) => {
     e.preventDefault();
@@ -60,7 +66,7 @@ const createAccout = async (e) => {
     refs.btnLogout.classList.remove('is-hidden');
 
     try {
-        const userData = await createUserWithEmailAndPassword(auth, email, password);
+        await createUserWithEmailAndPassword(auth, email, password);
     }
     catch (err) {
         console.log(err);
@@ -74,23 +80,21 @@ const monitorAuthState = async () => {
             console.log(user);
             // showApp();
             showLoginState(user);
+
             hideLoginError();
         }
-
         else {
-            showLoginError();
+            // showLoginForm()
             refs.lblAuthState.innerHTML = `You're not logged in.`;
         }
-    });
+    })
 }
-
-// btnLogin.addEventListener("click", loginEmailPassword);
-refs.btnSignup.addEventListener("click", createAccout);
-
-monitorAuthState();
 
 const logout = async () => {
     await signOut(auth);
+    window.location.reload();
 }
-
+refs.btnLogin.addEventListener("click", loginEmailPassword);
+refs.btnSignup.addEventListener("click", createAccout);
 refs.btnLogout.addEventListener('click', logout);
+monitorAuthState();

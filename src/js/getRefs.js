@@ -15,10 +15,10 @@ export default function getRefs() {
     // Firebase
     txtEmail: document.querySelector('#txtEmail'),
     txtPassword: document.querySelector('#txtPassword'),
-    // btnLogin: document.querySelector('#btnLogin')
+    btnLogin: document.querySelector('#btnLogin'),
     btnSignup: document.querySelector('#btnSignup'),
     btnLogout: document.querySelector('#btnLogout'),
-    // divAuthState: document.querySelector('#divAuthState')
+    divAuthState: document.querySelector('#divAuthState'),
     lblAuthState: document.querySelector('#lblAuthState'),
     divLoginError: document.querySelector('#divLoginError'),
     lblLoginErrorMessage: document.querySelector('#lblLoginErrorMessage'),

@@ -43,6 +43,7 @@ function sortByGenre(event) {
   removeItem('movies');
   const link = document.querySelectorAll('.mobile-menu-link');
   const value = event.target.dataset.action;
+  console.log('sortByGenre ~ value', value);
   for (let i = 0; i < link.length; i += 1) {
     if (value === link[i].dataset.action) {
       link[i].classList.add('active');
@@ -50,7 +51,7 @@ function sortByGenre(event) {
       link[i].classList.remove('active');
     }
   }
-
+  // debugger;
   localStorage.setItem(
     'paramsPart',
     `discover/movie?sort_by=popularity.desc&with_genres=${value}`
@@ -60,6 +61,6 @@ function sortByGenre(event) {
 
 function sort() {
   let currentPage = 1;
-  partUrl = localStorage.getItem('paramsPart');
+  let partUrl = localStorage.getItem('paramsPart');
   getResponse(currentPage, partUrl);
 }

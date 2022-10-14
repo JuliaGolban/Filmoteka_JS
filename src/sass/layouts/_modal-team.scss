@@ -29,14 +29,8 @@
     }
 
     @include mq(tablet) {
-        // position: absolute;
-        // top: 50%;
-        // left: 50%;
-
         max-width: 800px;
         max-height: calc(100vh - 40px);
-
-        // transform: translate(-50%, -50%) scale(1);
     }
 
     &__title {
@@ -125,6 +119,7 @@
         position: absolute;
         top: 5px;
         right: 5px;
+        z-index: 15;
 
         display: flex;
         justify-content: center;
@@ -151,7 +146,8 @@
         transition: color var(--anim);
 
     }
-    &__icon{
+
+    &__icon {
         fill: var(--bgc-black);
     }
 }

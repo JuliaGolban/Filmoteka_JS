@@ -1,11 +1,18 @@
-.scroll-to-top {
+.fix-down {
     position: fixed;
-    bottom: 15px;
-    right: 15px;
+    bottom: 0;
+    right: 0;
+
+    & .container {
+        padding-right: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+.scroll-to-top {
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin-left: auto;
 
     width: 30px;

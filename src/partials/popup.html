@@ -1,31 +1,25 @@
-<button class="popup-button" type="button" data-modal-user-open>
-    <span class="sign_up"><svg class="lock-close" width="18" height="18">
-            <use href="./image/sprite.svg#lock-close"></use>
-        </svg>LOGIN / SIGN UP</span>
-</button>
-
-<div class="backdrop is-hidden" data-modal-user>
-    <div class="modal">
-        <button class="modal-close" data-modal-user-close>
-            <svg class="close-icon" width="18" height="18">
+<div class="backdrop-login backdrop is-hidden" data-modal-user>
+    <div class="modal-login">
+        <button class="modal-login-close" data-modal-user-close>
+            <svg class="close-login-icon" width="18" height="18">
                 <use href="./image/sprite.svg#icon-close"></use>
             </svg>
         </button>
-        <b class="modal-title modal-title-js">Fill in the form</b>
+        <b class="modal-login-title modal-title-js">Fill in the form</b>
 
         <form class="form-user form-js" autocomplete="off">
             <label class="form-group" for="mail">
                 <span class="form-label">Mail</span>
                 <span class="input-container">
-                    <input class="input-form" type="email" required name="mail" id="txtEmail" >
+                    <input class="input-form" type="email" required name="mail" id="txtEmail">
                 </span>
             </label>
             <label class="form-group" for="password">
                 <span class="form-label">
                     <span class="form-label">Password</span>
                     <span class="input-container">
-                        <input class="input-form" type="password" required name="password" id="txtPassword" minlength="5"
-                            maxlength="12" />
+                        <input class="input-form" type="password" required name="password" id="txtPassword"
+                            minlength="5" maxlength="12" />
                     </span>
             </label>
 
@@ -35,7 +29,7 @@
             <div id="divLoginError" class="group">
                 <div id="lblLoginErrorMessage" class="errorlabel"></div>
             </div>
-            
+
         </form>
         <div id="app">
             <div class="header is-hidden" id="success-enter">

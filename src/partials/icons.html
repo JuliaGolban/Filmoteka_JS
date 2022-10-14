@@ -1,31 +1,19 @@
 <div class="menu__buttom container">
-    <button class="menuBtn" type="button" >
-        <button class="menuBtn" type="button" >
-            <svg class="menu__buttom-icon" width="40" height="40">
-                <use href="./image/sprite.svg#registration"></use>
-            </svg>
-          </button>
+  <button class="menuBtn" type="button" data-modal-user-open>
+    <svg class="menu__buttom-icon" width="40" height="40">
+      <use href="./image/sprite.svg#registration"></use>
+    </svg>
+  </button>
+  <include src="./partials/popup.html"></include>
 
-      <button class="menuBtn" type="button" id="toggle-theme-btn" >
-        <svg class="menu__buttom-icon moon is-hidden" width="40" height="40" id ="toggle-theme-icon">
-            <use href="./image/sprite.svg#dark-mode"></use>
-        </svg>
-        <svg class="menu__buttom-icon sun " width="40" height="40"  id ="toggle-theme-icon">
-            <use href="./image/sprite.svg#sun"></use>
-        </svg>
-      </button>
-      
-      
-      <div class="genres-nav-button">
-        <div class="genres-nav-button__line"></div>
-        <div class="genres-nav-button__line"></div>
-        <div class="genres-nav-button__line"></div>
-      </div>
-      
+  <button class="menuBtn" type="button" id="toggle-theme-btn">
+    <svg class="menu__buttom-icon moon is-hidden" width="40" height="40" id="toggle-theme-icon">
+      <use href="./image/sprite.svg#dark-mode"></use>
+    </svg>
+    <svg class="menu__buttom-icon sun " width="40" height="40" id="toggle-theme-icon">
+      <use href="./image/sprite.svg#sun"></use>
+    </svg>
   </button>
 
-</div>
-<div class="mobile-menu" id="style-1">
-  <ul class="mobile-menu-list list">
-  </ul>
+  <include src="./partials/menu-genres.html"></include>
 </div>

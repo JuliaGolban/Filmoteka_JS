@@ -202,12 +202,12 @@
   }
 }
 
-.checkbox:focus ~ .checkbox-agreement,
-.checkbox:hover ~ .checkbox-agreement {
+.checkbox:focus~.checkbox-agreement,
+.checkbox:hover~.checkbox-agreement {
   border-color: var(--accent-color);
 }
 
-.checkbox:checked + .checkbox-agreement {
+.checkbox:checked+.checkbox-agreement {
   background-color: var(--accent-color);
   border-color: var(--accent-color);
   background-origin: border-box;
@@ -230,9 +230,47 @@
   background-color: rgba(228, 121, 13, 0.1);
   border-radius: 4px;
   transition: background-color var(--anim), box-shadow var(--anim);
+  cursor: pointer;
 
   &:hover,
   &:focus {
     background-color: var(--bgc-accent);
   }
+}
+
+.btn__logout {
+  width: 200px;
+  letter-spacing: .06em;
+  color: var(--fon-color);
+  transition: background-color var(--anim), box-shadow var(--anim);
+  background-color: #e4790d1a;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 55px;
+  font-size: 16px;
+  line-height: 1.88;
+  box-shadow: 0 4px 4px #00000026;
+  cursor: pointer;
+
+  &:hover,
+  &:focus{
+    background-color: var(--bgc-accent)
+
+  }
+}
+
+.success-message-form{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.succes-title{
+  font-size: 26px;
+  text-align: center;
+}
+
+.errorlabel{
+  margin-top: 20px;
+  color: var(--cl-txt-red);
 }

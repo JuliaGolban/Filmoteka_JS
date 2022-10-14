@@ -1,54 +1,24 @@
-import axios from 'axios';
-import { clearData, getFromStorage, saveToStorage } from './localeCommon';
+import { getFromStorage, saveToStorage } from './localeCommon';
+import { getMovieById } from './modal';
 import getRefs from './getRefs';
 const refs = getRefs();
 
-refs.addToWatchedBtn.addEventListener('click', onBtnClick);
-refs.addToQueueBtn.addEventListener('click', onBtnClick);
-
-function onBtnClick(e) {
-  e.preventDefault();
-
+export function onBtnClick(e) {
   let movieId = Number(refs.modal.dataset.action);
   let movie = getMovieById(movieId);
   let click = String(e.currentTarget.dataset.click);
+  const btn = e.currentTarget;
 
-  // debugger;
   //ADD TO WATCHED
   if (click === 'watched') {
     addToStorage(movie, 'watched');
-    checkMovieInStack(movieId);
+    checkMovieInStack(movieId, btn, 'watched');
   }
   //ADD TO QUEUE
   if (click === 'queue') {
     addToStorage(movie, 'queue');
-    checkMovieInStack(movieId);
+    checkMovieInStack(movieId, btn, 'queue');
   }
-}
-
-function getMovieById(id) {
-  const movies = getFromStorage('movies');
-  const result = movies.results.find(movie => movie.id === Number(id));
-  return result;
-}
-
-/*
-  отримуємо поточні дані зі сховища, якщо немає - записуємо пустий масив
-*/
-function getCurrentStorage() {
-  let watched = localStorage.getItem('watched');
-  let queue = localStorage.getItem('queue');
-  if (watched === null) {
-    watched = [];
-  } else {
-    watched = JSON.parse(watched);
-  }
-  if (queue === null) {
-    queue = [];
-  } else {
-    queue = JSON.parse(queue);
-  }
-  return [watched, queue];
 }
 
 /**
@@ -107,25 +77,47 @@ function addToStorage(movieObj, movieType) {
 перевірка наявності фільму в сховищі за ключем
  */
 
-function checkMovieInStack(id) {
+function checkMovieInStack(id, btn, key) {
   const check = function (storagekey) {
     let stack = getFromStorage(storagekey);
-    const stackId = stack.map(movie => movie.id);
-    if (stackId.includes(id)) {
-      return true;
-    } else {
-      return false;
-    }
+    return stack.some(movie => movie.id === id);
   };
-
-  if (check('watched')) {
-    refs.addToWatchedBtn.textContent = 'REMOVE';
-  } else if (!check('watched')) {
-    refs.addToWatchedBtn.textContent = 'ADD TO WATCHED';
-  }
-  if (check('queue')) {
-    refs.addToQueueBtn.textContent = 'REMOVE';
-  } else if (!check('queue')) {
-    refs.addToQueueBtn.textContent = `ADD TO QUEUE`;
+  if (key === 'watched') {
+    if (check('watched')) {
+      btn.textContent = 'REMOVE';
+      return;
+    } else {
+      btn.textContent = 'ADD TO WATCHED';
+      return;
+    }
+  } else {
+    if (check('queue')) {
+      btn.textContent = 'REMOVE';
+      return;
+    } else {
+      btn.textContent = `ADD TO QUEUE`;
+      return;
+    }
   }
 }
+
+/*
+  отримуємо поточні дані зі сховища
+*/
+function getCurrentStorage() {
+  let watched = localStorage.getItem('watched');
+  let queue = localStorage.getItem('queue');
+  if (watched === null) {
+    watched = [];
+  } else {
+    watched = JSON.parse(watched);
+  }
+  if (queue === null) {
+    queue = [];
+  } else {
+    queue = JSON.parse(queue);
+  }
+  return [watched, queue];
+}
+
+export { checkMovieInStack, getCurrentStorage };

@@ -11,39 +11,42 @@
                 <use href="./image/sprite.svg#icon-close"></use>
             </svg>
         </button>
-        <b class="modal-title">Fill in the form</b>
+        <b class="modal-title modal-title-js">Fill in the form</b>
 
-        <form class="form-user" autocomplete="off">
+        <form class="form-user form-js" autocomplete="off">
             <label class="form-group" for="mail">
                 <span class="form-label">Mail</span>
                 <span class="input-container">
-                    <input class="input-form" type="email" name="mail" id="txtEmail">
+                    <input class="input-form" type="email" required name="mail" id="txtEmail" >
                 </span>
             </label>
             <label class="form-group" for="password">
                 <span class="form-label">
                     <span class="form-label">Password</span>
                     <span class="input-container">
-                        <input class="input-form" type="password" name="password" id="txtPassword" minlength="5"
+                        <input class="input-form" type="password" required name="password" id="txtPassword" minlength="5"
                             maxlength="12" />
                     </span>
             </label>
+
             <button class="btn-submit" type="submit" id="btnSignup">Sign up</button>
+            <button class="btn-submit" type="submit" id="btnLogin">Log in</button>
 
             <div id="divLoginError" class="group">
-                <div id="lblLoginErrorMessage" class="errorlabel">Error message</div>
+                <div id="lblLoginErrorMessage" class="errorlabel"></div>
             </div>
+            
         </form>
-    </div>
-    <div id="app">
-        <div class="header">
-            <h1>Welcome to Your acount</h1>
+        <div id="app">
+            <div class="header is-hidden" id="success-enter">
+                <h1 class="succes-title">Welcome to Your account</h1>
+            </div>
+            <form class="success-message-form">
+                <div class="group">
+                    <div id="lblAuthState" class="authlabel is-hidden"></div>
+                </div>
+                <button id="btnLogout" type="button" class="btn__logout is-hidden">Log out</button>
+            </form>
         </div>
-        <form>
-            <div class="group">
-                <div id="lblAuthState" class="authlabel"></div>
-            </div>
-            <button id="btnLogout" type="button" class="button buttonBlue">Log out</button>
-        </form>
     </div>
 </div>

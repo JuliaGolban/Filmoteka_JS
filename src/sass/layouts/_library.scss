@@ -1,5 +1,11 @@
 .title {
+    margin-top: 60px;
     text-align: center;
+    font-size: 18px;
+
+    @include mq(tablet) {
+        font-size: 22px;
+    }
 }
 
 .title.is-hidden {

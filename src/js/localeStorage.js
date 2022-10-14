@@ -7,7 +7,7 @@ export function onBtnClick(e) {
   let movieId = Number(refs.modal.dataset.action);
   let movie = getMovieById(movieId);
   let click = String(e.currentTarget.dataset.click);
-  const btn = e.target;
+  const btn = e.currentTarget;
 
   //ADD TO WATCHED
   if (click === 'watched') {
@@ -102,7 +102,7 @@ function checkMovieInStack(id, btn, key) {
 }
 
 /*
-  отримуємо поточні дані зі сховища, якщо немає - записуємо пустий масив
+  отримуємо поточні дані зі сховища
 */
 function getCurrentStorage() {
   let watched = localStorage.getItem('watched');

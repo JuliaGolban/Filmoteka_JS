@@ -7,22 +7,28 @@ const refs = getRefs();
 refs.btnWatched.addEventListener('click', clickOnWatched);
 refs.btnQueue.addEventListener('click', clickOnQueue);
 
+clickOnWatched();
+
 function clickOnWatched() {
-  removeMarkupMovieCard();
-  getCurrentStorage();
   refs.btnWatched.classList.add('--active-btn');
   refs.btnQueue.classList.remove('--active-btn');
+  let stack = getFromStorage('watched');
+  if (!stack) {
+    return refs.title.classList.remove('is-hidden');
+  }
+  removeMarkupMovieCard();
   let results = getFromStorage('watched');
   renderMarkupMovieCard({ results });
 }
 
 function clickOnQueue() {
-  removeMarkupMovieCard();
-  getCurrentStorage();
   refs.btnQueue.classList.add('--active-btn');
   refs.btnWatched.classList.remove('--active-btn');
+  let stack = getFromStorage('queue');
+  if (!stack) {
+    return refs.title.classList.remove('is-hidden');
+  }
+  removeMarkupMovieCard();
   let results = getFromStorage('queue');
   renderMarkupMovieCard({ results });
 }
-
-clickOnWatched();

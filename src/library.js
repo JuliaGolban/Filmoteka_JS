@@ -5,4 +5,4 @@ import './js/scrollTo';
 import './js/sortLibrary';
 import './js/popup';
 import './js/firebase';
-// import './js/switcher';
+import './js/theme';

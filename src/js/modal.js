@@ -112,11 +112,11 @@ function renderMarkupMovieModal({
               <p class="movie-modal__about">About</p>
               <p class="movie-modal__overview">${overview}</p>
               <div class="movie-modal__button-container">
-      <button class="movie-modal__button-orange" type="button" data-click="watched">
-        <span class="movie-modal__button-text-orange">Add to watched</span>
-      </button>
-      <button class="movie-modal__button" type="button" data-click="queue">
-        <span class="movie-modal__button-text">Add to queue</span>
-      </button>
-    </div>`);
+                  <button class="movie-modal__button-orange" type="button" data-click="watched">
+                    <span class="movie-modal__button-text-orange">Add to watched</span>
+                  </button>
+                  <button class="movie-modal__button" type="button" data-click="queue">
+                    <span class="movie-modal__button-text">Add to queue</span>
+                  </button>
+                </div>`);
 }

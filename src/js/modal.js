@@ -1,12 +1,11 @@
 import { getGenresLocalStorege } from './api-genres';
+import { getFromStorage } from './localeCommon';
+import { onBtnClick } from './localeStorage';
 import getRefs from './getRefs';
-import { clearData, getFromStorage, saveToStorage } from './localeCommon';
-
-// console.log(getFromStorage());
 
 const refs = getRefs();
 
-function getMovieById(id) {
+export function getMovieById(id) {
   const movies = getFromStorage('movies');
   const result = movies.results.find(movie => movie.id === Number(id));
   return result;
@@ -26,6 +25,12 @@ refs.gallery.addEventListener('click', e => {
   const movie = getMovieById(movieId);
   refs.modalEl.classList.remove('is-hidden');
   renderMarkupMovieModal(movie);
+  document
+    .querySelector('[data-click="watched"]')
+    .addEventListener('click', onBtnClick);
+  document
+    .querySelector('[data-click="queue"]')
+    .addEventListener('click', onBtnClick);
 });
 
 refs.closeBtn.addEventListener('click', closeModal);
@@ -64,9 +69,9 @@ function renderMarkupMovieModal({
 }) {
   refs.modalContainer.innerHTML = '';
   let name = getGenresLocalStorege(genre_ids);
-
+  refs.modal.dataset.action = id;
   return (refs.modalContainer.innerHTML = `
-    <div movie-modal__image-container data-year=${release_date} data-action=${id}>
+    <div class="movie-modal__image-container" data-year=${release_date} data-action=${id}>
     ${
       poster_path
         ? `<img src= "https://image.tmdb.org/t/p/w500${poster_path}"`
@@ -107,12 +112,11 @@ function renderMarkupMovieModal({
               <p class="movie-modal__about">About</p>
               <p class="movie-modal__overview">${overview}</p>
               <div class="movie-modal__button-container">
-    
-              <button class="movie-modal__button-orange" type="button" data-movie="597922" data-click="watched">
-                      <span class="movie-modal__button-text-orange">Add to watched</span>
-                    </button>
-              <button class="movie-modal__button" type="button" data-movie="597922" data-click="queue">
-                      <span class="movie-modal__button-text">Add to queue</span>
-                    </button>
-            </div>`);
+                  <button class="movie-modal__button-orange" type="button" data-click="watched">
+                    <span class="movie-modal__button-text-orange">Add to watched</span>
+                  </button>
+                  <button class="movie-modal__button" type="button" data-click="queue">
+                    <span class="movie-modal__button-text">Add to queue</span>
+                  </button>
+                </div>`);
 }

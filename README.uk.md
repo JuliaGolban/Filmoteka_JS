@@ -1,4 +1,4 @@
-**Read in other languages: [Русский](README.md), [Polski](README.pl.md).**
+**Read: [About project](README.md), [Parcel](README.uk.md).**
 
 # Parcel template
 

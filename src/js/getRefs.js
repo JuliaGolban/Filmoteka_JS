@@ -13,6 +13,7 @@ export default function getRefs() {
     // Registration modal window
     openModalUserBtn: document.querySelector('[data-modal-user-open]'),
     closeModalUserBtn: document.querySelector('[data-modal-user-close]'),
+    enterModalUserBtn: document.querySelector('button.enter'),
     modalUser: document.querySelector('[data-modal-user]'),
 
     // Firebase

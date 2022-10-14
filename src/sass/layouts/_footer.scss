@@ -1,20 +1,16 @@
 .footer {
-    // position: fixed;
-    // bottom: 0;
+    background-color: var(--bgc-second);
+    width: 100vw;
 
     &__container {
-        width: 100vw;
-        margin: 0 auto;
-        padding: 28px 20px;
-
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         align-content: center;
+        padding: 28px 20px;
 
         color: var(--cl-txt-second);
-        background-color: var(--bgc-second);
     }
 }
 
@@ -22,10 +18,6 @@
     margin-bottom: 10px;
 
     @include mq(tablet) {
-        margin-bottom: 0;
-    }
-
-    @media screen and (min-width: 502px) {
         margin-bottom: 0;
     }
 }

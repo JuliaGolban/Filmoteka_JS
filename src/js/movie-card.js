@@ -1,6 +1,7 @@
 import { getGenresLocalStorege } from './api-genres';
 import getRefs from './getRefs';
 const refs = getRefs();
+import trailer from '../js/trailers'
 
 function renderMarkupMovieCard({ results }) {
   const markup = results
@@ -8,6 +9,9 @@ function renderMarkupMovieCard({ results }) {
       let name = getGenresLocalStorege(genre_ids);
       return `
                 <li class="gallery__item" data-id="${id}">
+                <div class="btn-id">
+      <button data-id='${id}' class="btn-youtube">
+      </div>
                         ${
                           poster_path
                             ? `<img src="https://image.tmdb.org/t/p/w500${poster_path}"`
@@ -28,6 +32,7 @@ function renderMarkupMovieCard({ results }) {
     })
     .join('');
   refs.galleryList.insertAdjacentHTML('beforeend', markup);
+  trailer.createTrailerLink(document.querySelectorAll('.btn-youtube'));
 }
 
 function removeMarkupMovieCard() {

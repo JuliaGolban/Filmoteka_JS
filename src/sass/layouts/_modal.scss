@@ -4,7 +4,6 @@
 
      z-index: 20;
     background-color: var(--bgc-main);
-    cursor: pointer;
     
     @include mq(mobile-only) {
         & {
@@ -62,9 +61,16 @@
     padding: 0;
 
 }
+.movie-modal__close-button {
+    cursor: pointer;
+}
 
 .modal__icon-close {
     fill: var(--bgc-black);
+}
+.modal__icon-close:hover {
+    transition: var(--slow-anim);
+    fill: var(--bgc-accent);
 }
 
 .movie-modal__image {

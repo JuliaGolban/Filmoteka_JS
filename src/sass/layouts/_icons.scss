@@ -23,4 +23,9 @@
 
 .menu__buttom-icon{
     fill: var(--bgc-black);
+    cursor: pointer;
+    transition: var(--slow-anim);
+}
+.menu__buttom-icon:hover {
+    fill: var(--bgc-accent);
 }

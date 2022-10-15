@@ -23,18 +23,7 @@ function scrollFunction() {
         refs.secondLine.classList.remove('genres-nav-button__line--2');
         refs.thirdLine.classList.remove('genres-nav-button__line--3');
     }
-
 }
-
-
-// if(!refs.scrollToTop.classList.contains('is-hidden')) {
-//   setTimeout(()=>{
-//     refs.menu.classList.remove('mobile-menu--open');
-//     refs.firstLine.classList.toggle('genres-nav-button__line--1');
-//     refs.secondLine.classList.toggle('genres-nav-button__line--2');
-//     refs.thirdLine.classList.toggle('genres-nav-button__line--3');
-//   },5000)
-// }
 
 function renderGenres(results) {
   refs.menuList.innerHTML = '';

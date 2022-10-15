@@ -65,7 +65,7 @@
     padding: 0;
 
     border-radius: 50%;
-    color: var(--cl-txt-main);
+    fill: var(--cl-txt-main);
     background-color: var(--bgc-main);
 
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -75,7 +75,7 @@
 
     &:hover,
     &:focus {
-      fill: var(--accent-color);
+      fill: var(--bgc-accent);
     }
   }
 
@@ -126,12 +126,6 @@
   cursor: pointer;
 }
 
-// .form-group:focus-within .input-form,
-// .form-group:focus-within .form-comments {
-//   outline: 0;
-//   border-color: var(--bgc-black);
-// }
-
 .input-form .form-label {
   display: inline-block;
   margin-bottom: 4px;
@@ -151,10 +145,17 @@
   border: none;
   color: var(--fon-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  background-color: var(--bgc-accent);
+  background-color: #0000;
+  border: 1px solid #fff;
   border-radius: 4px;
   transition: background-color var(--anim), box-shadow var(--anim);
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: var(--bgc-accent);
+    border: 1px solid var(--cl-txt-accent);
+  }
 
   &#btnSignup {
     margin-bottom: 10px;
@@ -166,8 +167,8 @@
   letter-spacing: 0.06em;
   color: var(--fon-color);
   transition: background-color var(--anim), box-shadow var(--anim);
-  background-color: #e4790d1a;
-  border: none;
+  background-color: #0000;
+  border: 1px solid #fff;
   border-radius: 4px;
   padding: 10px 55px;
   font-size: 16px;
@@ -178,6 +179,7 @@
   &:hover,
   &:focus {
     background-color: var(--bgc-accent);
+    border: 1px solid var(--cl-txt-accent);
   }
 }
 

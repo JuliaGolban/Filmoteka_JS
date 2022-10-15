@@ -12,6 +12,11 @@
 
         color: var(--cl-txt-second);
     }
+
+    &.fixed {
+        position: fixed;
+        bottom: 0;
+    }
 }
 
 .copyright {

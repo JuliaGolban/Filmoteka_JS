@@ -22,10 +22,10 @@ function createTrailerLink(elementRef) {
           api_key: API_KEYS,
         },
       });
-      console.log(response.data.results);
+     
       const data =  response.data.results;
       const id = data[0].key;
-    console.log(id);
+    
     const instance = basicLightbox.create(`
     <div class="modal">
     <iframe width="560" height="315" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

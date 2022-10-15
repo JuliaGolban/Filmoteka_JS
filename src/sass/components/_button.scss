@@ -1,39 +1,53 @@
 .button-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 
-    @include mq(mobile-only){
-        margin-top: 66px;
+  @include mq(mobile-only) {
+    margin-top: 66px;
+  }
+
+  & .btn {
+    width: 152px;
+    height: 44px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #ffffff;
+    text-transform: uppercase;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 16px;
+
+      @include mq(tablet-only) {
+        margin-right: 32px;
+      }
+
+      @include mq(mobile-only) {
+        margin-right: 20px;
+      }
     }
 
-    & .btn {
-        width: 152px;
-        height: 44px;
-        border-radius: 5px;
-        background-color: transparent;
-        color: #ffffff;
-        text-transform: uppercase;
-        border: 1px solid #ffffff;
-        cursor: pointer;
-
-        &:not(:last-child) {
-            margin-right: 16px;
-
-            @include mq(tablet-only) {
-                margin-right: 32px;
-            }
-
-            @include mq(mobile-only) {
-                margin-right: 20px;
-            }
-        }
-
-        &.--active-btn {
-            background-color: var(--cl-txt-accent);
-            border: 1px solid var(--cl-txt-accent);
-        }
+    &.--active-btn {
+      background-color: var(--cl-txt-accent);
+      border: 1px solid var(--cl-txt-accent);
     }
+  }
 
-    align-self: flex-end;
+  align-self: flex-end;
+}
+
+.btn-youtube {
+  position: absolute;
+  z-index: 1;
+  width: 275px;
+  height: 40px;
+  margin-left: 2px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  background-image: url(/src/image/youtube-icon.svg);
+  background-color: initial;
 }

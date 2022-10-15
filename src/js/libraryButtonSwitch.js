@@ -27,20 +27,14 @@ if (document.baseURI.includes(('library.html'))) {
     removeMarkupMovieCard();
     let results = getFromStorage('watched');
   
-    console.log(stack);
   
     let cut = 0;
     if (page > 1) {
       cut = page * 10;
     }
-    console.log(cut);
-
   
     let spliceData = stack.splice(cut, 20);
     totalPages = Math.ceil(results.length / 20);
-  
-    console.log(spliceData);
-    console.log(totalPages);
   
     renderMarkupMovieCard(spliceData);
   

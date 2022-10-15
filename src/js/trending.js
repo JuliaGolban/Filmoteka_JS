@@ -1,7 +1,6 @@
 import { getResponse } from './api-common';
 import { clearData } from './localeCommon';
 let partUrl = '';
-// let globalCurrentPage = 0;
 
 
 /**
@@ -9,8 +8,6 @@ let partUrl = '';
  * @param {Number} currentPage - current page for search
  * @param {Number} totalPages  - all pages for search
  */
-
-clearData();
 
 trending();
 

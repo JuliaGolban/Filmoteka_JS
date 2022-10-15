@@ -91,7 +91,6 @@ paginationBox.addEventListener('click', onPaginationBoxClick);
 function onPaginationBoxClick(evt) {
   
 
-  // debugger;
 
   let partUrl = localStorage.getItem('paramsPart');
 

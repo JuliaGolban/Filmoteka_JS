@@ -1,5 +1,5 @@
 import getRefs from './getRefs';
-import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
+import {removeMarkupMovieCard} from './movie-card';
 import { getGenresLocalStorege } from './api-genres';
 
 const refs = getRefs();
@@ -43,6 +43,7 @@ function getFromStorageGenre() {
 }
 }
 
+//sort
 refs.menuList.addEventListener('click', sortByGenre)
 
 function sortByGenre(event) {
@@ -85,13 +86,13 @@ function sortByGenre(event) {
       removeMarkupMovieCard();
     }
   })
-  renderMarkupMovieCard(arr);
+  renderMarkupCardLibrary(arr);
   if(arr.length===0) {
     refs.title.classList.remove('is-hidden')
   }
 
 
-  function renderMarkupMovieCard(results) {
+  function renderMarkupCardLibrary(results) {
     const markup = results
       .map(({ id, poster_path, genre_ids, title, release_date }) => {
         let name = getGenresLocalStorege(genre_ids);

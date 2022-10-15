@@ -28,7 +28,7 @@ export default function pagination(totalPages, currentPage) {
 
   if (window.innerWidth > 320 && window.innerWidth < 767.98) {
     if (currentPage > 1) {
-      markup += `<li class="pagination__left pagination__elem"><svg id="svg__left" class="icon__arrow icon__arrow--left" width="10px" height="10px"><use id="use__left" href="${sprite}#arrow-pag"></use></svg></li>`;
+      markup += `<li class="pagination__left pagination__elem"><svg id="svg__left" class="icon__arrow icon__arrow--left" width="10px" height="10px"><use id="use__left" href="${sprite}#arrow-right"></use></svg></li>`;
     }
     if (currentPage > 2) {
       markup += `<li class="pagination__elem pagination__elem--page">${beforeTwoPage}</li>`;
@@ -44,11 +44,11 @@ export default function pagination(totalPages, currentPage) {
       markup += `<li class="pagination__elem pagination__elem--page">${afterTwoPage}</li>`;
     }
     if (totalPages > currentPage) {
-      markup += `<li class="pagination__right pagination__elem"><svg id="svg__right" class="icon__arrow icon__arrow--right" width="10px" height="10px"><use id="use__right" href="${sprite}#arrow-pag"></use></svg><li>`;
+      markup += `<li class="pagination__right pagination__elem"><svg id="svg__right" class="icon__arrow icon__arrow--right" width="10px" height="10px"><use id="use__right" href="${sprite}#arrow-right"></use></svg><li>`;
     }
   } else {
     if (currentPage > 1) {
-      markup += `<li class="pagination__left pagination__elem"><svg id="svg__left" class="icon__arrow icon__arrow--left" width="10px" height="10px"><use id="use__left" class="use" href="${sprite}#arrow-pag"></use></svg></li>`;
+      markup += `<li class="pagination__left pagination__elem"><svg id="svg__left" class="icon__arrow icon__arrow--left" width="10px" height="10px"><use id="use__left" class="use" href="${sprite}#arrow-right"></use></svg></li>`;
     }
     if (currentPage > 1) {
       markup += `<li class="pagination__elem pagination__elem--page pagination__elem--cutPage">1</li>`;
@@ -74,7 +74,7 @@ export default function pagination(totalPages, currentPage) {
     }
     if (totalPages > currentPage) {
       markup += `<li class="pagination__elem pagination__elem--page pagination__elem--cutPage">${totalPages}</li>`;
-      markup += `<li class="pagination__right pagination__elem"><svg id="svg__right" class="icon__arrow icon__arrow--right" width="10px" height="10px"><use id="use__right" href="${sprite}#arrow-pag"></use></svg><li>`;
+      markup += `<li class="pagination__right pagination__elem"><svg id="svg__right" class="icon__arrow icon__arrow--right" width="10px" height="10px"><use id="use__right" href="${sprite}#arrow-right"></use></svg><li>`;
     }
   }
 

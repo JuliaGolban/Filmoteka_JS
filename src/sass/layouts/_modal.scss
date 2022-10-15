@@ -230,6 +230,9 @@
         justify-content: left;
     }
 }
+.movie-modal__button-container:hover button {
+    cursor: pointer;
+}
 
 .movie-modal__button-orange {
     border: none;

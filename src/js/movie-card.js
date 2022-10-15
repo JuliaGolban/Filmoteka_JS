@@ -3,7 +3,7 @@ import getRefs from './getRefs';
 const refs = getRefs();
 import trailer from '../js/trailers'
 
-function renderMarkupMovieCard({ results }) {
+function renderMarkupMovieCard(results) {
   const markup = results
     .map(({ id, poster_path, genre_ids, title, release_date }) => {
       let name = getGenresLocalStorege(genre_ids);

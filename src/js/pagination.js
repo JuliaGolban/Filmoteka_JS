@@ -1,5 +1,9 @@
 import { getResponse } from './api-common';
+import { clickOnWatched, clickOnQueue } from './libraryButtonSwitch';
 import sprite from '../image/sprite.svg';
+import { onBtnClick } from './localeStorage';
+import getRefs from './getRefs';
+const refs = getRefs();
 
 document
   .querySelector('main')
@@ -18,17 +22,17 @@ let globalCurrentPage = 0;
  * @param {Number} globalCurrentPage - current page for click search
  * @param {Number} totalPages  - all pages for search
  */
-export default function pagination(totalPages, currentPage) {
+function pagination(totalPages, currentPage) {
   let markup = '';
   let beforeTwoPage = currentPage - 2;
   let beforePage = currentPage - 1;
   let afterPage = currentPage + 1;
   let afterTwoPage = currentPage + 2;
-  globalCurrentPage = currentPage;
+  let globalCurrentPage = currentPage;
 
   if (window.innerWidth > 320 && window.innerWidth < 767.98) {
     if (currentPage > 1) {
-      markup += `<li class="pagination__left pagination__elem"><svg id="svg__left" class="icon__arrow icon__arrow--left" width="10px" height="10px"><use id="use__left" href="${sprite}#arrow-pag"></use></svg></li>`;
+      markup += `<li class="pagination__left pagination__elem"><svg id="svg__left" class="icon__arrow icon__arrow--left" width="10px" height="10px"><use id="use__left" href="${sprite}#arrow-right"></use></svg></li>`;
     }
     if (currentPage > 2) {
       markup += `<li class="pagination__elem pagination__elem--page">${beforeTwoPage}</li>`;
@@ -44,11 +48,11 @@ export default function pagination(totalPages, currentPage) {
       markup += `<li class="pagination__elem pagination__elem--page">${afterTwoPage}</li>`;
     }
     if (totalPages > currentPage) {
-      markup += `<li class="pagination__right pagination__elem"><svg id="svg__right" class="icon__arrow icon__arrow--right" width="10px" height="10px"><use id="use__right" href="${sprite}#arrow-pag"></use></svg><li>`;
+      markup += `<li class="pagination__right pagination__elem"><svg id="svg__right" class="icon__arrow icon__arrow--right" width="10px" height="10px"><use id="use__right" href="${sprite}#arrow-right"></use></svg><li>`;
     }
   } else {
     if (currentPage > 1) {
-      markup += `<li class="pagination__left pagination__elem"><svg id="svg__left" class="icon__arrow icon__arrow--left" width="10px" height="10px"><use id="use__left" class="use" href="${sprite}#arrow-pag"></use></svg></li>`;
+      markup += `<li class="pagination__left pagination__elem"><svg id="svg__left" class="icon__arrow icon__arrow--left" width="10px" height="10px"><use id="use__left" class="use" href="${sprite}#arrow-right"></use></svg></li>`;
     }
     if (currentPage > 1) {
       markup += `<li class="pagination__elem pagination__elem--page pagination__elem--cutPage">1</li>`;
@@ -74,7 +78,7 @@ export default function pagination(totalPages, currentPage) {
     }
     if (totalPages > currentPage) {
       markup += `<li class="pagination__elem pagination__elem--page pagination__elem--cutPage">${totalPages}</li>`;
-      markup += `<li class="pagination__right pagination__elem"><svg id="svg__right" class="icon__arrow icon__arrow--right" width="10px" height="10px"><use id="use__right" href="${sprite}#arrow-pag"></use></svg><li>`;
+      markup += `<li class="pagination__right pagination__elem"><svg id="svg__right" class="icon__arrow icon__arrow--right" width="10px" height="10px"><use id="use__right" href="${sprite}#arrow-right"></use></svg><li>`;
     }
   }
 
@@ -98,7 +102,19 @@ function onPaginationBoxClick(evt) {
     evt.target.id === 'svg__left' ||
     evt.target.id === 'use__left'
   ) {
-    getResponse((globalCurrentPage -= 1), partUrl);
+    if (
+      evt.target.baseURI.includes('library.html') &&
+      refs.btnWatched.classList.contains('--active-btn')
+    ) {
+      clickOnWatched((globalCurrentPage -= 1));
+    } else if (
+      evt.target.baseURI.includes('library.html') &&
+      refs.btnQueue.classList.contains('--active-btn')
+    ) {
+      clickOnQueue((globalCurrentPage -= 1));
+    } else {
+      getResponse((globalCurrentPage -= 1), partUrl);
+    }
     return;
   }
   if (
@@ -106,12 +122,36 @@ function onPaginationBoxClick(evt) {
     evt.target.id === 'svg__right' ||
     evt.target.id === 'use__right'
   ) {
-    getResponse((globalCurrentPage += 1), partUrl);
+    if (evt.target.baseURI.includes('library.html')) {
+      if (refs.btnWatched.classList.contains('--active-btn')) {
+        clickOnWatched((globalCurrentPage += 1));
+        return;
+      }
+      if (refs.btnQueue.classList.contains('--active-btn')) {
+        clickOnQueue((globalCurrentPage += 1));
+        return;
+      }
+    } else {
+      getResponse((globalCurrentPage += 1), partUrl);
+    }
     return;
   }
   if (evt.target.textContent === '...') {
     return;
   }
   const page = Number(evt.target.textContent);
-  getResponse(page, partUrl);
+
+  if (evt.target.baseURI.includes('library.html')) {
+    if (refs.btnWatched.classList.contains('--active-btn')) {
+      clickOnWatched(page);
+      return;
+    }
+    if (refs.btnQueue.classList.contains('--active-btn')) {
+      clickOnQueue(page);
+    }
+  } else {
+    getResponse(page, partUrl);
+  }
 }
+
+export { pagination };

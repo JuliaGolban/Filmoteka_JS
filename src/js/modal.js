@@ -8,7 +8,7 @@ const refs = getRefs();
 
 export function getMovieById(id) {
   const movies = getFromStorage('movies');
-  const result = movies.results.find(movie => movie.id === Number(id));
+  const result = movies.find(movie => movie.id === Number(id));
   return result;
 }
 

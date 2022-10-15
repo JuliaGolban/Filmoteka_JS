@@ -1,7 +1,7 @@
 import getRefs from './getRefs';
 const refs = getRefs();
-console.log('refs', refs.galleryList.hasChildNodes);
+console.log('refs', refs);
 
-if (refs.galleryList.hasChildNodes) {
+if (refs.galleryList.childElementCount > 9) {
   refs.footer.classList.remove('fixed');
 }

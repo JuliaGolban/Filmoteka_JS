@@ -62,5 +62,8 @@ export default function getRefs() {
     //library page buttons
     btnWatched: document.querySelector('.watched'),
     btnQueue: document.querySelector('.queue'),
+
+    // Footer
+    footer: document.querySelector('#footer'),
   };
 }

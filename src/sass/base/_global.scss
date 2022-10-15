@@ -21,11 +21,3 @@ body {
 
     position: relative;
 }
-
-main {
-    min-height: calc(100vh - 430px);
-
-    @include mq(tablet) {
-        min-height: calc(100vh - 400px);
-    }
-}

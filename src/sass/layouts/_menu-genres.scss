@@ -1,13 +1,11 @@
 .menu.container {
     margin: 0;
-    padding: 0;
+    padding: 1px 6px;
 }
 
 .genres-nav-button {
-    width: 25px;
-    height: 25px;
-    margin: 14px;
-    margin-right: 0;
+    width: 30px;
+    height: 30px;
     right: 0;
     top: 0;
     z-index: 16;
@@ -25,7 +23,7 @@
         transition: var(--slow-anim);
 
         &:nth-of-type(2) {
-            margin: 0.2rem 0;
+            margin: 0.3rem 0;
         }
 
     }
@@ -64,7 +62,7 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        padding: 0;
+        padding: 0 32px;
 
         li {
             list-style: none;

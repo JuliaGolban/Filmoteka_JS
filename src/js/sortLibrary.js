@@ -43,18 +43,15 @@ function getFromStorageGenre() {
 }
 }
 
-refs.menuList.addEventListener('click', sortByGenre);
-
+refs.menuList.addEventListener('click', sortByGenre)
 
 function sortByGenre(event) {
     if (event.target.nodeName !== "A") {
       return;
     }
-    let storageKey = 'watched';
-    const result = getFromStorageMovies();
-    sortLibrary(result);
 
-    function getFromStorageMovies() {
+    let storageKey = 'watched';
+      function getFromStorageMovies() {
     try {
       const data = JSON.parse(localStorage.getItem(storageKey));
       return data;
@@ -63,35 +60,35 @@ function sortByGenre(event) {
       return null;
     }
   }
-  
-  function sortLibrary(result) {
-    const value = event.target.dataset.action;
-    //console.log('VALUE',value)
-    //console.log('RESULT',result)
-    const link = document.querySelectorAll('.mobile-menu-link');
-    console.log('sortByGenre ~ value', value);
-    for (let i = 0; i < link.length; i += 1) {
-      if (value === link[i].dataset.action) {
-        link[i].classList.add('active');
-      } else {
-        link[i].classList.remove('active');
-      }
+  const result = getFromStorageMovies();
+
+  const value = event.target.dataset.action;
+  const link = document.querySelectorAll('.mobile-menu-link');
+  console.log('sortByGenre ~ value', value);
+  for (let i = 0; i < link.length; i += 1) {
+    if (value === link[i].dataset.action) {
+      link[i].classList.add('active');
+    } else {
+      link[i].classList.remove('active');
     }
-    
+  }
+
   let arr =[];
-  console.log('RES', result)
+  
   result.forEach((elem)=>{
     if(elem.genre_ids.includes(Number(value))) {
+         removeMarkupMovieCard()
+         refs.title.classList.add('is-hidden')
          arr.push(elem);
-        renderMarkupMovieCard(arr);
-        console.log(elem);
     }
     else {
       removeMarkupMovieCard();
     }
   })
+  renderMarkupMovieCard(arr);
+  if(arr.length===0) {
+    refs.title.classList.remove('is-hidden')
   }
-  
 
 
   function renderMarkupMovieCard(results) {

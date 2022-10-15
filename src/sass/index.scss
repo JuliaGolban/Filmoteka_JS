@@ -1,8 +1,6 @@
 @import './utils/mixins';
 @import './utils/variables';
 @import './utils/placeholders';
-@import './utils/pagination';
-@import './utils/spinner';
 
 @import './base/common';
 @import './base/global';
@@ -15,6 +13,8 @@
 @import './components/backdrop';
 @import './components/button';
 @import './components/scrollbar';
+@import './components/pagination';
+@import './components/spinner';
 
 @import './layouts/header';
 @import './layouts/footer';

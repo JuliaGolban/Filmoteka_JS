@@ -29,22 +29,7 @@ function renderGenres(results) {
     .map(({ name }) => {
       return `<li class="mobile-menu-item"><a data-action="${name.toLowerCase()}">${name}</a></li>`;
     })
-    .join('');
-
-  menuList.insertAdjacentHTML('beforeend', markup);
-}
-
-function getFromStorage() {
-  try {
-    const data = JSON.parse(localStorage.getItem(storageKey));
-    return data;
-  } catch (err) {
-    console.warn('Cannot parse JSON from localStorage');
-    return null;
-  }
-}
-
-menuList.addEventListener('click', sortByGenre);
+    .join('');g
 
 function sortByGenre(event) {
   if (event.target.nodeName !== 'A') {

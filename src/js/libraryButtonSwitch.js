@@ -12,14 +12,19 @@ if (document.baseURI.includes(('library.html'))) {
   let globalCurrentPage = 0;
 
 
-  if (refs.btnWatched) { refs.btnWatched.addEventListener('click', clickOnWatched()) };
-  if (refs.btnQueue) { refs.btnQueue.addEventListener('click', clickOnQueue()) };
+  // if (refs.btnWatched) {
+    refs.btnWatched.addEventListener('click', clickOnWatched())
+  // };
+  // if (
+  //   refs.btnQueue) {
+      refs.btnQueue.addEventListener('click', clickOnQueue())
+  // };
 
   clickOnWatched(page);
 
   function clickOnWatched(page) {
-    if (refs.btnWatched) { refs.btnWatched.classList.add('--active-btn') };
-    if (refs.btnQueue) { refs.btnQueue.classList.remove('--active-btn') };
+    // if (refs.btnWatched) { refs.btnWatched.classList.add('--active-btn') };
+    // if (refs.btnQueue) { refs.btnQueue.classList.remove('--active-btn') };
     let stack = getFromStorage('watched');
     if (!stack) {
       if (refs.title) { refs.title.classList.remove('is-hidden') }; return

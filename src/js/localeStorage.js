@@ -7,17 +7,16 @@ export function onBtnClick(e) {
   let movieId = Number(refs.modal.dataset.action);
   let movie = getMovieById(movieId);
   let click = String(e.currentTarget.dataset.click);
-  const btn = e.currentTarget;
 
   //ADD TO WATCHED
   if (click === 'watched') {
     addToStorage(movie, 'watched');
-    checkMovieInStack(movieId, btn, 'watched');
+    checkMovieInStack(movieId, 'watched');
   }
   //ADD TO QUEUE
   if (click === 'queue') {
     addToStorage(movie, 'queue');
-    checkMovieInStack(movieId, btn, 'queue');
+    checkMovieInStack(movieId, 'queue');
   }
 }
 
@@ -77,27 +76,28 @@ function addToStorage(movieObj, movieType) {
 перевірка наявності фільму в сховищі за ключем
  */
 
-function checkMovieInStack(id, btn, key) {
+function checkMovieInStack(id, key) {
   const check = function (storagekey) {
     let stack = getFromStorage(storagekey);
     return stack.some(movie => movie.id === id);
   };
-  if (key === 'watched') {
-    if (check('watched')) {
-      btn.textContent = 'REMOVE';
-      return;
-    } else {
-      btn.textContent = 'ADD TO WATCHED';
-      return;
-    }
-  } else {
-    if (check('queue')) {
-      btn.textContent = 'REMOVE';
-      return;
-    } else {
-      btn.textContent = `ADD TO QUEUE`;
-      return;
-    }
+
+  let btnWatched = document.querySelector("[data-click='watched']");
+  let btnQueue = document.querySelector("[data-click='queue']");
+
+  if (check('watched')) {
+    btnWatched.classList.add('--active-btn');
+    btnWatched.textContent = 'REMOVE';
+  } else if (!check('watched')) {
+    btnWatched.classList.remove('--active-btn');
+    btnWatched.textContent = `ADD TO WATCHED`;
+  }
+  if (check('queue')) {
+    btnQueue.classList.add('--active-btn');
+    btnQueue.textContent = 'REMOVE';
+  } else if (!check('queue')) {
+    btnQueue.classList.remove('--active-btn');
+    btnQueue.textContent = `ADD TO QUEUE`;
   }
 }
 

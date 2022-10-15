@@ -8,19 +8,19 @@
         <b class="modal-login-title modal-title-js">Fill in the form</b>
 
         <form class="form-user form-js" autocomplete="off">
-            <label class="form-group" for="mail">
+            <label class="form-group">
                 <span class="form-label">E-mail:</span>
                 <span class="input-container">
-                    <input class="input-form" type="email" required name="email" id="txtEmail">
+                    <input class="input-form" type="email" name="mail" id="txtEmail" placeholder="exampel@gmail.com"
+                        required />
                 </span>
             </label>
             <label class="form-group" for="password">
-                <span class="form-label">
-                    <span class="form-label">Password:</span>
-                    <span class="input-container">
-                        <input class="input-form" type="password" required name="password" id="txtPassword"
-                            minlength="5" maxlength="12" />
-                    </span>
+                <span class="form-label">Password:</span>
+                <span class="input-container">
+                    <input class="input-form" type="password" name="password" id="txtPassword" minlength="5"
+                        maxlength="12" placeholder=" " required />
+                </span>
             </label>
 
             <button class="btn-submit" type="submit" id="btnSignup">Sign up</button>

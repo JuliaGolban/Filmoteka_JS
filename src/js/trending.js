@@ -1,6 +1,8 @@
 import { getResponse } from './api-common';
 import { clearData } from './localeCommon';
 let partUrl = '';
+// let globalCurrentPage = 0;
+
 
 /**
  * Create pagination
@@ -8,7 +10,7 @@ let partUrl = '';
  * @param {Number} totalPages  - all pages for search
  */
 
-// clearData();
+clearData();
 
 trending();
 

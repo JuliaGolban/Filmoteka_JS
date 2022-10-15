@@ -9,4 +9,5 @@ import './js/sortGenres';
 import './js/popup';
 import './js/firebase';
 import './js/theme';
-import './js/trailers'
+import './js/trailers';
+// import './js/libraryButtonSwitch';

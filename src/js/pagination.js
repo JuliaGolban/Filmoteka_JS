@@ -87,11 +87,7 @@ function pagination(totalPages, currentPage) {
 
 paginationBox.addEventListener('click', onPaginationBoxClick);
 
-
 function onPaginationBoxClick(evt) {
-  
-
-
   let partUrl = localStorage.getItem('paramsPart');
 
   if (evt.target.nodeName !== 'LI') {
@@ -106,45 +102,56 @@ function onPaginationBoxClick(evt) {
     evt.target.id === 'svg__left' ||
     evt.target.id === 'use__left'
   ) {
-      if (evt.target.baseURI.includes('library.html') && refs.btnWatched.classList.contains('--active-btn'))  {
-        clickOnWatched(globalCurrentPage -= 1);
-      } else if (evt.target.baseURI.includes('library.html') && refs.btnQueue.classList.contains('--active-btn')) {
-        clickOnQueue(globalCurrentPage -= 1);
-      }
-    else {
-        getResponse((globalCurrentPage -= 1), partUrl);
-      }
-        return;
+    if (
+      evt.target.baseURI.includes('library.html') &&
+      refs.btnWatched.classList.contains('--active-btn')
+    ) {
+      clickOnWatched((globalCurrentPage -= 1));
+    } else if (
+      evt.target.baseURI.includes('library.html') &&
+      refs.btnQueue.classList.contains('--active-btn')
+    ) {
+      clickOnQueue((globalCurrentPage -= 1));
+    } else {
+      getResponse((globalCurrentPage -= 1), partUrl);
+    }
+    return;
   }
   if (
     evt.target.className === 'pagination__right pagination__elem' ||
     evt.target.id === 'svg__right' ||
     evt.target.id === 'use__right'
   ) {
-      if (evt.target.baseURI.includes('library.html') && refs.btnWatched.classList.contains('--active-btn'))  {
-        clickOnWatched(globalCurrentPage += 1);
-      } else if (evt.target.baseURI.includes('library.html') && refs.btnQueue.classList.contains('--active-btn')) {
-        clickOnQueue(globalCurrentPage += 1);
+    if (evt.target.baseURI.includes('library.html')) {
+      if (refs.btnWatched.classList.contains('--active-btn')) {
+        clickOnWatched((globalCurrentPage += 1));
+        return;
       }
-    else {
-        getResponse((globalCurrentPage += 1), partUrl);
+      if (refs.btnQueue.classList.contains('--active-btn')) {
+        clickOnQueue((globalCurrentPage += 1));
+        return;
       }
+    } else {
+      getResponse((globalCurrentPage += 1), partUrl);
+    }
     return;
   }
   if (evt.target.textContent === '...') {
     return;
   }
   const page = Number(evt.target.textContent);
-  
-  if (evt.target.baseURI.includes('library.html') && refs.btnWatched.classList.contains('--active-btn'))  {
-    clickOnWatched(page);
-  } else if (evt.target.baseURI.includes('library.html') && refs.btnQueue.classList.contains('--active-btn')) {
-    clickOnQueue(page);
-  }
- else {
+
+  if (evt.target.baseURI.includes('library.html')) {
+    if (refs.btnWatched.classList.contains('--active-btn')) {
+      clickOnWatched(page);
+      return;
+    }
+    if (refs.btnQueue.classList.contains('--active-btn')) {
+      clickOnQueue(page);
+    }
+  } else {
     getResponse(page, partUrl);
   }
-  
 }
 
-export { pagination }
+export { pagination };

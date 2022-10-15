@@ -1,6 +1,7 @@
 import { getGenresLocalStorege } from './api-genres';
 import { getFromStorage } from './localeCommon';
 import { onBtnClick } from './localeStorage';
+import trailer from './trailers';
 import getRefs from './getRefs';
 
 const refs = getRefs();
@@ -72,6 +73,9 @@ function renderMarkupMovieModal({
   refs.modal.dataset.action = id;
   return (refs.modalContainer.innerHTML = `
     <div class="movie-modal__image-container" data-year=${release_date} data-action=${id}>
+    <div class="btn-id">
+      <button data-id='${id}' class="btn-youtube">
+    </div>
     ${
       poster_path
         ? `<img src= "https://image.tmdb.org/t/p/w500${poster_path}"`
@@ -118,5 +122,6 @@ function renderMarkupMovieModal({
                   <button class="movie-modal__button" type="button" data-click="queue">
                     <span class="movie-modal__button-text">Add to queue</span>
                   </button>
-                </div>`);
+                </div>`,
+                trailer.createTrailerLink(document.querySelectorAll('.btn-youtube')));
 }

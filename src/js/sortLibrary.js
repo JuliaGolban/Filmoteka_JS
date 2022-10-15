@@ -1,7 +1,6 @@
 import getRefs from './getRefs';
 import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
 import { getGenresLocalStorege } from './api-genres';
-//import {clearData, getFromStorage, saveToStorage, removeItem} from './localeCommon';
 
 const refs = getRefs();
 
@@ -44,14 +43,18 @@ function getFromStorageGenre() {
 }
 }
 
-refs.menuList.addEventListener('click', sortByGenre)
+refs.menuList.addEventListener('click', sortByGenre);
+
 
 function sortByGenre(event) {
     if (event.target.nodeName !== "A") {
       return;
     }
-    let storageKey = 'movies';
-      function getFromStorageMovies() {
+    let storageKey = 'watched';
+    const result = getFromStorageMovies();
+    sortLibrary(result);
+
+    function getFromStorageMovies() {
     try {
       const data = JSON.parse(localStorage.getItem(storageKey));
       return data;
@@ -60,28 +63,35 @@ function sortByGenre(event) {
       return null;
     }
   }
-  const result = getFromStorageMovies();
-//
-  const value = event.target.dataset.action;
-  console.log(value)
-  const elementsFilterGenre = result.results;
-  console.log('1',elementsFilterGenre)
-
-//
-
-    let arr =[];
-
-  elementsFilterGenre.forEach((elem)=>{
+  
+  function sortLibrary(result) {
+    const value = event.target.dataset.action;
+    //console.log('VALUE',value)
+    //console.log('RESULT',result)
+    const link = document.querySelectorAll('.mobile-menu-link');
+    console.log('sortByGenre ~ value', value);
+    for (let i = 0; i < link.length; i += 1) {
+      if (value === link[i].dataset.action) {
+        link[i].classList.add('active');
+      } else {
+        link[i].classList.remove('active');
+      }
+    }
+    
+  let arr =[];
+  console.log('RES', result)
+  result.forEach((elem)=>{
     if(elem.genre_ids.includes(Number(value))) {
-         removeMarkupMovieCard()
          arr.push(elem);
-        renderMarkupMovieCard(arr)
-
-        console.log(elem)
-
+        renderMarkupMovieCard(arr);
+        console.log(elem);
+    }
+    else {
+      removeMarkupMovieCard();
     }
   })
-
+  }
+  
 
 
   function renderMarkupMovieCard(results) {

@@ -2,17 +2,15 @@ import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 import "basiclightbox/dist/basicLightbox.min.css";
 
-
 const API_KEYS = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 
 function createTrailerLink(elementRef) {
   const trailerBtn = elementRef;
-
-  trailerBtn.forEach(el =>
+  trailerBtn.forEach(el => 
     el.addEventListener('click', e => {
       drawModalForTrailler(e.target.dataset.id);
     }),
-  );
+);
 }
 
   async function drawModalForTrailler(id_film) {
@@ -24,11 +22,16 @@ function createTrailerLink(elementRef) {
       });
      
       const data =  response.data.results;
-      const id = data[0].key;
-    
+      if(data.length === 0 || data === undefined) {
+        alert('Sorry, trailer not found.');
+        return
+      }
+      
+      const key = data[0].key;
+     
     const instance = basicLightbox.create(`
     <div class="modal">
-    <iframe width="100%" height="315" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="315" src='https://www.youtube.com/embed/${key}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   `);
           instance.show();
@@ -45,8 +48,9 @@ function createTrailerLink(elementRef) {
 
   }
 
-//   drawModalForTrailler(490132)
+//   Кнопка на закриття модального вікна
 
+//   drawModalForTrailler(99036)
 //   function modalClBtTrailer(instance) {
 //     const modalBox = document.querySelector('.basicLightbox__placeholder');
 //     console.log(modalBox)

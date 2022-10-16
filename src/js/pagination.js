@@ -28,7 +28,7 @@ function pagination(totalPages, currentPage) {
   let beforePage = currentPage - 1;
   let afterPage = currentPage + 1;
   let afterTwoPage = currentPage + 2;
-  let globalCurrentPage = currentPage;
+  globalCurrentPage = currentPage;
 
   if (window.innerWidth > 320 && window.innerWidth < 767.98) {
     if (currentPage > 1) {
@@ -102,20 +102,19 @@ function onPaginationBoxClick(evt) {
     evt.target.id === 'svg__left' ||
     evt.target.id === 'use__left'
   ) {
-    if (
-      evt.target.baseURI.includes('library.html') &&
-      refs.btnWatched.classList.contains('--active-btn')
-    ) {
-      clickOnWatched((globalCurrentPage -= 1));
-    } else if (
-      evt.target.baseURI.includes('library.html') &&
-      refs.btnQueue.classList.contains('--active-btn')
-    ) {
-      clickOnQueue((globalCurrentPage -= 1));
+    if (evt.target.baseURI.includes('library.html')) {
+      if (refs.btnWatched.classList.contains('--active-btn')) {
+        clickOnWatched((globalCurrentPage -= 1));
+        return;
+      }
+      else {
+        clickOnQueue((globalCurrentPage -= 1));
+        return;
+      }
     } else {
       getResponse((globalCurrentPage -= 1), partUrl);
+      return;
     }
-    return;
   }
   if (
     evt.target.className === 'pagination__right pagination__elem' ||
@@ -127,14 +126,14 @@ function onPaginationBoxClick(evt) {
         clickOnWatched((globalCurrentPage += 1));
         return;
       }
-      if (refs.btnQueue.classList.contains('--active-btn')) {
+      else {
         clickOnQueue((globalCurrentPage += 1));
         return;
       }
     } else {
       getResponse((globalCurrentPage += 1), partUrl);
+      return;
     }
-    return;
   }
   if (evt.target.textContent === '...') {
     return;

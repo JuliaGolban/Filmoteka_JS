@@ -3,6 +3,7 @@ import getRefs from './getRefs';
 const refs = getRefs();
 import trailer from '../js/trailers'
 
+// create markup movie-card
 function renderMarkupMovieCard(results) {
   const markup = results
     .map(({ id, poster_path, genre_ids, title, release_date }) => {
@@ -10,7 +11,7 @@ function renderMarkupMovieCard(results) {
       return `
                 <li class="gallery__item" data-id="${id}">
                 <div class="btn-id">
-      <button data-id='${id}' class="btn-youtube">
+      <button data-id='${id}' class="btn-youtube" aria-label="click here">
       </div>
                         ${
                           poster_path
@@ -35,6 +36,7 @@ function renderMarkupMovieCard(results) {
   trailer.createTrailerLink(document.querySelectorAll('.btn-youtube'));
 }
 
+// clears the contents of an element
 function removeMarkupMovieCard() {
   refs.galleryList.innerHTML = '';
 }

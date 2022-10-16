@@ -5,9 +5,19 @@ import trailer from './trailers';
 import getRefs from './getRefs';
 
 const refs = getRefs();
+let movies = [];
 
 export function getMovieById(id) {
-  const movies = getFromStorage('movies');
+  if (document.baseURI.includes('library.html')) {
+    if (refs.btnWatched.classList.contains('--active-btn')) {
+      movies = getFromStorage('watched');
+    } else {
+      movies = getFromStorage('queue');
+    }
+  } else {
+    movies = getFromStorage('movies');
+  }
+
   const result = movies.find(movie => movie.id === Number(id));
   return result;
 }
@@ -71,7 +81,8 @@ function renderMarkupMovieModal({
   refs.modalContainer.innerHTML = '';
   let name = getGenresLocalStorege(genre_ids);
   refs.modal.dataset.action = id;
-  return (refs.modalContainer.innerHTML = `
+  return (
+    (refs.modalContainer.innerHTML = `
     <div class="movie-modal__image-container" data-year=${release_date} data-action=${id}>
     <div class="btn-id">
       <button data-id='${id}' class="btn-youtube">
@@ -122,6 +133,7 @@ function renderMarkupMovieModal({
                   <button class="movie-modal__button" type="button" data-click="queue" data-action=${id}>
                     <span class="movie-modal__button-text">Add to queue</span>
                   </button>
-                </div>`,
-                trailer.createTrailerLink(document.querySelectorAll('.btn-youtube')));
+                </div>`),
+    trailer.createTrailerLink(document.querySelectorAll('.btn-youtube'))
+  );
 }

@@ -22,6 +22,10 @@ if (document.baseURI.includes('library.html')) {
 
   function onWatched() {
     clickOnWatched(page);
+    refs.menu.classList.remove('mobile-menu--open');
+    refs.firstLine.classList.remove('genres-nav-button__line--1');
+    refs.secondLine.classList.remove('genres-nav-button__line--2');
+    refs.thirdLine.classList.remove('genres-nav-button__line--3');
   }
 
   function clickOnWatched(page) {
@@ -49,6 +53,10 @@ if (document.baseURI.includes('library.html')) {
 
   function onQueue() {
     clickOnQueue(page);
+    refs.menu.classList.remove('mobile-menu--open');
+    refs.firstLine.classList.remove('genres-nav-button__line--1');
+    refs.secondLine.classList.remove('genres-nav-button__line--2');
+    refs.thirdLine.classList.remove('genres-nav-button__line--3');
   }
 
   function clickOnQueue(page) {

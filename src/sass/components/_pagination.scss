@@ -38,7 +38,7 @@
 
         min-width: 40px;
         border-radius: 5px;
-    
+
         background-color: var(--bgc-accent);
         color: var(--cl-txt-white);
     }
@@ -46,23 +46,25 @@
     &.pagination__left {
         min-width: 40px;
         border-radius: 5px;
-    
+
         background-color: var(--bgc-second);
+
         &:hover {
             transform: scale(1.2);
         }
     }
+
     &.pagination__right {
         min-width: 40px;
         border-radius: 5px;
-    
+
         background-color: var(--bgc-second);
-    
+
         &:hover {
             transform: scale(1.2);
         }
     }
-    
+
     &.pagination__elem--page:hover {
         transform: scale(1.1);
         font-weight: bold;
@@ -70,12 +72,9 @@
 }
 
 .icon__arrow {
-    fill: var(--cl-txt-main);
+    fill: #000000;
 }
 
 .icon__arrow--left {
     transform: scaleX(-1);
 }
-
-
-

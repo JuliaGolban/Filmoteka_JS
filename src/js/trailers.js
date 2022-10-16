@@ -37,7 +37,15 @@ async function drawModalForTrailler(id_film) {
       return;
     }
 
-    const key = data[0].key;
+    // Пошук з масиву обєктів відео саме трейлера до фільму.
+
+   let objectTrailer = data.find( obj => obj.name.split(" ").includes('Trailer'))
+
+   if (objectTrailer === undefined) {
+    objectTrailer = data[0];
+   }
+
+    const key = objectTrailer.key;
 
     // Створення модалки iframe через бібліотеку basiclightbox.
 

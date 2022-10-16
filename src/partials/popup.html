@@ -6,7 +6,7 @@
             </svg>
         </button>
         <p class="modal-login-title modal-title-js">Fill in the form</p>
-        <form class="form-user form-js" autocomplete="on">
+        <form class="form-user" autocomplete="on">
             <label class="form-group" aria-label="email">
                 <span class="form-label">E-mail:</span>
                 <span class="form__wrapper">
@@ -30,19 +30,15 @@
         <button class="btn-submit" type="submit" id="btnLogin">Log in</button>
 
         <div id="divLoginError" class="group">
-            <div id="lblLoginErrorMessage" class="errorlabel"></div>
+            <p id="lblLoginErrorMessage" class="errorlabel is-hidden">Error: You are not registered!</p>
         </div>
+    </div>
+</div>
 
-        <div id="app">
-            <div class="header is-hidden" id="success-enter">
-                <h1 class="succes-title">Welcome to Your account</h1>
-            </div>
-            <form class="success-message-form">
-                <div class="group">
-                    <div id="lblAuthState" class="authlabel is-hidden"></div>
-                </div>
-                <button id="btnLogout" type="button" class="btn__logout is-hidden">Log out</button>
-            </form>
-        </div>
+<div class="backdrop-notification is-hidden" id="backdrop-notification" >
+    <div id="app" class="notification ">
+        <p class="succes-title " id="success-enter">Welcome to Your account</p>
+        <p class="succes-exit is-hidden" id="success-exit">Thank you for visiting our site!</p>
+        <button id="btnLogout" type="button" class="btn__logout is-hidden">Log out</button>
     </div>
 </div>

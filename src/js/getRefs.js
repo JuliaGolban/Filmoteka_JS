@@ -28,8 +28,12 @@ export default function getRefs() {
     divLoginError: document.querySelector('#divLoginError'),
     lblLoginErrorMessage: document.querySelector('#lblLoginErrorMessage'),
     successEnter: document.querySelector('#success-enter'),
-    formSuccessMsg: document.querySelector('.form-js'),
-    formTitle: document.querySelector('.modal-title-js'),
+    successExit: document.querySelector('#success-exit'),
+    userForm: document.querySelector('[data-user]'),
+    backdropNotification: document.querySelector('#backdrop-notification'),
+
+    registIcon:document.querySelector('.regist'),
+    enterIcon: document.querySelector('.enter'),
 
     // Modal window with movie
     modalEl: document.querySelector('.backdrop-movie'),

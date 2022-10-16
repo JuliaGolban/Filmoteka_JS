@@ -12,8 +12,6 @@ import img from '../image/cinemaCamera.gif';
 
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 let totalPages = 0;
-let globalCurrentPage = 0;
-
 
 document
   .querySelector('body')

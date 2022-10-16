@@ -21,3 +21,12 @@ body {
 
     position: relative;
 }
+
+main {
+    position: relative;
+    min-height: calc(100vh - 370px);
+
+    @include mq(tablet) {
+        min-height: calc(100vh - 340px);
+    }
+}

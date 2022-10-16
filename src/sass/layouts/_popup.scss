@@ -106,6 +106,7 @@
   .form-group:focus-within & {
     outline: 0;
     border-color: var(--bgc-accent);
+    box-shadow: 1px -1px 10px -2px #ff6b0151 inset;
   }
 }
 
@@ -114,11 +115,11 @@
   top: 50%;
   left: 8px;
   transform: translateY(-50%);
-  fill: currentColor;
+  fill: inherit;
 
   transition: fill var(--anim);
 
-  .form__field:focus-within & {
+  .form-group:focus-within & {
     fill: var(--bgc-accent);
   }
 }

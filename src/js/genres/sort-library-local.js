@@ -4,15 +4,23 @@ import {removeMarkupMovieCard} from '../movie-card';
 import renderMarkupCardLibrary from './render-from-storage';
 refs = getRefs();
 
-//get card from localeStorage with storageKey
-let storageKey = ['watched', 'queue'];
-
-const result = getFromStorage(storageKey[0]);
-
 export default function sortByGenre(event) {
     if (event.target.nodeName !== "A") {
       return;
     }
+    //get card from localeStorage with storageKey
+let storageKey = ['watched', 'queue'];
+
+function getStorageKey() {
+  if(refs.btnQueue.classList.contains('--active-btn')) {
+    return storageKey[1];
+  }
+  else return storageKey[0];
+}
+const key = getStorageKey()
+
+
+const result = getFromStorage(key);
 //add and remove class active to link with genre
   const value = event.target.dataset.action;
   const link = document.querySelectorAll('.mobile-menu-link');

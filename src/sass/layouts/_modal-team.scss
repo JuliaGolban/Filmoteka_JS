@@ -97,9 +97,14 @@
         margin-bottom: 4px;
     }
 
-    &__description {
+    &__role {
         margin-bottom: 4px;
         color: var(--cl-txt-accent);
+
+        .modal-team__item:hover &,
+        .modal-team__item:focus & {
+            opacity: 0;
+        }
     }
 
     &__link {
@@ -117,32 +122,38 @@
         }
     }
 
-    &__feature {
+    &__descr {
         position: absolute;
         bottom: -100%;
         width: 100%;
         height: 100%;
-        padding: 10px 5px;
 
-        text-align: center;
-        font-size: 12px;
-        line-height: 1.67;
-
-        color: var(--cl-txt-main);
         background-color: var(--bgc-main);
-        border-radius: 4px;
-        box-shadow: 10px 10px 20px 0px rgba(255, 107, 1, 0.226) inset;
+        border-radius: 5px 5px 50px 5px;
+        border: 1px solid var(--cl-txt-second);
 
         transition: transform var(--slow-anim);
+
+        &-list {
+            padding: 5px 5px 5px 15px;
+        }
+
+        &-text {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 1.67;
+            color: var(--cl-txt-main);
+
+            @include mq(desktop) {
+                font-size: 16px;
+            }
+        }
 
         .modal-team__item:hover &,
         .modal-team__item:focus & {
             transform: translateY(-100%);
         }
 
-        &.show {
-            transform: translateY(-100%);
-        }
     }
 
     &__btn {

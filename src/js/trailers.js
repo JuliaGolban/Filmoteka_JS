@@ -37,8 +37,13 @@ function createTrailerLink(elementRef) {
           instance.show();
         //   modalClBtTrailer(instance);
         
-    } catch (error) {
-      console.error(error);
+    } catch(error) {
+      const instance = basicLightbox.create(`
+      <div class="modal">
+        <iframe width="100%" height="315" src='http://www.youtube.com/embed/zwBpUdZ0lrQ' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>`);
+
+      instance.show();
     }
 
   }

@@ -1,7 +1,6 @@
 import getRefs from './getRefs';
-import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
+import {removeMarkupMovieCard} from './movie-card';
 import { getGenresLocalStorege } from './api-genres';
-//import {clearData, getFromStorage, saveToStorage, removeItem} from './localeCommon';
 
 const refs = getRefs();
 
@@ -12,6 +11,17 @@ function onClickMenu() {
   refs.thirdLine.classList.toggle('genres-nav-button__line--3');
   refs.menu.classList.toggle('mobile-menu--open');
   renderGenres(getFromStorageGenre())
+}
+window.onscroll = function () {
+  scrollFunction();
+};
+function scrollFunction() {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        refs.menu.classList.remove('mobile-menu--open');
+        refs.firstLine.classList.remove('genres-nav-button__line--1');
+        refs.secondLine.classList.remove('genres-nav-button__line--2');
+        refs.thirdLine.classList.remove('genres-nav-button__line--3');
+    }
 }
 
 function renderGenres(results) {
@@ -33,13 +43,15 @@ function getFromStorageGenre() {
 }
 }
 
+//sort
 refs.menuList.addEventListener('click', sortByGenre)
 
 function sortByGenre(event) {
     if (event.target.nodeName !== "A") {
       return;
     }
-    let storageKey = 'movies';
+
+    let storageKey = 'watched';
       function getFromStorageMovies() {
     try {
       const data = JSON.parse(localStorage.getItem(storageKey));
@@ -50,30 +62,37 @@ function sortByGenre(event) {
     }
   }
   const result = getFromStorageMovies();
-//
+
   const value = event.target.dataset.action;
-  console.log(value)
-  const elementsFilterGenre = result.results;
-  console.log('1',elementsFilterGenre)
+  const link = document.querySelectorAll('.mobile-menu-link');
+  console.log('sortByGenre ~ value', value);
+  for (let i = 0; i < link.length; i += 1) {
+    if (value === link[i].dataset.action) {
+      link[i].classList.add('active');
+    } else {
+      link[i].classList.remove('active');
+    }
+  }
 
-//
-
-    let arr =[];
-
-  elementsFilterGenre.forEach((elem)=>{
+  let arr =[];
+  
+  result.forEach((elem)=>{
     if(elem.genre_ids.includes(Number(value))) {
          removeMarkupMovieCard()
+         refs.title.classList.add('is-hidden')
          arr.push(elem);
-        renderMarkupMovieCard(arr)
-
-        console.log(elem)
-
+    }
+    else {
+      removeMarkupMovieCard();
     }
   })
+  renderMarkupCardLibrary(arr);
+  if(arr.length===0) {
+    refs.title.classList.remove('is-hidden')
+  }
 
 
-
-  function renderMarkupMovieCard(results) {
+  function renderMarkupCardLibrary(results) {
     const markup = results
       .map(({ id, poster_path, genre_ids, title, release_date }) => {
         let name = getGenresLocalStorege(genre_ids);

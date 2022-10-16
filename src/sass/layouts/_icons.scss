@@ -1,26 +1,37 @@
-.menu__buttom{
-    display:flex;
+.menu__buttom {
+    display: flex;
     justify-content: flex-end;
+    align-items: center;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
     @include mq(mobile) {
         max-width: 320px;
     }
 
     @include mq(tablet) {
         max-width: 768px;
-        padding: 0 32px;
     }
 
     @include mq(desktop) {
         max-width: 1280px;
     }
-   
+
 }
 
-.menuBtn{
+.menuBtn {
     background-color: transparent;
-    border: none; outline: none;
+    border: none;
+    outline: none;
 }
 
-.menu__buttom-icon{
+.menu__buttom-icon {
     fill: var(--bgc-black);
+    cursor: pointer;
+    transition: var(--slow-anim);
+}
+
+.menu__buttom-icon:hover {
+    fill: var(--bgc-accent);
 }

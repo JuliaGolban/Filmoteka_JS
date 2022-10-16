@@ -69,7 +69,13 @@
     }
 }
 
+.icon__arrow {
+    fill: var(--cl-txt-main);
+}
+
 .icon__arrow--left {
     transform: scaleX(-1);
 }
+
+
 

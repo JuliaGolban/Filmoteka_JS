@@ -1,13 +1,14 @@
 import { getGenresLocalStorege } from './api-genres';
 import { getFromStorage } from './localeCommon';
 import { onBtnClick } from './localeStorage';
+import trailer from './trailers';
 import getRefs from './getRefs';
 
 const refs = getRefs();
 
 export function getMovieById(id) {
   const movies = getFromStorage('movies');
-  const result = movies.results.find(movie => movie.id === Number(id));
+  const result = movies.find(movie => movie.id === Number(id));
   return result;
 }
 
@@ -72,6 +73,9 @@ function renderMarkupMovieModal({
   refs.modal.dataset.action = id;
   return (refs.modalContainer.innerHTML = `
     <div class="movie-modal__image-container" data-year=${release_date} data-action=${id}>
+    <div class="btn-id">
+      <button data-id='${id}' class="btn-youtube">
+    </div>
     ${
       poster_path
         ? `<img src= "https://image.tmdb.org/t/p/w500${poster_path}"`
@@ -112,11 +116,12 @@ function renderMarkupMovieModal({
               <p class="movie-modal__about">About</p>
               <p class="movie-modal__overview">${overview}</p>
               <div class="movie-modal__button-container">
-                  <button class="movie-modal__button-orange" type="button" data-click="watched">
+                  <button class="movie-modal__button-orange" type="button" data-click="watched" data-action=${id}>
                     <span class="movie-modal__button-text-orange">Add to watched</span>
                   </button>
-                  <button class="movie-modal__button" type="button" data-click="queue">
+                  <button class="movie-modal__button" type="button" data-click="queue" data-action=${id}>
                     <span class="movie-modal__button-text">Add to queue</span>
                   </button>
-                </div>`);
+                </div>`,
+                trailer.createTrailerLink(document.querySelectorAll('.btn-youtube')));
 }

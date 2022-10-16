@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { default as pagination } from '../js/pagination';
+import { pagination } from './pagination';
 import { getFromStorage, saveToStorage } from './localeCommon';
 import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
 import img from '../image/cinemaCamera.gif';
@@ -12,6 +12,8 @@ import img from '../image/cinemaCamera.gif';
 
 const API_KEY = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 let totalPages = 0;
+let globalCurrentPage = 0;
+
 
 document
   .querySelector('body')
@@ -24,6 +26,7 @@ const spinner = document.querySelector('.spinner');
 const notFound = document.querySelector('#p-not');
 
 async function getResponse(currentPage, partUrl) {
+  
   spinner.classList.remove('is-hidden');
 
   const axiosInstance = axios.create({
@@ -45,11 +48,13 @@ async function getResponse(currentPage, partUrl) {
   } else {
     pagination(totalPages, currentPage);
   }
+  
+  let results = data.results;
 
   removeMarkupMovieCard();
-  saveToStorage('movies', data);
+  saveToStorage('movies', results);
   getFromStorage('movies');
-  renderMarkupMovieCard(data);
+  renderMarkupMovieCard(results);
 
   notFound.classList.add('is-hidden');
   spinner.classList.add('is-hidden');

@@ -1,6 +1,9 @@
 import getRefs from './getRefs';
 const refs = getRefs();
 
-if (refs.galleryList.hasChildNodes) {
+let child = Number(refs.galleryList.childElementCount);
+if (child < 9) {
+  refs.footer.classList.add('fixed');
+} else {
   refs.footer.classList.remove('fixed');
 }

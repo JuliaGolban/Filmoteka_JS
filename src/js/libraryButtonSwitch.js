@@ -19,6 +19,10 @@ function clickOnWatched() {
   removeMarkupMovieCard();
   let results = getFromStorage('watched');
   renderMarkupMovieCard({ results });
+  refs.menu.classList.remove('mobile-menu--open');
+  refs.firstLine.classList.remove('genres-nav-button__line--1');
+  refs.secondLine.classList.remove('genres-nav-button__line--2');
+  refs.thirdLine.classList.remove('genres-nav-button__line--3');
 }
 
 function clickOnQueue() {
@@ -31,4 +35,8 @@ function clickOnQueue() {
   removeMarkupMovieCard();
   let results = getFromStorage('queue');
   renderMarkupMovieCard({ results });
+  refs.menu.classList.remove('mobile-menu--open');
+  refs.firstLine.classList.remove('genres-nav-button__line--1');
+  refs.secondLine.classList.remove('genres-nav-button__line--2');
+  refs.thirdLine.classList.remove('genres-nav-button__line--3');
 }

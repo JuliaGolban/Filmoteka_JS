@@ -135,6 +135,11 @@
 
         transition: transform var(--slow-anim);
 
+        .modal-team__item:hover &,
+        .modal-team__item:focus & {
+            transform: translateY(-100%);
+        }
+
         &.show {
             transform: translateY(-100%);
         }

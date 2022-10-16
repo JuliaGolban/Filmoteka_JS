@@ -4,14 +4,20 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 
 const API_KEYS = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 
+// Функція створення слухачів подій на elementRef, яка викликається в movie-cards і modal.js і по кліку запускає drawModalForTrailler.
+
 function createTrailerLink(elementRef) {
   const trailerBtn = elementRef;
   trailerBtn.forEach(el =>
-    el.addEventListener('click', e => {
-      drawModalForTrailler(e.target.dataset.id);
-    })
-  );
+    el.addEventListener('click', onClickDrawTrailer)
+    )
 }
+
+function onClickDrawTrailer (event) {
+  drawModalForTrailler(event.target.dataset.id)
+}
+
+// Функція запиту на сервер трейлеру фільму по id. 
 
 async function drawModalForTrailler(id_film) {
   try {
@@ -25,12 +31,15 @@ async function drawModalForTrailler(id_film) {
     );
 
     const data = response.data.results;
+
     if (data.length === 0 || data === undefined) {
       alert('Sorry, trailer not found.');
       return;
     }
 
     const key = data[0].key;
+
+    // Створення модалки iframe через бібліотеку basiclightbox.
 
     const instance = basicLightbox.create(`
     <div class="modal">
@@ -39,10 +48,13 @@ async function drawModalForTrailler(id_film) {
   `);
     instance.show();
 
+    // Закриття модалки по Escape
+
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         instance.close();
       }
+      
     });
   } catch (error) {
     const instance = basicLightbox.create(`

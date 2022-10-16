@@ -13,7 +13,7 @@ body {
     letter-spacing: 0.04em;
 
     width: 100%;
-    max-width: 100%;
+    min-height: 100vh;
     overflow-x: hidden;
 
     color: var(--cl-txt-main);

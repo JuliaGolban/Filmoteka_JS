@@ -31,6 +31,7 @@
     @include mq(tablet) {
         max-width: 800px;
         max-height: calc(100vh - 40px);
+        padding: 30px;
     }
 
     &__title {
@@ -44,10 +45,10 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: flex-start;
-        gap: 20px;
+        gap: 24px;
 
         @include mq(tablet) {
-            gap: 32px;
+            gap: 36px;
         }
 
         @include mq(desktop) {
@@ -111,6 +112,7 @@
         position: absolute;
         top: 70px;
         right: 0;
+        z-index: 16;
 
         @include mq(desktop) {
             top: 110px;
@@ -119,6 +121,15 @@
         &:hover,
         &:focus {
             fill: var(--cl-txt-accent);
+        }
+
+        .modal-team__item:hover &,
+        .modal-team__item:focus & {
+            top: 130px;
+
+            @include mq(desktop) {
+                top: 150px;
+            }
         }
     }
 
@@ -130,9 +141,10 @@
 
         background-color: var(--bgc-main);
         border-radius: 5px 5px 50px 5px;
-        border: 1px solid var(--cl-txt-second);
+        border: 1px solid #54545488;
 
         transition: transform var(--slow-anim);
+        overflow: hidden;
 
         &-list {
             padding: 5px 5px 5px 15px;

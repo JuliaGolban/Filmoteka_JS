@@ -4,7 +4,6 @@ const refs = getRefs();
 
 refs.openModalTeam.addEventListener('click', onOpenModalTeam);
 refs.closeModalTeam.addEventListener('click', onOpenModalTeam);
-refs.modalTeam.addEventListener('click', onBackdropModalTeam);
 
 function onOpenModalTeam() {
   document.body.classList.toggle('modal-team-is-open');
@@ -16,9 +15,3 @@ document.addEventListener('keydown', function (e) {
     refs.modalTeam.classList.add('is-hidden');
   }
 });
-
-function onBackdropModalTeam(e) {
-  if (e.currentTarget === e.target) {
-    refs.modalTeam.classList.add('is-hidden');
-  }
-}

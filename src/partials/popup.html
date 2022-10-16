@@ -9,17 +9,24 @@
         <form class="form-user form-js" autocomplete="on">
             <label class="form-group" aria-label="email">
                 <span class="form-label">E-mail:</span>
-                <input class="form-form" type="email" name="mail" id="txtEmail" placeholder="exampel@gmail.com"
-                    required />
+                <span class="form__wrapper">
+                    <input class="form-input" type="email" name="mail" id="txtEmail" placeholder="exampel@gmail.com"
+                        required /><svg class="form-icon" width="18" height="18">
+                        <use href="./image/sprite.svg#mail"></use>
+                    </svg></span>
             </label>
             <label class="form-group" aria-label="password">
                 <span class="form-label">Password:</span>
-                <input class="form-form" type="password" name="password" id="txtPassword" minlength="5" maxlength="12"
-                    placeholder=" " required />
+                <span class="form__wrapper">
+                    <input class="form-input" type="password" name="password" id="txtPassword" minlength="5"
+                        maxlength="12" placeholder="******" required />
+                    <svg class="form-icon" width="18" height="18">
+                        <use href="./image/sprite.svg#key"></use>
+                    </svg>
                 </span>
             </label>
         </form>
-        <button class="btn-submit" type="submit" id="btnSignup">Sign up</button>
+        <button class="btn-submit --active-btn" type="submit" id="btnSignup">Sign up</button>
         <button class="btn-submit" type="submit" id="btnLogin">Log in</button>
 
         <div id="divLoginError" class="group">

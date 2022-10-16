@@ -77,37 +77,50 @@
 }
 
 .form-label {
+  display: inline-block;
   margin-bottom: 4px;
+  font-weight: 500;
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.01em;
   color: var(--secondary-color);
 }
 
-.input-container {
+.form__wrapper {
   position: relative;
   display: block;
 }
 
-.form-form {
+.form-input {
   display: flex;
   width: 100%;
   height: 40px;
-  padding: 5px 5px;
+  padding: 5px 5px 5px 30px;
 
-  border: 1px solid #21212133;
+  border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
   cursor: pointer;
+
+  transition: border-color var(--anim);
+
+  .form-group:focus-within & {
+    outline: 0;
+    border-color: var(--bgc-accent);
+  }
 }
 
-.form-form .form-label {
-  display: inline-block;
-  margin-bottom: 4px;
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: 0.01em;
-  color: var(--cl-txt-main);
-  background-color: var(--bgc-main);
+.form-icon {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  fill: currentColor;
+
+  transition: fill var(--anim);
+
+  .form__field:focus-within & {
+    fill: var(--bgc-accent);
+  }
 }
 
 .btn-submit {
@@ -128,6 +141,11 @@
   &:hover,
   &:focus {
     background-color: var(--bgc-accent);
+    border: 1px solid var(--cl-txt-accent);
+  }
+
+  &.--active-btn {
+    background-color: var(--cl-txt-accent);
     border: 1px solid var(--cl-txt-accent);
   }
 

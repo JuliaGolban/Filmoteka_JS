@@ -4,12 +4,17 @@ import { pagination } from './pagination';
 import { getCurrentStorage } from './localeStorage';
 import getRefs from './getRefs';
 const refs = getRefs();
-// console.log('refs', refs);
+
+/**
+ * Create pagination
+ * @param {Number} page - current page for search
+ * @param {Number} cut - current page for click search
+ * @param {Number} totalPages  - all pages for search
+ */
 
 if (document.baseURI.includes('library.html')) {
   let page = 1;
   let totalPages = 1;
-  let globalCurrentPage = 0;
 
   clickOnWatched(page);
 

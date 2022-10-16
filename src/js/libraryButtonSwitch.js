@@ -13,8 +13,8 @@ if (document.baseURI.includes('library.html')) {
 
   clickOnWatched(page);
 
-  refs.btnWatched.addEventListener('click', clickOnWatched(page));
-  refs.btnQueue.addEventListener('click', clickOnQueue(page));
+  refs.btnWatched.addEventListener('click', clickOnWatched);
+  refs.btnQueue.addEventListener('click', clickOnQueue);
 
   function clickOnWatched(page) {
     console.log(clickOnWatched, 'hello');

@@ -9,4 +9,4 @@ import './js/genres/sortGenres';
 import './js/popup';
 import './js/firebase';
 import './js/theme';
-import './js/fixFooter';
+// import './js/fixFooter';

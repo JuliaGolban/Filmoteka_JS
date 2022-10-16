@@ -6,4 +6,4 @@ import './js/genres/sortLibrary';
 import './js/popup';
 import './js/firebase';
 import './js/theme';
-import './js/fixFooter';
+// import './js/fixFooter';

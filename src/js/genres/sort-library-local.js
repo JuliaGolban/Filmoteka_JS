@@ -43,7 +43,7 @@ export default function sortByGenre(event) {
   });
 
   renderMarkupCardLibrary(arr);
-  if (arr.length === 0) {
+  if (!arr.length) {
     refs.title.classList.remove('is-hidden');
   }
 }

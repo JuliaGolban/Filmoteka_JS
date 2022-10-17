@@ -32,7 +32,7 @@ export function onBtnClick(e) {
   записуємо та зберігаємо дані фільму у сховище
 */
 function addToStorage(movieObj, movieType) {
-  const [watched, queue] = getCurrentStorage();
+  const [watched, queue, movies] = getCurrentStorage();
   const watchedId = watched.map(movie => movie.id);
   const queueId = queue.map(movie => movie.id);
 
@@ -40,6 +40,10 @@ function addToStorage(movieObj, movieType) {
     case 'watched':
       if (!watchedId.includes(movieObj.id)) {
         watched.push(movieObj);
+
+        if (!queueId.includes(movieObj.id)) {
+          saveToStorage('watched', movies);
+        }
         const filtrededQueue = queue.filter(movie => {
           return movie.id !== movieObj.id;
         });
@@ -55,6 +59,9 @@ function addToStorage(movieObj, movieType) {
     case 'queue':
       if (!queueId.includes(movieObj.id)) {
         queue.push(movieObj);
+        if (!watchedId.includes(movieObj.id)) {
+          saveToStorage('queue', movies);
+        }
         const filtrededWatched = watched.filter(movie => {
           return movie.id !== movieObj.id;
         });
@@ -107,6 +114,7 @@ function checkMovieInStack(id, key) {
 function getCurrentStorage() {
   let watched = localStorage.getItem('watched');
   let queue = localStorage.getItem('queue');
+  let movies = localStorage.getItem('movies');
   if (watched === null) {
     watched = [];
   } else {
@@ -117,7 +125,10 @@ function getCurrentStorage() {
   } else {
     queue = JSON.parse(queue);
   }
-  return [watched, queue];
+  if (watched === null && queue === null) {
+    movies = JSON.parse(movies);
+  }
+  return [watched, queue, movies];
 }
 
 export { checkMovieInStack, getCurrentStorage };

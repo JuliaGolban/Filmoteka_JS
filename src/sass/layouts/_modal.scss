@@ -93,6 +93,7 @@
 
     @include mq(desktop) {
         font-size: 30px;
+        line-height: 1.1;
     }
 }
 
@@ -242,13 +243,14 @@
     }
 
     &.--active-btn {
-        color: var(--cl-txt-white);
+        color: white;
         background-color: var(--cl-txt-accent);
         border: 1px solid var(--cl-txt-accent);
     }
 
     &:hover,
     &:focus {
+        color: white;
         background-color: var(--cl-txt-accent);
         border: 1px solid var(--cl-txt-accent);
     }

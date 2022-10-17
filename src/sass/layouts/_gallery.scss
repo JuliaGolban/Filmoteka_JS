@@ -48,9 +48,13 @@
         transition: all 250ms;
         cursor: pointer;
 
-        @include mq(tablet) {}
+        @include mq(tablet) {
+            min-height: 515px;
+        }
 
-        @include mq(desktop) {}
+        @include mq(desktop) {
+            min-height: 662px;
+        }
 
         &:hover {
             box-shadow: 0 4px 10px #000;

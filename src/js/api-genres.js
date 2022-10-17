@@ -4,7 +4,7 @@ import { getFromStorage, saveToStorage } from './localeCommon';
 const API_KEYS = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 const BASE_URL = 'https://api.themoviedb.org/3/genre/movie/list';
 
-// Запит на сервер
+// Запит на сервер, повертає масив обєктів з жанрами.
 
 async function getGenres() {
   try {

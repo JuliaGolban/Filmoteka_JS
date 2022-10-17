@@ -32,7 +32,7 @@ export function onBtnClick(e) {
   записуємо та зберігаємо дані фільму у сховище
 */
 function addToStorage(movieObj, movieType) {
-  const [watched, queue, movies] = getCurrentStorage();
+  const [watched, queue] = getCurrentStorage();
   const watchedId = watched.map(movie => movie.id);
   const queueId = queue.map(movie => movie.id);
 
@@ -41,9 +41,9 @@ function addToStorage(movieObj, movieType) {
       if (!watchedId.includes(movieObj.id)) {
         watched.push(movieObj);
 
-        if (!queueId.includes(movieObj.id)) {
-          saveToStorage('watched', movies);
-        }
+        // if (!queueId.includes(movieObj.id)) {
+        //   saveToStorage('watched', movies);
+        // }
         const filtrededQueue = queue.filter(movie => {
           return movie.id !== movieObj.id;
         });
@@ -59,9 +59,9 @@ function addToStorage(movieObj, movieType) {
     case 'queue':
       if (!queueId.includes(movieObj.id)) {
         queue.push(movieObj);
-        if (!watchedId.includes(movieObj.id)) {
-          saveToStorage('queue', movies);
-        }
+        // if (!watchedId.includes(movieObj.id)) {
+        //   saveToStorage('queue', movies);
+        // }
         const filtrededWatched = watched.filter(movie => {
           return movie.id !== movieObj.id;
         });

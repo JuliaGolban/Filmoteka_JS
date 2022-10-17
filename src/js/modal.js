@@ -36,12 +36,11 @@ refs.gallery.addEventListener('click', e => {
   const movie = getMovieById(movieId);
   refs.modalEl.classList.remove('is-hidden');
   renderMarkupMovieModal(movie);
-  document
-    .querySelector('[data-click="watched"]')
-    .addEventListener('click', onBtnClick);
+  document.querySelector('[data-click="watched"]').addEventListener('click', onBtnClick);
   document
     .querySelector('[data-click="queue"]')
     .addEventListener('click', onBtnClick);
+   
 });
 
 refs.closeBtn.addEventListener('click', closeModal);
@@ -64,6 +63,7 @@ function onBackdropClick(e) {
     closeModal();
   }
 }
+
 
 // Разметка модалка
 function renderMarkupMovieModal({
@@ -127,7 +127,7 @@ function renderMarkupMovieModal({
               <p class="movie-modal__about">About</p>
               <p class="movie-modal__overview">${overview}</p>
               <div class="movie-modal__button-container">
-                  <button class="movie-modal__button-orange" type="button" data-click="watched" data-action=${id}>
+                  <button class="movie-modal__button --active-btn" type="button" data-click="watched" data-action=${id}>
                     <span class="movie-modal__button-text-orange">Add to watched</span>
                   </button>
                   <button class="movie-modal__button" type="button" data-click="queue" data-action=${id}>

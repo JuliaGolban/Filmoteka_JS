@@ -90,6 +90,10 @@
     line-height: 23px;
     text-transform: uppercase;
     color: var(--cl-txt-main);
+
+    @include mq(desktop) {
+        font-size: 30px;
+    }
 }
 
 .movie-modal__description {
@@ -207,75 +211,48 @@
     display: flex;
     justify-content: space-between;
 
-    @media screen and (min-width: 1280px) {
+   @include mq(desktop) {
+        margin-left: 8px;
         justify-content: left;
     }
+
 }
 
 .movie-modal__button-container:hover button {
     cursor: pointer;
 }
+.movie-modal__button{
+   
+   height: 44px;   
+   background: var(--bgc-accent--bgc-main);
+   border-radius: 5px;
+   color: var( --cl-txt-main);
+   border: 1px solid var(--bgc-black);
+   font-size: 12px;
+   text-transform: uppercase;
+   width: 110px;
 
-.movie-modal__button-orange {
-    border: none;
-    outline: none;
-    width: calc((100% - 2*20px) / 2);
-    height: 44px;
-
-    background: var(--bgc-accent);
-    border-radius: 5px;
-
-    @include mq(tablet) {
-        width: 125px;
-    }
-
-    @include mq(desktop) {
-        margin-left: 8px;
-    }
-}
-
-.movie-modal__button {
-    width: calc((100% - 2*20px) / 2);
-    height: 44px;
-
-    background: transparent;
-    border-radius: 5px;
-    border-color: var(--bgc-black);
-
-    @include mq(tablet) {
-        width: 125px;
-    }
+   @include mq(tablet) {
+   width: 125px;
+   }
 
     @include mq(desktop) {
-        margin-left: 15px;
-    }
+     width: 136px;
+   }
+   &.--active-btn {
+    background-color: var(--cl-txt-accent);
+    border: 1px solid var(--cl-txt-accent);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--cl-txt-accent);
+    border: 1px solid var(--cl-txt-accent);
+}}
+.movie-modal__button:not(:last-child) {
+    margin-right: 15px;
 }
 
-.movie-modal__button-text {
-    font-family: var(--font-family-main);
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-
-    text-align: center;
-    text-transform: uppercase;
-
-    color: var(--cl-txt-main);
-}
-
-.movie-modal__button-text-orange {
-    font-family: var(--font-family-main);
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-
-    text-align: center;
-    text-transform: uppercase;
-
-    color: #ffffff;
-}
 
 .basicLightbox__placeholder {
     width: 90%;

@@ -11,8 +11,11 @@ export function getMovieById(id) {
   if (document.baseURI.includes('library.html')) {
     if (refs.btnWatched.classList.contains('--active-btn')) {
       movies = getFromStorage('watched');
-    } else {
+    }
+    if (refs.btnQueue.classList.contains('--active-btn')) {
       movies = getFromStorage('queue');
+    } else {
+      movies = getFromStorage('movies');
     }
   } else {
     movies = getFromStorage('movies');

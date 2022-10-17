@@ -136,15 +136,11 @@ function renderMarkupMovieModal({
               <p class="movie-modal__about">About</p>
               <p class="movie-modal__overview">${overview}</p>
               <div class="movie-modal__button-container">
-                  <button class="movie-modal__button-orange" type="button" data-click="watched" data-action=${id}>
-                    <span class="movie-modal__button-text-orange">${
-                      inWatched ? 'Remove' : 'Add to watched'
-                    }</span>
+                  <button class="movie-modal__button --active-btn" type="button" data-click="watched" data-action=${id}>
+                   ${inWatched ? 'Remove' : 'Add to watched'}
                   </button>
                   <button class="movie-modal__button" type="button" data-click="queue" data-action=${id}>
-                    <span class="movie-modal__button-text">${
-                      inQueue ? 'Remove' : 'Add to queue'
-                    } </span>
+                   ${inQueue ? 'Remove' : 'Add to queue'} 
                   </button>
                 </div>`),
     trailer.createTrailerLink(document.querySelectorAll('.btn-youtube'))

@@ -47,12 +47,8 @@
         align-items: flex-start;
         gap: 24px;
 
-        @include mq(tablet) {
-            gap: 36px;
-        }
-
         @include mq(desktop) {
-            gap: 50px;
+            gap: 36px;
         }
     }
 
@@ -65,7 +61,7 @@
         justify-content: center;
         align-items: center;
 
-        max-width: 80px;
+        max-width: 100px;
 
         @include mq(desktop) {
             max-width: 120px;
@@ -154,7 +150,7 @@
         &-text {
             font-weight: 500;
             font-size: 12px;
-            line-height: 1.67;
+            line-height: 1.33;
             color: var(--cl-txt-main);
 
             @include mq(desktop) {

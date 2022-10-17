@@ -1,6 +1,6 @@
 import { getGenresLocalStorege } from './api-genres';
 import { getFromStorage } from './localeCommon';
-import { onBtnClick } from './localeStorage';
+import { onBtnClick, checkMovieInStack } from './localeStorage';
 import trailer from './trailers';
 import getRefs from './getRefs';
 
@@ -22,8 +22,9 @@ export function getMovieById(id) {
   return result;
 }
 
-refs.gallery.addEventListener('click', e => {
-  e.preventDefault();
+refs.gallery.addEventListener('click', onMovieCardClick);
+
+function onMovieCardClick(e) {
   if (
     e.target.nodeName !== 'IMG' &&
     e.target.nodeName !== 'P' &&
@@ -34,14 +35,17 @@ refs.gallery.addEventListener('click', e => {
 
   const movieId = e.target.closest('.gallery__item').dataset.id;
   const movie = getMovieById(movieId);
+
   refs.modalEl.classList.remove('is-hidden');
   renderMarkupMovieModal(movie);
-  document.querySelector('[data-click="watched"]').addEventListener('click', onBtnClick);
+
+  document
+    .querySelector('[data-click="watched"]')
+    .addEventListener('click', onBtnClick);
   document
     .querySelector('[data-click="queue"]')
     .addEventListener('click', onBtnClick);
-   
-});
+}
 
 refs.closeBtn.addEventListener('click', closeModal);
 refs.modalEl.addEventListener('click', onBackdropClick);
@@ -64,7 +68,6 @@ function onBackdropClick(e) {
   }
 }
 
-
 // Разметка модалка
 function renderMarkupMovieModal({
   id,
@@ -81,6 +84,12 @@ function renderMarkupMovieModal({
   refs.modalContainer.innerHTML = '';
   let name = getGenresLocalStorege(genre_ids);
   refs.modal.dataset.action = id;
+
+  const watched = getFromStorage('watched');
+  const queue = getFromStorage('queue');
+  const inWatched = watched ? watched.some(item => item.id === id) : false;
+  const inQueue = queue ? queue.some(item => item.id === id) : false;
+
   return (
     (refs.modalContainer.innerHTML = `
     <div class="movie-modal__image-container" data-year=${release_date} data-action=${id}>
@@ -128,10 +137,10 @@ function renderMarkupMovieModal({
               <p class="movie-modal__overview">${overview}</p>
               <div class="movie-modal__button-container">
                   <button class="movie-modal__button --active-btn" type="button" data-click="watched" data-action=${id}>
-                    <span class="movie-modal__button-text-orange">Add to watched</span>
+                   ${inWatched ? 'Remove' : 'Add to watched'}
                   </button>
                   <button class="movie-modal__button" type="button" data-click="queue" data-action=${id}>
-                    <span class="movie-modal__button-text">Add to queue</span>
+                   ${inQueue ? 'Remove' : 'Add to queue'} 
                   </button>
                 </div>`),
     trailer.createTrailerLink(document.querySelectorAll('.btn-youtube'))

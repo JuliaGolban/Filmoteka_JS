@@ -7,7 +7,7 @@ import renderMarkupCardLibrary from './render-from-storage';
 
 const refs = getRefs();
 //open menu genres
-refs.btn.addEventListener('click', onClickMenu)
+refs.btn.addEventListener('click', onClickMenu);
 //autoclose menu onscroll
 window.onscroll = function () {
   scrollFunction();

@@ -9,7 +9,7 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 
-import getRefs from './getRefs';
+import getRefs from '../getRefs';
 import throttle from 'lodash.throttle';
 const refs = getRefs();
 

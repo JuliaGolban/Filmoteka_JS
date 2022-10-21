@@ -1,4 +1,4 @@
-import getRefs from './getRefs';
+import getRefs from '../getRefs';
 
 const refs = getRefs();
 
@@ -10,7 +10,7 @@ function toggleModal() {
   refs.modalUser.classList.toggle('is-hidden');
 }
 
-function userFormOpen(){
+function userFormOpen() {
   refs.backdropNotification.classList.toggle('is-hidden');
   refs.successExit.classList.toggle('is-hidden');
   refs.btnLogout.classList.toggle('is-hidden');

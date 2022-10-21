@@ -16,12 +16,12 @@
 @import './components/scrollbar';
 @import './components/pagination';
 @import './components/spinner';
+@import './components/icons';
 
 @import './layouts/header';
-@import './layouts/footer';
-@import './layouts/modal-team';
 @import './layouts/gallery';
-@import './layouts/modal';
+@import './layouts/footer';
 @import './layouts/menu-genres';
-@import './layouts/popup';
-@import './layouts/icons';
+@import './layouts/modal-movie';
+@import './layouts/modal-user';
+@import './layouts/modal-team';

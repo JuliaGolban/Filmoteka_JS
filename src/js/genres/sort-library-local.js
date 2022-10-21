@@ -1,6 +1,6 @@
 import getRefs from '../getRefs';
-import { getFromStorage } from '../localeCommon';
-import { removeMarkupMovieCard } from '../movie-card';
+import { getFromStorage } from '../localStorage/lsService';
+import { removeMarkupMovieCard } from '../layouts/renderMovieCard';
 import renderMarkupCardLibrary from './render-from-storage';
 const refs = getRefs();
 

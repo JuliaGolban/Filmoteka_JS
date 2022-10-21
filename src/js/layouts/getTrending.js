@@ -1,7 +1,6 @@
-import { getResponse } from './api-common';
-import { clearData } from './localeCommon';
-let partUrl = '';
+import { getResponse } from '../APIservise/APImovies';
 
+let partUrl = '';
 
 /**
  * Create pagination

@@ -1,9 +1,8 @@
-import './js/libraryButtonSwitch';
-import './js/modal';
-import './js/modalTeamForm';
-import './js/scrollTo';
+import './js/layouts/libraryButtonSwitch';
 import './js/genres/sortLibrary';
-import './js/popup';
-import './js/firebase';
-import './js/theme';
-// import './js/fixFooter';
+import './js/layouts/movieCardModal';
+import './js/layouts/userAuthModal';
+import './js/layouts/teamModal';
+import './js/firebase/firebase';
+import './js/components/scrollTo';
+import './js/components/colorTheme';

@@ -1,8 +1,11 @@
 import axios from 'axios';
-import { pagination } from './pagination';
-import { getFromStorage, saveToStorage } from './localeCommon';
-import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
-import img from '../image/cinemaCamera.gif';
+import { pagination } from '../components/pagination';
+import { getFromStorage, saveToStorage } from '../localStorage/lsService';
+import {
+  renderMarkupMovieCard,
+  removeMarkupMovieCard,
+} from '../layouts/renderMovieCard';
+import img from '../../image/cinemaCamera.gif';
 
 /**
  * Create pagination
@@ -24,7 +27,6 @@ const spinner = document.querySelector('.spinner');
 const notFound = document.querySelector('#p-not');
 
 async function getResponse(currentPage, partUrl) {
-  
   spinner.classList.remove('is-hidden');
 
   const axiosInstance = axios.create({
@@ -46,7 +48,7 @@ async function getResponse(currentPage, partUrl) {
   } else {
     pagination(totalPages, currentPage);
   }
-  
+
   let results = data.results;
 
   removeMarkupMovieCard();

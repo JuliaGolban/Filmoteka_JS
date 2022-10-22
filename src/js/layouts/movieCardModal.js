@@ -1,8 +1,8 @@
-import { getGenresLocalStorege } from './api-genres';
-import { getFromStorage } from './localeCommon';
-import { onBtnClick, checkMovieInStack } from './localeStorage';
-import trailer from './trailers';
-import getRefs from './getRefs';
+import { getGenresLocalStorege } from '../APIservise/APIgenres';
+import { getFromStorage } from '../localStorage/lsService';
+import { onBtnClick } from '../localStorage/lsLibrary';
+import trailer from '../components/trailers';
+import getRefs from '../getRefs';
 
 const refs = getRefs();
 let movies = [];

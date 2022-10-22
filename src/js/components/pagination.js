@@ -1,8 +1,7 @@
-import { getResponse } from './api-common';
-import { clickOnWatched, clickOnQueue } from './libraryButtonSwitch';
-import sprite from '../image/sprite.svg';
-import { onBtnClick } from './localeStorage';
-import getRefs from './getRefs';
+import { getResponse } from '../APIservise/APImovies';
+import { clickOnWatched, clickOnQueue } from '../layouts/libraryButtonSwitch';
+import sprite from '../../image/sprite.svg';
+import getRefs from '../getRefs';
 const refs = getRefs();
 
 document
@@ -106,8 +105,7 @@ function onPaginationBoxClick(evt) {
       if (refs.btnWatched.classList.contains('--active-btn')) {
         clickOnWatched((globalCurrentPage -= 1));
         return;
-      }
-      else {
+      } else {
         clickOnQueue((globalCurrentPage -= 1));
         return;
       }
@@ -125,8 +123,7 @@ function onPaginationBoxClick(evt) {
       if (refs.btnWatched.classList.contains('--active-btn')) {
         clickOnWatched((globalCurrentPage += 1));
         return;
-      }
-      else {
+      } else {
         clickOnQueue((globalCurrentPage += 1));
         return;
       }

@@ -45,7 +45,7 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: flex-start;
-        gap: 24px;
+        gap: 20px;
 
         @include mq(desktop) {
             gap: 36px;
@@ -61,26 +61,26 @@
         justify-content: center;
         align-items: center;
 
-        max-width: 100px;
+        width: 120px;
 
         @include mq(desktop) {
-            max-width: 120px;
+            width: 150px;
         }
     }
 
     &__image {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 16px;
+        width: 100px;
+        height: 100%;
+        margin-bottom: 8px;
 
         border-radius: 5px 5px 50px 5px;
-        box-shadow: 5px 5px 11px -2px #000;
+        box-shadow: 5px 5px 8px -2px var(--cl-txt-main);
 
         @include mq(desktop) {
             width: 120px;
             height: 120px;
 
-            border-radius: 5px 5px 70px 5px;
+            border-radius: 5px 5px 60px 5px;
         }
     }
 
@@ -106,12 +106,12 @@
 
     &__link {
         position: absolute;
-        top: 70px;
-        right: 0;
-        z-index: 16;
+        top: 90px;
+        right: 5px;
+        z-index: 20;
 
         @include mq(desktop) {
-            top: 110px;
+            top: 120px;
         }
 
         &:hover,
@@ -119,14 +119,15 @@
             fill: var(--cl-txt-accent);
         }
 
-        .modal-team__item:hover &,
-        .modal-team__item:focus & {
-            top: 125px;
+        // .modal-team__item:hover &,
+        // .modal-team__item:focus & {
+        //     top: 100px;
+        //     right: 10px;
 
-            @include mq(desktop) {
-                top: 150px;
-            }
-        }
+        //     @include mq(desktop) {
+        //         top: 100px;
+        //     }
+        // }
     }
 
     &__descr {
@@ -136,22 +137,25 @@
         height: 100%;
 
         background-color: var(--bgc-main);
-        border-radius: 4px;
-        border-left: 1px solid #54545488;
+        border-radius: 5px 5px 50px 5px;
         border-top: 1px solid #54545488;
+        border-left: 1px solid #54545488;
 
         transition: transform var(--slow-anim);
         overflow: hidden;
 
         &-list {
-            padding: 5px 5px 5px 16px;
+            list-style: none;
+            padding: 15px;
         }
 
         &-text {
-            font-weight: 500;
+            margin-bottom: 5px;
+            font-weight: 700;
             font-size: 12px;
-            line-height: 1.33;
+            line-height: 1.16;
             color: var(--cl-txt-main);
+
 
             @include mq(desktop) {
                 font-size: 15px;

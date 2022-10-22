@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getFromStorage, saveToStorage } from './localeCommon';
+import { getFromStorage, saveToStorage } from '../localStorage/lsService';
 
 const API_KEYS = 'e32c2b640d0c14cb8349bc85f9ee8b0e';
 const BASE_URL = 'https://api.themoviedb.org/3/genre/movie/list';

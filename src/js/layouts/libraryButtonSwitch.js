@@ -1,7 +1,10 @@
-import { renderMarkupMovieCard, removeMarkupMovieCard } from './movie-card';
-import { getFromStorage } from './localeCommon';
-import { pagination } from './pagination';
-import getRefs from './getRefs';
+import {
+  renderMarkupMovieCard,
+  removeMarkupMovieCard,
+} from './renderMovieCard';
+import { getFromStorage } from '../localStorage/lsService';
+import { pagination } from '../components/pagination';
+import getRefs from '../getRefs';
 const refs = getRefs();
 
 /**

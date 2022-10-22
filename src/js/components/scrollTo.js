@@ -1,4 +1,4 @@
-import getRefs from './getRefs';
+import getRefs from '../getRefs';
 const refs = getRefs();
 
 class Scroll {

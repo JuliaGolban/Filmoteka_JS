@@ -1,12 +1,12 @@
 import getRefs from '../getRefs';
-import { getGenresLocalStorege } from '../api-genres';
+import { getGenresLocalStorege } from '../APIservise/APIgenres';
 const refs = getRefs();
 
 export default function renderMarkupCardLibrary(results) {
-    const markup = results
-      .map(({ id, poster_path, genre_ids, title, release_date }) => {
-        let name = getGenresLocalStorege(genre_ids);
-        return `
+  const markup = results
+    .map(({ id, poster_path, genre_ids, title, release_date }) => {
+      let name = getGenresLocalStorege(genre_ids);
+      return `
                   <li class="gallery__item" data-id="${id}">
                           ${
                             poster_path
@@ -20,12 +20,12 @@ export default function renderMarkupCardLibrary(results) {
                           <div class="gallery__item-description">
                           <p class="gallery__item-description-title"> ${title}</p>
                           <p class="gallery__item-description-genres"> ${name} | ${release_date?.slice(
-          0,
-          4
-        )}</p>
+        0,
+        4
+      )}</p>
                       </div>
                   </li> `;
-      })
-      .join('');
-    refs.galleryList.insertAdjacentHTML('beforeend', markup);
-  }
+    })
+    .join('');
+  refs.galleryList.insertAdjacentHTML('beforeend', markup);
+}

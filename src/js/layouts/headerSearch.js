@@ -1,5 +1,5 @@
-import { getResponse } from './api-common';
-import { removeItem } from './localeCommon';
+import { getResponse } from '../APIservise/APImovies';
+import { removeItem } from '../localStorage/lsService';
 
 /**
  * Create pagination

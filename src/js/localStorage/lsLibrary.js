@@ -1,6 +1,6 @@
-import { getFromStorage, saveToStorage } from './localeCommon';
-import { getMovieById } from './modal';
-import getRefs from './getRefs';
+import { getFromStorage, saveToStorage } from './lsService';
+import { getMovieById } from '../layouts/movieCardModal';
+import getRefs from '../getRefs';
 const refs = getRefs();
 
 export function onBtnClick(e) {
